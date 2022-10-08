@@ -1,0 +1,11 @@
+# node dependencies
+node_modules/
+
+# python virtual env
+.venv/
+
+# python cache
+__pycache__/
+
+# vs code configuration files
+.vscode/
