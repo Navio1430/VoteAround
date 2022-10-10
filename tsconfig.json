@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "rootDir": "./website/static/src",
+        "outDir": "./website/static/dist",
+        "target": "ES2022"
+    }
+}

@@ -1,0 +1,27 @@
+@import '../abstracts/_abstracts.scss';
+
+* {
+    font-size: 100%;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+a,
+a:visited,
+a:link,
+a:hover {
+    color: unset;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-size: 16px;
+    font-family: $lato;
+    scroll-behavior: smooth;
+}

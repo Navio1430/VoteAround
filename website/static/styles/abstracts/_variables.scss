@@ -1,0 +1,16 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$lato: 'Lato', sans-serif;
+$roboto: 'Roboto', sans-serif;
+
+// Colors
+$white: #ffffff;
+
+//RWD 450px, 800px, 1200px, 1400px
+$breakpoints: (
+    'sm': '28.125rem',
+    'md': '50rem',
+    'lg': '75rem',
+    'xl': '87.5rem',
+);
