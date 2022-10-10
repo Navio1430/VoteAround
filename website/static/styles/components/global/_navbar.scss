@@ -1,0 +1,62 @@
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1.25rem;
+
+    &-container {
+        display: flex;
+        grid-column-start: 2;
+        grid-column-end: 9;
+        width: 90%;
+
+        align-items: center;
+        justify-content: center;
+
+        height: 4rem;
+        background: $darkBlue;
+        border-radius: 0 0 2rem 2rem;
+
+        margin: 0 auto;
+    }
+
+    &__links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &-item {
+            color: $white;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            font-family: $inter;
+            text-align: center;
+
+            margin: 0 1.5625rem;
+        }
+    }
+
+    &__sign {
+        display: flex;
+        margin-left: 4rem;
+
+        &-btn {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            font-family: $inter;
+
+            &--up {
+                color: $white;
+                background: none;
+            }
+
+            &--in {
+                padding: 0.40625rem 0.75rem;
+
+                border-radius: 0.25rem;
+                background: $white;
+
+                margin-left: 1.5625rem;
+            }
+        }
+    }
+}

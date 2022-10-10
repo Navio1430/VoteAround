@@ -4,7 +4,50 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>HackHerores</title>
+
+        <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='styles/app.css') }}"
+        />
     </head>
-    <body></body>
+    <body>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div>
+                    <ul id="navbar-links" class="navbar__links">
+                        <li class="navbar__links-item">
+                            <a href="#">Strona Główna</a>
+                        </li>
+                        <li class="navbar__links-item">
+                            <a href="#">Projekty</a>
+                        </li>
+                        <li class="navbar__links-item"><a href="#">Czat</a></li>
+                        <li class="navbar__links-item">
+                            <a href="#">Wydarzenia</a>
+                        </li>
+                        <li class="navbar__links-item">
+                            <a href="#">Mapa Osiedla</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="navbar__sign">
+                    <button
+                        id="sign-up-btn"
+                        class="navbar__sign-btn navbar__sign-btn--up"
+                    >
+                        <a href="#"> Rejestracja </a>
+                    </button>
+
+                    <button
+                        id="sign-in-btn"
+                        class="navbar__sign-btn navbar__sign-btn--in"
+                    >
+                        <a href="#"> Logowanie </a>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </body>
 </html>
