@@ -1,0 +1,21 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+
+    &__text {
+        color: $white;
+        font-family: $roboto;
+        font-weight: 500;
+        font-size: 1.5rem;
+        letter-spacing: 0.1rem;
+        text-transform: capitalize;
+        z-index: 1;
+        margin-top: 8%;
+    }
+
+    &__img {
+        z-index: 0;
+        position: absolute;
+    }
+}
