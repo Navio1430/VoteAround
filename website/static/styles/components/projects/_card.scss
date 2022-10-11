@@ -1,0 +1,39 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    width: 14rem;
+    height: 16rem;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.24));
+    background: $blue;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.01);
+    }
+
+    &__container {
+        display: flex;
+        gap: 3.5rem;
+        margin-top: 4%;
+    }
+
+    &__icon {
+        margin-top: 4rem;
+    }
+
+    &__title {
+        color: $white;
+        font-family: $lato;
+        font-weight: 500;
+        font-size: 23px;
+        line-height: 28px;
+        text-align: center;
+
+        margin-bottom: 2.875rem;
+    }
+}

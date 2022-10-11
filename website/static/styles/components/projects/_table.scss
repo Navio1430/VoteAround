@@ -2,8 +2,6 @@
     &__container {
         display: grid;
         grid-template-columns: repeat(11, 1fr);
-        grid-template-rows: repeat(8, 1fr);
-
         row-gap: 0.8rem;
         margin-top: 20vh;
     }

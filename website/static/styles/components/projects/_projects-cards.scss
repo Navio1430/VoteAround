@@ -1,0 +1,22 @@
+.projects {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        grid-column: 2/11;
+
+        margin-top: 13%;
+
+        //! Delete after
+        margin-bottom: 10rem;
+    }
+
+    &__title {
+        color: $darkBlue;
+        font-size: 29px;
+        font-weight: 700;
+        text-align: left;
+    }
+}
