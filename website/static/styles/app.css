@@ -107,6 +107,7 @@
       grid-template-columns: repeat(11, 1fr);
   row-gap: 0.8rem;
   margin-top: 20vh;
+  margin-bottom: 12%;
 }
 
 .table__row {
@@ -195,8 +196,7 @@
   -ms-grid-column: 2;
   -ms-grid-column-span: 9;
   grid-column: 2/11;
-  margin-top: 13%;
-  margin-bottom: 10rem;
+  margin-bottom: 10%;
 }
 
 .projects__title {
@@ -238,7 +238,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 3.5rem;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 3rem 3rem;
   margin-top: 4%;
 }
 

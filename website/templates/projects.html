@@ -20,7 +20,9 @@
                             <a href="{{ url_for('index') }}">Strona Główna</a>
                         </li>
                         <li class="navbar__links-item">
-                            <a href="{{ url_for('projects.index') }}">Projekty</a>
+                            <a href="{{ url_for('projects.index') }}"
+                                >Projekty</a
+                            >
                         </li>
                         <li class="navbar__links-item"><a href="#">Czat</a></li>
                         <li class="navbar__links-item">
@@ -91,14 +93,56 @@
                         </div>
                     </a>
 
-                    <div class="card">
-                        <img
-                            src="{{ url_for('static', filename='assets/city.svg') }}"
-                            alt=""
-                            class="card__icon"
-                        />
-                        <p class="card__title">Lorem ipsum</p>
-                    </div>
+                    <a href="#">
+                        <div class="card">
+                            <img
+                                src="{{ url_for('static', filename='assets/city.svg') }}"
+                                alt=""
+                                class="card__icon"
+                            />
+                            <p class="card__title">Lorem ipsum</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects">
+            <div class="projects__container">
+                <p class="projects__title">Projekty Na Które Oddałeś Głos</p>
+
+                <div class="card__container">
+                    <a href="#">
+                        <div class="card">
+                            <img
+                                src="{{ url_for('static', filename='assets/city.svg') }}"
+                                alt=""
+                                class="card__icon"
+                            />
+                            <p class="card__title">Lorem ipsum</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects">
+            <div class="projects__container">
+                <p class="projects__title">
+                    Popularne Projekty w twoim mieście
+                </p>
+
+                <div class="card__container">
+                    <a href="#">
+                        <div class="card">
+                            <img
+                                src="{{ url_for('static', filename='assets/city.svg') }}"
+                                alt=""
+                                class="card__icon"
+                            />
+                            <p class="card__title">Lorem ipsum</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </section>

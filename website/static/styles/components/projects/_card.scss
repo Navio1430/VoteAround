@@ -18,7 +18,8 @@
 
     &__container {
         display: flex;
-        gap: 3.5rem;
+        flex-wrap: wrap;
+        gap: 3rem 3rem;
         margin-top: 4%;
     }
 
