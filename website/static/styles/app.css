@@ -13,7 +13,6 @@
 
 .footer__text {
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
@@ -101,6 +100,85 @@
   margin-left: 1.5625rem;
 }
 
+.table__container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[11];
+      grid-template-columns: repeat(11, 1fr);
+  -ms-grid-rows: (1fr)[8];
+      grid-template-rows: repeat(8, 1fr);
+  row-gap: 0.8rem;
+  margin-top: 20vh;
+}
+
+.table__row {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 9;
+  grid-column: 2/11;
+  -ms-grid-columns: 2.5fr 3.5fr 2.5fr 2.5fr 2fr;
+      grid-template-columns: 2.5fr 3.5fr 2.5fr 2.5fr 2fr;
+  background: #ffffff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: start;
+  height: 4rem;
+  border-radius: 0.625rem;
+  padding-left: 3rem;
+}
+
+.table__row-item {
+  color: #131b23;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: "Lato", sans-serif;
+  padding-right: 2rem;
+}
+
+.table__row-item:first-child {
+  cursor: pointer;
+}
+
+.table__row-btn {
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5625rem 1.5625rem;
+  background: linear-gradient(98.41deg, #00ccaa 0%, #30c5c5 100%);
+  border-radius: 1.5625rem;
+}
+
+.table__row--main {
+  background: #223242;
+  border-radius: 0.625rem 0.625rem 0 0;
+}
+
+.table__row--main-item {
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 0.03rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
 * {
   font-size: 100%;
   text-decoration: none;
@@ -124,7 +202,8 @@ a:hover {
 
 body {
   font-size: 16px;
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
   scroll-behavior: smooth;
+  background: #eaeaea;
 }
 /*# sourceMappingURL=app.css.map */
