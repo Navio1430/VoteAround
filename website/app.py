@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 from models import db
 import blueprints.projects
-import blueprints.sign_up
+import blueprints.signup
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.sqlite3"
@@ -9,7 +9,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 app.register_blueprint(blueprints.projects.projects, url_prefix="/projects")
-app.register_blueprint(blueprints.sign_up.sign_up, url_prefix="/sign_up")
+app.register_blueprint(blueprints.signup.signup, url_prefix="/signup")
 
 
 @app.route("/", methods=["GET"])

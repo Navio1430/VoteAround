@@ -2,10 +2,10 @@ from flask import Blueprint, render_template, redirect, request, url_for
 from models import db, User
 
 
-sign_up = Blueprint("sign_up", __name__)
+signup = Blueprint("signup", __name__)
 
 
-@sign_up.route("/", methods=["GET", "POST"])
+@signup.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         username = request.form.get("username")
@@ -16,4 +16,4 @@ def index():
 
         return redirect("#")
     else:
-        return render_template("sign_up.html")
+        return render_template("signup.html")
