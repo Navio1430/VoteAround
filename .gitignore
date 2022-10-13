@@ -9,3 +9,6 @@ __pycache__/
 
 # vs code configuration files
 .vscode/
+
+# sqlite3 databases
+*.sqlite3
