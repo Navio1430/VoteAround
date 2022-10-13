@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from utils.crypto import generate_salt, hash_password
-from uuid import uuid4
+from utils.uuid import generate_uuid
 
 db = SQLAlchemy()
 
@@ -17,7 +17,7 @@ class User(db.Model):
     negative_votes = db.Column("negative_votes", db.LargeBinary)  # uuid[]
 
     def __init__(self, username, password, latitude, longitude):
-        self.uuid = uuid4().bytes
+        self.uuid = generate_uuid()
         self.username = username
         salt = generate_salt()
         hashed = hash_password(password, salt)
