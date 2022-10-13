@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request, url_for
 from models import db, User
-from website.utils.crypto import hash_password
+from utils.crypto import hash_password
 
 
 login = Blueprint("login", __name__)
