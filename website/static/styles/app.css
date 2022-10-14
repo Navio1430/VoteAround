@@ -258,6 +258,117 @@
   margin-bottom: 2.875rem;
 }
 
+.signup__container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[11];
+      grid-template-columns: repeat(11, 1fr);
+}
+
+.signup__form {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 5;
+  grid-column: 4/9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #ffffff;
+  border-radius: 0.625rem;
+  margin: 7rem auto 10rem auto;
+  padding: 4rem 3.2rem;
+}
+
+.signup__title {
+  color: #131b23;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+
+.signup__input {
+  color: #223242;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+  outline: none;
+  border-bottom: 0.0625rem solid #131b23;
+  margin-bottom: 2.5625rem;
+  padding-bottom: 0.15rem;
+}
+
+.signup__input::-webkit-input-placeholder {
+  color: #223242;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.signup__input:-ms-input-placeholder {
+  color: #223242;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.signup__input::-ms-input-placeholder {
+  color: #223242;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.signup__input::placeholder {
+  color: #223242;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.signup__input--name {
+  width: 10rem;
+  margin-right: 2.8rem;
+}
+
+.signup__input--surname {
+  width: 11rem;
+}
+
+.signup__input--password {
+  width: 24.8rem;
+}
+
+.signup__input--last {
+  width: 24.8rem;
+  margin-bottom: 1.7rem;
+}
+
+.signup__link {
+  color: #ff3864;
+}
+
+.signup__btn {
+  color: #ffffff;
+  font-family: inter;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 38px;
+  width: 8.6875rem;
+  height: 3rem;
+  background: #223242;
+  border-radius: 25px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: 2.4rem;
+}
+
 * {
   font-size: 100%;
   text-decoration: none;
