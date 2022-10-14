@@ -1,1 +1,87 @@
-@import './_signup.scss';
+.signup,
+.signin {
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(11, 1fr);
+    }
+
+    &__form {
+        grid-column: 4/9;
+        display: flex;
+        flex-direction: column;
+
+        background: $white;
+        border-radius: 0.625rem;
+
+        margin: 7rem auto 10rem auto;
+        padding: 4rem 3.2rem;
+    }
+
+    &__title {
+        color: $darkBlue;
+        font-size: 2rem;
+        font-weight: 500;
+
+        margin-bottom: 3rem;
+    }
+
+    &__input {
+        color: $blue;
+        font-size: 1.1rem;
+        font-weight: 400;
+        font-family: $lato;
+
+        outline: none;
+        border-bottom: 0.0625rem solid $darkBlue;
+
+        margin-bottom: 2.5625rem;
+        padding-bottom: 0.15rem;
+
+        &::placeholder {
+            color: $blue;
+            font-size: 1.1rem;
+            font-weight: 400;
+            font-family: $lato;
+        }
+
+        &--name {
+            width: 10rem;
+            margin-right: 2.8rem;
+        }
+
+        &--surname {
+            width: 11rem;
+        }
+
+        &--password {
+            width: 24.8rem;
+        }
+
+        &--last {
+            width: 24.8rem;
+
+            margin-bottom: 1.7rem;
+        }
+    }
+
+    &__link {
+        color: $pink;
+    }
+
+    &__btn {
+        color: $white;
+        font-family: inter;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        text-align: center;
+
+        align-self: flex-end;
+        width: 8.6875rem;
+        height: 3rem;
+        background: $blue;
+        border-radius: 1.5625rem;
+
+        padding: 0.9375rem 2.375rem;
+        margin-top: 2.4rem;
+    }
+}

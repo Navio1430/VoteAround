@@ -258,14 +258,16 @@
   margin-bottom: 2.875rem;
 }
 
-.signup__container {
+.signup__container,
+.signin__container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[11];
       grid-template-columns: repeat(11, 1fr);
 }
 
-.signup__form {
+.signup__form,
+.signin__form {
   -ms-grid-column: 4;
   -ms-grid-column-span: 5;
   grid-column: 4/9;
@@ -282,14 +284,16 @@
   padding: 4rem 3.2rem;
 }
 
-.signup__title {
+.signup__title,
+.signin__title {
   color: #131b23;
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 3rem;
 }
 
-.signup__input {
+.signup__input,
+.signin__input {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
@@ -300,72 +304,79 @@
   padding-bottom: 0.15rem;
 }
 
-.signup__input::-webkit-input-placeholder {
+.signup__input::-webkit-input-placeholder,
+.signin__input::-webkit-input-placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
 
-.signup__input:-ms-input-placeholder {
+.signup__input:-ms-input-placeholder,
+.signin__input:-ms-input-placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
 
-.signup__input::-ms-input-placeholder {
+.signup__input::-ms-input-placeholder,
+.signin__input::-ms-input-placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
 
-.signup__input::placeholder {
+.signup__input::placeholder,
+.signin__input::placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
 
-.signup__input--name {
+.signup__input--name,
+.signin__input--name {
   width: 10rem;
   margin-right: 2.8rem;
 }
 
-.signup__input--surname {
+.signup__input--surname,
+.signin__input--surname {
   width: 11rem;
 }
 
-.signup__input--password {
+.signup__input--password,
+.signin__input--password {
   width: 24.8rem;
 }
 
-.signup__input--last {
+.signup__input--last,
+.signin__input--last {
   width: 24.8rem;
   margin-bottom: 1.7rem;
 }
 
-.signup__link {
+.signup__link,
+.signin__link {
   color: #ff3864;
 }
 
-.signup__btn {
+.signup__btn,
+.signin__btn {
   color: #ffffff;
   font-family: inter;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 0.9375rem;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 15px 38px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
   width: 8.6875rem;
   height: 3rem;
   background: #223242;
-  border-radius: 25px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
+  border-radius: 1.5625rem;
+  padding: 0.9375rem 2.375rem;
   margin-top: 2.4rem;
 }
 
