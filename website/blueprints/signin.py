@@ -3,10 +3,10 @@ from models import db, User
 from utils.crypto import hash_password
 
 
-login = Blueprint("login", __name__)
+signin = Blueprint("signin", __name__)
 
 
-@login.route("/", methods=["GET", "POST"])
+@signin.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
         username = request.form.get("username")
@@ -24,4 +24,4 @@ def index():
 
         # return redirect("#")
     else:
-        return render_template("login.html")
+        return render_template("signin.html")

@@ -1,160 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HackHerores</title>
+{% extends 'base.html' %} {% block content %}
 
-        <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='styles/app.css') }}"
-        />
-    </head>
-    <body>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <div>
-                    <ul id="navbar-links" class="navbar__links">
-                        <li class="navbar__links-item">
-                            <a href="{{ url_for('index') }}">Strona Główna</a>
-                        </li>
-                        <li class="navbar__links-item">
-                            <a href="{{ url_for('projects.index') }}"
-                                >Projekty</a
-                            >
-                        </li>
-                        <li class="navbar__links-item"><a href="#">Czat</a></li>
-                        <li class="navbar__links-item">
-                            <a href="#">Wydarzenia</a>
-                        </li>
-                        <li class="navbar__links-item">
-                            <a href="#">Mapa Osiedla</a>
-                        </li>
-                    </ul>
+<section class="table__container">
+    <div class="table__row table__row--main">
+        <p class="table__row--main-item">Nazwa projektu</p>
+        <p class="table__row--main-item">Opis</p>
+        <p class="table__row--main-item">Potrzebny budżet</p>
+        <p class="table__row--main-item">Zebrne głosy</p>
+        <p class="table__row--main-item">Oddaj głos</p>
+    </div>
+
+    <div class="table__row">
+        <p class="table__row-item">
+            <a href="#">Test project</a>
+        </p>
+        <p class="table__row-item">
+            Lorem ipsum dolor sit consectetur adipiscing Etiam vel efficitur
+            ligula. olor sit donecit...
+        </p>
+        <p class="table__row-item">100,000 PLN</p>
+        <p class="table__row-item">627</p>
+        <button type="submit" class="table__row-btn">
+            <a href="#">Głosuj</a>
+        </button>
+    </div>
+</section>
+
+<section class="projects">
+    <div class="projects__container">
+        <p class="projects__title">Twoje Projekty</p>
+
+        <div class="card__container">
+            <a href="#">
+                <div class="card">
+                    <img
+                        src="{{ url_for('static', filename='assets/plus.svg') }}"
+                        alt=""
+                        class="card__icon"
+                    />
+                    <p class="card__title">Utwórz Projekt</p>
                 </div>
+            </a>
 
-                <div class="navbar__sign">
-                    <button
-                        id="sign-up-btn"
-                        class="navbar__sign-btn navbar__sign-btn--up"
-                    >
-                        <a href="#"> Rejestracja </a>
-                    </button>
-
-                    <button
-                        id="sign-in-btn"
-                        class="navbar__sign-btn navbar__sign-btn--in"
-                    >
-                        <a href="#"> Logowanie </a>
-                    </button>
+            <a href="#">
+                <div class="card">
+                    <img
+                        src="{{ url_for('static', filename='assets/city.svg') }}"
+                        alt=""
+                        class="card__icon"
+                    />
+                    <p class="card__title">Lorem ipsum</p>
                 </div>
-            </div>
-        </nav>
+            </a>
+        </div>
+    </div>
+</section>
 
-        <section class="table__container">
-            <div class="table__row table__row--main">
-                <p class="table__row--main-item">Nazwa projektu</p>
-                <p class="table__row--main-item">Opis</p>
-                <p class="table__row--main-item">Potrzebny budżet</p>
-                <p class="table__row--main-item">Zebrne głosy</p>
-                <p class="table__row--main-item">Oddaj głos</p>
-            </div>
+<section class="projects">
+    <div class="projects__container">
+        <p class="projects__title">Projekty Na Które Oddałeś Głos</p>
 
-            <div class="table__row">
-                <p class="table__row-item">
-                    <a href="#">Test project</a>
-                </p>
-                <p class="table__row-item">
-                    Lorem ipsum dolor sit consectetur adipiscing Etiam vel
-                    efficitur ligula. olor sit donecit...
-                </p>
-                <p class="table__row-item">100,000 PLN</p>
-                <p class="table__row-item">627</p>
-                <button type="submit" class="table__row-btn">
-                    <a href="#">Głosuj</a>
-                </button>
-            </div>
-        </section>
-
-        <section class="projects">
-            <div class="projects__container">
-                <p class="projects__title">Twoje Projekty</p>
-
-                <div class="card__container">
-                    <a href="#">
-                        <div class="card">
-                            <img
-                                src="{{ url_for('static', filename='assets/plus.svg') }}"
-                                alt=""
-                                class="card__icon"
-                            />
-                            <p class="card__title">Utwórz Projekt</p>
-                        </div>
-                    </a>
-
-                    <a href="#">
-                        <div class="card">
-                            <img
-                                src="{{ url_for('static', filename='assets/city.svg') }}"
-                                alt=""
-                                class="card__icon"
-                            />
-                            <p class="card__title">Lorem ipsum</p>
-                        </div>
-                    </a>
+        <div class="card__container">
+            <a href="#">
+                <div class="card">
+                    <img
+                        src="{{ url_for('static', filename='assets/city.svg') }}"
+                        alt=""
+                        class="card__icon"
+                    />
+                    <p class="card__title">Lorem ipsum</p>
                 </div>
-            </div>
-        </section>
+            </a>
+        </div>
+    </div>
+</section>
 
-        <section class="projects">
-            <div class="projects__container">
-                <p class="projects__title">Projekty Na Które Oddałeś Głos</p>
+<section class="projects">
+    <div class="projects__container">
+        <p class="projects__title">Popularne Projekty w twoim mieście</p>
 
-                <div class="card__container">
-                    <a href="#">
-                        <div class="card">
-                            <img
-                                src="{{ url_for('static', filename='assets/city.svg') }}"
-                                alt=""
-                                class="card__icon"
-                            />
-                            <p class="card__title">Lorem ipsum</p>
-                        </div>
-                    </a>
+        <div class="card__container">
+            <a href="#">
+                <div class="card">
+                    <img
+                        src="{{ url_for('static', filename='assets/city.svg') }}"
+                        alt=""
+                        class="card__icon"
+                    />
+                    <p class="card__title">Lorem ipsum</p>
                 </div>
-            </div>
-        </section>
+            </a>
+        </div>
+    </div>
+</section>
 
-        <section class="projects">
-            <div class="projects__container">
-                <p class="projects__title">
-                    Popularne Projekty w twoim mieście
-                </p>
-
-                <div class="card__container">
-                    <a href="#">
-                        <div class="card">
-                            <img
-                                src="{{ url_for('static', filename='assets/city.svg') }}"
-                                alt=""
-                                class="card__icon"
-                            />
-                            <p class="card__title">Lorem ipsum</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <footer class="footer">
-            <p class="footer__text">
-                Praca konkursowa ‘Hackheroes’ Edycja 2022
-            </p>
-            <img
-                class="footer__img"
-                src="{{ url_for('static', filename='assets/footer-background.svg') }}"
-            />
-        </footer>
-    </body>
-</html>
+{% endblock %}

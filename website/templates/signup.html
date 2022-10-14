@@ -1,119 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HackHerores</title>
+{% extends 'base.html' %} {% block content %}
+<div class="signup__container">
+    <form action="#" method="post" class="signup__form">
+        <p class="signup__title">Rejestracja</p>
 
-        <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename='styles/app.css') }}"
-        />
-    </head>
+        <div class="signup__names-container">
+            <input
+                type="text"
+                name="name"
+                class="signup__input signup__input--name"
+                id="name"
+                placeholder="Imię"
+            />
 
-    <body>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <div>
-                    <ul id="navbar-links" class="navbar__links">
-                        <li class="navbar__links-item">
-                            <a href="{{ url_for('index') }}">Strona Główna</a>
-                        </li>
-                        <li class="navbar__links-item">
-                            <a href="{{ url_for('projects.index') }}"
-                                >Projekty</a
-                            >
-                        </li>
-                        <li class="navbar__links-item"><a href="#">Czat</a></li>
-                        <li class="navbar__links-item">
-                            <a href="#">Wydarzenia</a>
-                        </li>
-                        <li class="navbar__links-item">
-                            <a href="#">Mapa Osiedla</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="navbar__sign">
-                    <button
-                        id="sign-up-btn"
-                        class="navbar__sign-btn navbar__sign-btn--up"
-                    >
-                        <a href="{{ url_for('signup.index') }}">
-                            Rejestracja
-                        </a>
-                    </button>
-
-                    <button
-                        id="sign-in-btn"
-                        class="navbar__sign-btn navbar__sign-btn--in"
-                    >
-                        <a href="#"> Logowanie </a>
-                    </button>
-                </div>
-            </div>
-        </nav>
-
-        <div class="signup__container">
-            <form action="#" method="post" class="signup__form">
-                <p class="signup__title">Rejestracja</p>
-
-                <div class="signup__names-container">
-                    <input
-                        type="text"
-                        name="name"
-                        class="signup__input signup__input--name"
-                        id="name"
-                        placeholder="Imię"
-                    />
-
-                    <input
-                        type="text"
-                        name="surname"
-                        class="signup__input signup__input--surname"
-                        id="surname"
-                        placeholder="Nazwisko"
-                    />
-                </div>
-
-                <input
-                    type="password"
-                    name="password"
-                    class="signup__input signup__input--password"
-                    id="password"
-                    placeholder="Utwórz hasło"
-                />
-
-                <input
-                    type="password"
-                    name="retype-password"
-                    class="signup__input signup__input--last"
-                    id="retype-password"
-                    placeholder="Powtórz hasło"
-                />
-
-                <p>
-                    Masz już konto?
-                    <span class="signup__link">
-                        <a href="#">Zaloguj się</a>
-                    </span>
-                </p>
-
-                <button class="signup__btn" type="submit">
-                    <a href="#">Rejestruj</a>
-                </button>
-            </form>
+            <input
+                type="text"
+                name="surname"
+                class="signup__input signup__input--surname"
+                id="surname"
+                placeholder="Nazwisko"
+            />
         </div>
 
-        <footer class="footer">
-            <p class="footer__text">
-                Praca konkursowa ‘Hackheroes’ Edycja 2022
-            </p>
-            <img
-                class="footer__img"
-                src="{{ url_for('static', filename='assets/footer-background.svg') }}"
-            />
-        </footer>
-    </body>
-</html>
+        <input
+            type="password"
+            name="password"
+            class="signup__input signup__input--password"
+            id="password"
+            placeholder="Utwórz hasło"
+        />
+
+        <input
+            type="password"
+            name="retype-password"
+            class="signup__input signup__input--last"
+            id="retype-password"
+            placeholder="Powtórz hasło"
+        />
+
+        <p>
+            Masz już konto?
+            <span class="signup__link">
+                <a href="#">Zaloguj się</a>
+            </span>
+        </p>
+
+        <button class="signup__btn" type="submit">
+            <a href="#">Rejestruj </a>
+        </button>
+    </form>
+</div>
+
+{% endblock %}
