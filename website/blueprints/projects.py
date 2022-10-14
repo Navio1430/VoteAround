@@ -5,4 +5,4 @@ projects = Blueprint("projects", __name__)
 
 @projects.route("/", methods=["GET"])
 def index():
-    return render_template("projects.html")
+    return render_template("projects/projects.html")
