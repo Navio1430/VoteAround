@@ -33,10 +33,10 @@ def create():
         if radius <= 0:
             return "<h2>Radius must be larger than 0</h2>"
 
-        if latitude < -90 or 90 > latitude:
+        if -90 > latitude or latitude > 90:
             return "<h2>Latitude is invalid</h2>"
 
-        if longitude < -180 or 180 > longitude:
+        if -180 > longitude or longitude > 180:
             return "<h2>Longitude is invalid</h2>"
 
         radius = MAX_RADIUS_LENGTH if radius > MAX_RADIUS_LENGTH else radius
