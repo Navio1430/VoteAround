@@ -1,3 +1,9 @@
-import { calendar } from './calendar.js';
+import { calendar } from './Calendar.js';
+import { passwordValidate } from './PasswordValidate.js';
 
-calendar();
+if (document.getElementById('calendar-days') !== null) {
+    calendar();
+}
+if (document.getElementById('password-input') !== null) {
+    passwordValidate();
+}

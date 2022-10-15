@@ -1,5 +1,4 @@
 const calendar = () => {
-    console.log('hello');
     // Get current date
     let currentDate = new Date();
     let currentYear = currentDate.getFullYear();

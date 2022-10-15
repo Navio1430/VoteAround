@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="signin__container">
-    <form action="#" method="post" class="signin__form">
-        <p class="signin__title">Logowanie</p>
+<div class="login__container">
+    <form action="#" method="post" class="login__form">
+        <p class="login__title">Logowanie</p>
 
-        <div class="signin__names-container">
+        <div class="login__names-container">
             <input
                 type="text"
                 name="name"
-                class="signin__input signin__input--name"
+                class="login__input login__input--name"
                 id="name"
                 placeholder="Imię"
             />
@@ -16,7 +16,7 @@
             <input
                 type="text"
                 name="surname"
-                class="signin__input signin__input--surname"
+                class="login__input login__input--surname"
                 id="surname"
                 placeholder="Nazwisko"
             />
@@ -25,19 +25,19 @@
         <input
             type="password"
             name="password"
-            class="signin__input signin__input--last"
+            class="login__input login__input--last"
             id="password"
             placeholder="Hasło"
         />
 
         <p>
             Nie masz konta?
-            <span class="signin__link">
+            <span class="login__link">
                 <a href="{{ url_for('signup.index') }}">Zarejestruj się</a>
             </span>
         </p>
 
-        <button class="signin__btn" type="submit">
+        <button class="login__btn" type="submit">
             <a href="#">Zaloguj </a>
         </button>
     </form>

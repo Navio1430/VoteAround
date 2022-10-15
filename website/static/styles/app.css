@@ -259,7 +259,7 @@
 }
 
 .signup__container,
-.signin__container {
+.login__container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[11];
@@ -267,7 +267,7 @@
 }
 
 .signup__form,
-.signin__form {
+.login__form {
   -ms-grid-column: 4;
   -ms-grid-column-span: 5;
   grid-column: 4/9;
@@ -285,7 +285,7 @@
 }
 
 .signup__title,
-.signin__title {
+.login__title {
   color: #131b23;
   font-size: 2rem;
   font-weight: 500;
@@ -293,7 +293,7 @@
 }
 
 .signup__input,
-.signin__input {
+.login__input {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
@@ -305,7 +305,7 @@
 }
 
 .signup__input::-webkit-input-placeholder,
-.signin__input::-webkit-input-placeholder {
+.login__input::-webkit-input-placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
@@ -313,7 +313,7 @@
 }
 
 .signup__input:-ms-input-placeholder,
-.signin__input:-ms-input-placeholder {
+.login__input:-ms-input-placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
@@ -321,7 +321,7 @@
 }
 
 .signup__input::-ms-input-placeholder,
-.signin__input::-ms-input-placeholder {
+.login__input::-ms-input-placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
@@ -329,42 +329,37 @@
 }
 
 .signup__input::placeholder,
-.signin__input::placeholder {
+.login__input::placeholder {
   color: #223242;
   font-size: 1.1rem;
   font-weight: 400;
   font-family: "Lato", sans-serif;
 }
 
-.signup__input--name,
-.signin__input--name {
-  width: 10rem;
+.signup__input--username,
+.login__input--username {
+  width: 24.8rem;
   margin-right: 2.8rem;
 }
 
-.signup__input--surname,
-.signin__input--surname {
-  width: 11rem;
-}
-
 .signup__input--password,
-.signin__input--password {
+.login__input--password {
   width: 24.8rem;
 }
 
 .signup__input--last,
-.signin__input--last {
+.login__input--last {
   width: 24.8rem;
   margin-bottom: 1.7rem;
 }
 
 .signup__link,
-.signin__link {
+.login__link {
   color: #ff3864;
 }
 
 .signup__btn,
-.signin__btn {
+.login__btn {
   color: #ffffff;
   font-family: inter;
   font-weight: 500;
@@ -378,6 +373,13 @@
   border-radius: 1.5625rem;
   padding: 0.9375rem 2.375rem;
   margin-top: 2.4rem;
+}
+
+.signup__alert,
+.login__alert {
+  color: #d92537;
+  font-size: 1.1rem;
+  margin-top: 1rem;
 }
 
 .calendar {

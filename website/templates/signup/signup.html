@@ -7,18 +7,10 @@
         <div class="signup__names-container">
             <input
                 type="text"
-                name="name"
-                class="signup__input signup__input--name"
-                id="name"
-                placeholder="Imię"
-            />
-
-            <input
-                type="text"
-                name="surname"
-                class="signup__input signup__input--surname"
-                id="surname"
-                placeholder="Nazwisko"
+                name="username"
+                class="signup__input signup__input--username"
+                id="username"
+                placeholder="Nazwa Użytkownika"
             />
         </div>
 
@@ -26,7 +18,7 @@
             type="password"
             name="password"
             class="signup__input signup__input--password"
-            id="password"
+            id="password-input"
             placeholder="Utwórz hasło"
         />
 
@@ -34,7 +26,7 @@
             type="password"
             name="retype-password"
             class="signup__input signup__input--last"
-            id="retype-password"
+            id="retype-password-input"
             placeholder="Powtórz hasło"
         />
 
@@ -44,6 +36,8 @@
                 <a href="{{ url_for('login.index') }}">Zaloguj się</a>
             </span>
         </p>
+
+        <div id="signup__alert-container"></div>
 
         <button class="signup__btn" type="submit">
             <a href="#">Rejestruj </a>

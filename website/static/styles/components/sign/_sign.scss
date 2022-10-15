@@ -1,5 +1,5 @@
 .signup,
-.signin {
+.login {
     &__container {
         display: grid;
         grid-template-columns: repeat(11, 1fr);
@@ -44,13 +44,9 @@
             font-family: $lato;
         }
 
-        &--name {
-            width: 10rem;
+        &--username {
+            width: 24.8rem;
             margin-right: 2.8rem;
-        }
-
-        &--surname {
-            width: 11rem;
         }
 
         &--password {
@@ -83,5 +79,12 @@
 
         padding: 0.9375rem 2.375rem;
         margin-top: 2.4rem;
+    }
+
+    &__alert {
+        color: #d92537;
+        font-size: 1.1rem;
+
+        margin-top: 1rem;
     }
 }
