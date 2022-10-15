@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 from models import db
 import blueprints.projects
+import blueprints.events
 import blueprints.signup
 import blueprints.signin
 
@@ -11,6 +12,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 app.register_blueprint(blueprints.projects.projects, url_prefix="/projects")
+app.register_blueprint(blueprints.events.events, url_prefix="/events")
 app.register_blueprint(blueprints.signup.signup, url_prefix="/signup")
 app.register_blueprint(blueprints.signin.signin, url_prefix="/signin")
 
