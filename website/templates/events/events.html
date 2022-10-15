@@ -1,1 +1,26 @@
-{% extends 'base.html' %} {% block content %} {% endblock %}
+{% extends 'base.html' %} {% block content %}
+
+<h1>Wydarzenia w twojej okolicy</h1>
+
+<section class="calendar">
+    <div class="calendar__days-name">
+        <p>Poniedziałek</p>
+        <p>Wtorek</p>
+        <p>Środa</p>
+        <p>Czwartek</p>
+        <p>Piątek</p>
+        <p>Sobota</p>
+        <p>Niedziela</p>
+    </div>
+    <div id="calendar-days" class="calendar__days">
+        <div class="calendar__day-container">
+            <p class="calendar__day">1</p>
+            <p class="calendar__day-event">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque,
+                odit?
+            </p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

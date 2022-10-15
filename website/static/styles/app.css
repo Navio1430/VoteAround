@@ -201,7 +201,7 @@
 
 .projects__title {
   color: #131b23;
-  font-size: 29px;
+  font-size: 1.8125rem;
   font-weight: 700;
   text-align: left;
 }
@@ -222,10 +222,10 @@
           flex-direction: column;
   width: 14rem;
   height: 16rem;
-  -webkit-filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.24));
-          filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.24));
+  -webkit-filter: drop-shadow(0.1875rem 0.1875rem 0.3125rem rgba(0, 0, 0, 0.24));
+          filter: drop-shadow(0.1875rem 0.1875rem 0.3125rem rgba(0, 0, 0, 0.24));
   background: #223242;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   cursor: pointer;
 }
 
@@ -252,8 +252,8 @@
   color: #ffffff;
   font-family: "Lato", sans-serif;
   font-weight: 500;
-  font-size: 23px;
-  line-height: 28px;
+  font-size: 1.4375rem;
+  line-height: 1.75rem;
   text-align: center;
   margin-bottom: 2.875rem;
 }
@@ -380,6 +380,58 @@
   margin-top: 2.4rem;
 }
 
+.calendar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+}
+
+.calendar__day-container {
+  min-height: 10rem;
+}
+
+.calendar__day-event {
+  color: #131b23;
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: "Lato", sans-serif;
+}
+
+.calendar__days {
+  color: #131b23;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 10;
+  grid-column: 2/12;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  margin-top: 2rem;
+}
+
+.calendar__days-name {
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.0625rem;
+  text-align: left;
+  height: 5.625rem;
+  background: #131b23;
+  border-radius: 0.625rem 0.625rem 0 0;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 10;
+  grid-column: 2/12;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[7];
+      grid-template-columns: repeat(7, 1fr);
+  padding: 2rem;
+}
+
 * {
   font-size: 100%;
   text-decoration: none;
@@ -406,5 +458,15 @@ body {
   font-family: "Roboto", sans-serif;
   scroll-behavior: smooth;
   background: #eaeaea;
+}
+
+h1 {
+  color: #223242;
+  font-size: 2.25rem;
+  font-weight: 700;
+  font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
+  text-align: center;
+  margin: 8rem auto 4rem auto;
 }
 /*# sourceMappingURL=app.css.map */

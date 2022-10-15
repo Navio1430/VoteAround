@@ -6,9 +6,9 @@
 
     width: 14rem;
     height: 16rem;
-    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.24));
+    filter: drop-shadow(0.1875rem 0.1875rem 0.3125rem rgba(0, 0, 0, 0.24));
     background: $blue;
-    border-radius: 10px;
+    border-radius: 0.625rem;
 
     cursor: pointer;
 
@@ -31,8 +31,8 @@
         color: $white;
         font-family: $lato;
         font-weight: 500;
-        font-size: 23px;
-        line-height: 28px;
+        font-size: 1.4375rem;
+        line-height: 1.75rem;
         text-align: center;
 
         margin-bottom: 2.875rem;

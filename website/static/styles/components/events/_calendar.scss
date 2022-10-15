@@ -1,0 +1,48 @@
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    &__day {
+        &-container {
+            min-height: 10rem;
+        }
+
+        &-event {
+            color: $darkBlue;
+            font-size: 1rem;
+            font-weight: 400;
+            font-family: $lato;
+        }
+    }
+
+    &__days {
+        color: $darkBlue;
+        font-family: $inter;
+        font-weight: 500;
+        font-size: 1.3rem;
+
+        grid-column: 2/12;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+
+        margin-top: 2rem;
+
+        &-name {
+            color: $white;
+            font-family: $inter;
+            font-weight: 400;
+            font-size: 1.0625rem;
+            text-align: left;
+
+            height: 5.625rem;
+            background: $darkBlue;
+            border-radius: 0.625rem 0.625rem 0 0;
+
+            grid-column: 2/12;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+
+            padding: 2rem;
+        }
+    }
+}

@@ -1,1 +1,11 @@
 @import '../abstracts/_abstracts.scss';
+
+h1 {
+    color: $blue;
+    font-size: 2.25rem;
+    font-weight: 700;
+    font-family: $roboto;
+    text-transform: capitalize;
+    text-align: center;
+    margin: 8rem auto 4rem auto;
+}
