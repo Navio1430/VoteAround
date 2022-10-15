@@ -1,16 +1,13 @@
 from flask import Blueprint, render_template, request
 from models import db, Project
-from datetime import datetime, timedelta
+from datetime import timedelta
+from utils.time import get_utc_time
 
 projects = Blueprint("projects", __name__)
 
 PROJECT_EXPIRATION_TIME = timedelta(days=30)
 MAX_RADIUS_LENGTH = 5000  # Meters
 MAX_LABEL_LENGTH = 32
-
-
-def get_utc_time(delta: timedelta = timedelta(0)) -> int:
-    return int(datetime.timestamp(datetime.utcnow() + delta))
 
 
 @projects.route("/", methods=["GET"])
@@ -27,7 +24,7 @@ def create():
             longitude = float(request.form.get("longitude"))
             latitude = float(request.form.get("latitude"))
             radius = float(request.form.get("radius"))
-        except:
+        except ValueError:
             return "<h2>Invalid inputs</h2>"
 
         if len(label) > MAX_LABEL_LENGTH:

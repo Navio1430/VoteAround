@@ -1,15 +1,12 @@
 from random import randbytes
-from datetime import datetime, timedelta
+from datetime import timedelta
 import struct
+from .time import get_utc_time
 
 
 TOKEN_SIZE = 32
 TOKEN_STRUCT = struct.Struct(f"{TOKEN_SIZE}sQ")
 TOKEN_EXPIRATION_TIME = timedelta(days=30)
-
-
-def get_utc_time(delta: timedelta = timedelta(0)) -> int:
-    return int(datetime.timestamp(datetime.utcnow() + delta))
 
 
 def generate_token() -> bytes:
