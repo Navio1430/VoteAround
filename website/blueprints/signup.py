@@ -28,4 +28,4 @@ def index():
 
         # return redirect("#")
     else:
-        return render_template("sign/signup.html")
+        return render_template("signup/signup.html")

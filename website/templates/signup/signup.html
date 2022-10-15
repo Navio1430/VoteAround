@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% block content %}
+
 <div class="signup__container">
     <form action="#" method="post" class="signup__form">
         <p class="signup__title">Rejestracja</p>
@@ -40,7 +41,7 @@
         <p>
             Masz już konto?
             <span class="signup__link">
-                <a href="{{ url_for('signin.index') }}">Zaloguj się</a>
+                <a href="{{ url_for('login.index') }}">Zaloguj się</a>
             </span>
         </p>
 
