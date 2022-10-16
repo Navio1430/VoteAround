@@ -1,114 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <style>
-            .map {
-                height: 400px;
-                width: 400px;
-                border: 3px solid;
-            }
-        </style>
-        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-    </head>
-    <body>
-        <div id="map" class="map"></div>
-        <br></br>
+{% extends 'base.html' %} {% block content %}
+
+<h1>Tworzenie Projektu</h1>
+
+<div id="map" class="map"></div>
+<br></br>
 
 
-        <h1>Project Creation</h1>
-        <form action="#" method="post">
-            <label for="label-input">Label:</label>
-            <input type="text" id="label-input" name="label" /><br />
-            <label for="description-input">Description:</label>
-            <input type="text" id="description-input" name="description" /><br />
-            <label for="map-radius">Radius: </label>
-            <input type="range" name="radius" id="map-radius" min="0" max="5000" onchange="radiusChanged()" oninput="radiusChanged()" style="width: 200px" step="1.5">
-            <br></br>
-            <label for="map-long">Longitude: </label>
-            <input type="text" readonly  id="map-long" name="longitude"><br />
-            <label for="map-lat">Latitude: </label>
-            <input type="text" readonly id="map-lat" name="latitude">
-            <br /><br />
-            <input type="submit" value="Create project" /><br />
-        </form>
+<form action="#" method="post">
+    <label for="label-input">Label:</label>
+    <input type="text" id="label-input" name="label" /><br />
+    <label for="description-input">Description:</label>
+    <input type="text" id="description-input" name="description" /><br />
+    <label for="map-radius">Radius: </label>
+    <input type="range" name="radius" id="map-radius" min="0" max="5000" onchange="radiusChanged()" oninput="radiusChanged()" style="width: 200px" step="1.5">
+    <br></br>
+    <label for="map-long">Longitude: </label>
+    <input type="text" readonly  id="map-long" name="longitude"><br />
+    <label for="map-lat">Latitude: </label>
+    <input type="text" readonly id="map-lat" name="latitude">
+    <br /><br />
+    <input type="submit" value="Create project" /><br />
+</form>
 
-        <script type="text/javascript">
-            var initialCoordinates = ol.proj.fromLonLat([19.38, 52.12])
-            var circleFeature = new ol.Feature({
-                geometry: new ol.geom.Circle(
-                    [0,0],              //center
-                    0                   //radius
-                ),
-            });
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
 
-            var map = new ol.Map({
-                target: "map",
-                controls: [],
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.OSM(),
-                    }),
-                ],
-                view: new ol.View({
-                    center: initialCoordinates,
-                    zoom: 6,
-                }),
-            });
+<script>
+    let initialCoordinates = ol.proj.fromLonLat([19.38, 52.12]);
+    let circleFeature = new ol.Feature({
+        geometry: new ol.geom.Circle(
+            [0, 0], // center
+            0 // radius
+        ),
+    });
 
-            var vectorLayer = new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    features: [circleFeature],
-                }),
-                style: new ol.style.Style({
-                    fill: new ol.style.Fill({
-                    color: 'rgba(20, 100, 240, 0.3)'
+    let map = new ol.Map({
+        target: 'map',
+        controls: [],
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM(),
+            }),
+        ],
+        view: new ol.View({
+            center: initialCoordinates,
+            zoom: 6,
+        }),
+    });
+
+    let vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+            features: [circleFeature],
+        }),
+        style: new ol.style.Style({
+            fill: new ol.style.Fill({
+                color: 'rgba(20, 100, 240, 0.3)',
+            }),
+            stroke: new ol.style.Stroke({
+                width: 3,
+                color: 'rgba(0, 100, 240, 0.8)',
+            }),
+            image: new ol.style.Circle({
+                fill: new ol.style.Fill({
+                    color: 'rgba(55, 200, 150, 0.5)',
                 }),
                 stroke: new ol.style.Stroke({
-                    width: 3,
-                    color: 'rgba(0, 100, 240, 0.8)'
+                    width: 10,
+                    color: 'rgba(55, 200, 150, 0.8)',
                 }),
-                image: new ol.style.Circle({
-                    fill: new ol.style.Fill({
-                        color: 'rgba(55, 200, 150, 0.5)'
-                    }),
-                    stroke: new ol.style.Stroke({
-                        width: 10,
-                        color: 'rgba(55, 200, 150, 0.8)'
-                    }),
-                    radius: 7
-                }),
-                }),
-            });
+                radius: 7,
+            }),
+        }),
+    });
 
-            var center = initialCoordinates;
-            var radius = 0;
+    let center = initialCoordinates;
+    let radius = 0;
 
-            map.addLayer(vectorLayer);
+    map.addLayer(vectorLayer);
 
-            var geometry = circleFeature.getGeometry();
+    let geometry = circleFeature.getGeometry();
 
-            function radiusChanged(){
-                radius = document.getElementById("map-radius").value;
+    const radiusChanged = () => {
+        radius = document.getElementById('map-radius').value;
 
-                geometry.setCenter(ol.proj.fromLonLat(center));
-                geometry.setRadius(parseInt(radius))
-            }
-        
-            map.on("click", function (evt) {
-                radius = document.getElementById("map-radius").value
-                center = ol.proj.transform(evt.coordinate, "EPSG:3857", "EPSG:4326");
-                
-                geometry.setCenter(ol.proj.fromLonLat(center));
-                geometry.setRadius(parseInt(radius))
-                
-                document.getElementById("map-long").value = center[0]
-                document.getElementById("map-lat").value = center[1]
-            });
-            
-        </script>
-    </body>
-</html>
+        geometry.setCenter(ol.proj.fromLonLat(center));
+        geometry.setRadius(parseInt(radius));
+    };
+
+    map.addEventListener('click', function (evt) {
+        radius = document.getElementById('map-radius').value;
+        center = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
+
+        geometry.setCenter(ol.proj.fromLonLat(center));
+        geometry.setRadius(parseInt(radius));
+
+        document.getElementById('map-long').value = center[0];
+        document.getElementById('map-lat').value = center[1];
+    });
+</script>
+
+{% endblock %}
