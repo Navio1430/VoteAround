@@ -1,4 +1,4 @@
-const passwordValidate = () => {
+const signupInputValidate = () => {
     const passwordMinLength = 8;
     const usernameMinLength = 4;
     const passwordInput = document.getElementById("password-input");
@@ -6,36 +6,29 @@ const passwordValidate = () => {
     const signupAlertContainer = document.getElementById("signup__alert-container");
     const submitButton = document.getElementById("submit-btn");
     const usernameInput = document.getElementById("username-input");
-    retypePasswordInput.addEventListener("keyup", checkPassword);
-    passwordInput.addEventListener("keyup", checkPassword);
-    usernameInput.addEventListener("keyup", checkUsername);
     disableButton();
-    function checkUsername() {
+    retypePasswordInput.addEventListener("keyup", validate);
+    passwordInput.addEventListener("keyup", validate);
+    usernameInput.addEventListener("keyup", validate);
+    function validate() {
+        removeAlert();
         if (usernameInput.value.length < usernameMinLength) {
-            removeAlert();
             showAlert("Nazwa użytkownika musi mieć minimum 4 znaki!");
             disableButton();
             return;
         }
-        else {
-            removeAlert();
-        }
-        checkPassword();
-    }
-    function checkPassword() {
-        console.log("checkPassword()");
         if (passwordInput.value.length < passwordMinLength &&
             passwordInput.value.length != 0) {
             showAlert("Hasło musi mieć minimum 8 znaków!");
             disableButton();
             return;
         }
-        removeAlert();
-        if (passwordInput.value == retypePasswordInput.value) {
-            enableButton();
+        if (passwordInput.value != retypePasswordInput.value) {
+            showAlert("Hasła nie są identyczne!");
+            disableButton();
             return;
         }
-        showAlert("Hasła nie są identyczne!");
+        enableButton();
     }
     function disableButton() {
         submitButton.disabled = true;
@@ -58,4 +51,33 @@ const passwordValidate = () => {
             signupAlertContainer.children[0].remove();
     }
 };
-export { passwordValidate };
+const loginInputValidate = () => {
+    const usernameInput = document.getElementById("username-input");
+    const submitButton = document.getElementById("submit-btn");
+    const passwordInput = document.getElementById("password-login");
+    const usernameMinLength = 4;
+    const passwordMinLength = 8;
+    disableButton();
+    usernameInput.addEventListener("keyup", validate);
+    passwordInput.addEventListener("keyup", validate);
+    function validate() {
+        if (usernameInput.value.length < usernameMinLength) {
+            disableButton();
+            return;
+        }
+        if (passwordInput.value.length < passwordMinLength) {
+            disableButton();
+            return;
+        }
+        enableButton();
+    }
+    function disableButton() {
+        submitButton.disabled = true;
+        submitButton.style.opacity = "0.5";
+    }
+    function enableButton() {
+        submitButton.removeAttribute("disabled");
+        submitButton.style.opacity = "1";
+    }
+};
+export { signupInputValidate, loginInputValidate };
