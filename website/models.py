@@ -38,7 +38,7 @@ class User(db.Model):
     def check_password(self, password: str) -> bool:
         return hash_password(password, self.salt) == self.hash
 
-    def check_token(self, token: bytes | None) -> bool:
+    def check_token(self, token: bytes) -> bool:
         for user_token, time in deserialize_tokens(self.tokens):
             if token == user_token and time > get_utc_time():
                 return True
