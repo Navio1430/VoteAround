@@ -1,5 +1,130 @@
 .map {
-    height: 25rem;
-    width: 25rem;
-    border: 0.1875rem solid;
+    width: 61.625rem;
+    height: 28.125rem;
+}
+
+.create {
+    grid-column: 3/10;
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 auto;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 78%;
+
+        margin: 0 auto;
+    }
+
+    &__row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 4rem;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(11, 1fr);
+
+        margin-bottom: 10%;
+    }
+
+    &__area-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__checkbox {
+        display: flex;
+
+        &--budget {
+            margin-top: 0.9rem;
+        }
+
+        &-text {
+            color: $darkBlue;
+            font-size: 1.2rem;
+            margin-left: 0.7rem;
+        }
+    }
+
+    &__name {
+        color: $darkBlue;
+        font-size: 22px;
+        font-weight: 600;
+        font-family: $inter;
+
+        margin-bottom: 1.4rem;
+    }
+
+    &__title {
+        width: 289px;
+        height: 35px;
+        border-radius: 5px;
+        outline: none;
+        padding: 0 0.5rem;
+
+        &-container {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__range {
+        width: 289px;
+    }
+
+    &__budget {
+        width: 289px;
+        height: 35px;
+        border-radius: 5px;
+        outline: none;
+        padding: 0 0.5rem;
+    }
+
+    &__budget {
+        &-container {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    &__description {
+        color: $darkBlue;
+        font-size: 1rem;
+        font-weight: 400;
+        font-family: $lato;
+
+        resize: none;
+        width: 48.125rem;
+        height: 15.5625rem;
+        border-radius: 0.3125rem;
+        outline: none;
+        padding: 0.5rem;
+
+        margin-top: 1.4rem;
+
+        &-container {
+            margin-top: 4rem;
+        }
+    }
+
+    &__btn {
+        color: $white;
+        font-family: $roboto;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+        text-align: center;
+        align-self: flex-end;
+
+        background: $darkBlue;
+        border-radius: 2rem;
+
+        padding: 1.2rem 1.25rem;
+        margin-top: 1.4rem;
+    }
 }

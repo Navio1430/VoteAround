@@ -7,6 +7,7 @@ if (document.getElementById('calendar-days') !== null) {
 if (document.getElementById('password-input') !== null) {
     signupInputValidate();
 }
+
 if (document.getElementById('password-login') !== null) {
     loginInputValidate();
 }

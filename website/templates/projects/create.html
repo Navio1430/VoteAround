@@ -2,25 +2,113 @@
 
 <h1>Tworzenie Projektu</h1>
 
-<div id="map" class="map"></div>
-<br></br>
+<div class="create__container">
+    <div class="create">
+        <div id="map" class="map"></div>
 
+        <form action="#" method="post" class="create__form">
+            <div class="create__row">
+                <div class="create__range-container">
+                    <p class="create__range create__name">Zakres projektu</p>
 
-<form action="#" method="post">
-    <label for="label-input">Label:</label>
-    <input type="text" id="label-input" name="label" /><br />
-    <label for="description-input">Description:</label>
-    <input type="text" id="description-input" name="description" /><br />
-    <label for="map-radius">Radius: </label>
-    <input type="range" name="radius" id="map-radius" min="0" max="5000" onchange="radiusChanged()" oninput="radiusChanged()" style="width: 200px" step="1.5">
-    <br></br>
-    <label for="map-long">Longitude: </label>
-    <input type="text" readonly  id="map-long" name="longitude"><br />
-    <label for="map-lat">Latitude: </label>
-    <input type="text" readonly id="map-lat" name="latitude">
-    <br /><br />
-    <input type="submit" value="Create project" /><br />
-</form>
+                    <div class="create__checkbox">
+                        <input
+                            type="checkbox"
+                            name="create__estate"
+                            id="create-estate"
+                        />
+                        <p class="create__checkbox-text">Osiedle</p>
+                    </div>
+
+                    <div class="create__checkbox">
+                        <input
+                            type="checkbox"
+                            name="create__city"
+                            id="create-ecity"
+                        />
+                        <p class="create__checkbox-text">Miasto</p>
+                    </div>
+                </div>
+
+                <div class="create__area-container">
+                    <label for="map-radius" class="create__name"
+                        >Obszar projektu
+                    </label>
+
+                    <input
+                        type="range"
+                        name="radius"
+                        id="map-radius"
+                        class="create__range"
+                        min="0"
+                        max="5000"
+                        onchange="radiusChanged()"
+                        oninput="radiusChanged()"
+                        step="1.5"
+                    />
+                </div>
+            </div>
+
+            <div class="create__row">
+                <div class="create__title-container">
+                    <label for="project-name" class="create__name"
+                        >Nazwa Projektu</label
+                    >
+
+                    <input
+                        type="text"
+                        name="project-name"
+                        id="project-name"
+                        class="create__title"
+                        placeholder="Podaj nazwę projektu..."
+                    />
+                </div>
+
+                <div class="create__budget-container">
+                    <label for="project-budget" class="create__name"
+                        >Budżet Projektu</label
+                    >
+
+                    <input
+                        type="number"
+                        name="project-budget"
+                        id="project-budget"
+                        class="create__budget"
+                    />
+
+                    <div class="create__checkbox create__checkbox--budget">
+                        <input
+                            type="checkbox"
+                            name="create__budget-checkbox"
+                            id="create-budget-checkbox"
+                        />
+
+                        <p class="create__checkbox-text">
+                            Budżet nie jest wymagany
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="create__description-container">
+                <label for="project-description" class="create__name"
+                    >Opis Projektu:</label
+                >
+
+                <textarea
+                    name="project-description"
+                    id="project-description"
+                    class="create__description"
+                    placeholder="Wpisz opis projektu..."
+                ></textarea>
+            </div>
+
+            <button class="create__btn" type="submit">
+                <a href="#">Utwórz Projekt</a>
+            </button>
+        </form>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
 
