@@ -1,6 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
 from utils.crypto import generate_salt, hash_password
 from utils.uuid import generate_uuid
+from utils.auth import deserialize_tokens
+from utils.time import get_utc_time
+
 
 db = SQLAlchemy()
 
@@ -9,6 +12,7 @@ class User(db.Model):
     __tablename__ = "users"
     uuid = db.Column("uuid", db.LargeBinary, primary_key=True)
     username = db.Column("username", db.Text)
+    tokens = db.Column("tokens", db.LargeBinary)
     hash = db.Column("hash", db.LargeBinary)
     salt = db.Column("salt", db.LargeBinary)
     latitude = db.Column("latitude", db.Float)
@@ -19,6 +23,7 @@ class User(db.Model):
     def __init__(self, username, password):
         self.uuid = generate_uuid()
         self.username = username
+        self.tokens = b""
         salt = generate_salt()
         hashed = hash_password(password, salt)
         self.hash = hashed
@@ -30,8 +35,14 @@ class User(db.Model):
         self.positive_votes = b""
         self.negative_votes = b""
 
-    def check_password(self, password):
+    def check_password(self, password: str) -> bool:
         return hash_password(password, self.salt) == self.hash
+
+    def check_token(self, token: bytes | None) -> bool:
+        for user_token, time in deserialize_tokens(self.tokens):
+            if token == user_token and time > get_utc_time():
+                return True
+        return False
 
 
 class Project(db.Model):

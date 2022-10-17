@@ -26,6 +26,5 @@ def index():
 
         return "<h1>Success</h1>"
 
-        # return redirect("#")
     else:
         return render_template("signup/signup.html")

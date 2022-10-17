@@ -1,7 +1,8 @@
 from flask import Blueprint, render_template, request
-from models import db, Project
+from models import db, Project, User
 from datetime import timedelta
 from utils.time import get_utc_time
+from utils.auth import login_required
 
 projects = Blueprint("projects", __name__)
 
@@ -11,7 +12,8 @@ MAX_LABEL_LENGTH = 32
 
 
 @projects.route("/", methods=["GET"])
-def index():
+@login_required(User)
+def index(user):
     return render_template("projects/projects.html")
 
 
