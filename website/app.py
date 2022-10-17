@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template
 from models import db
 import blueprints.projects
 import blueprints.events
