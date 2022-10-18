@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from models import db, User
 import blueprints.projects
 import blueprints.events
+import blueprints.user
 import blueprints.signup
 import blueprints.login
 from utils.auth import check_login
@@ -13,6 +14,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 app.register_blueprint(blueprints.projects.projects, url_prefix="/projects")
 app.register_blueprint(blueprints.events.events, url_prefix="/events")
+app.register_blueprint(blueprints.user.user, url_prefix="/user")
 app.register_blueprint(blueprints.signup.signup, url_prefix="/signup")
 app.register_blueprint(blueprints.login.login, url_prefix="/login")
 
