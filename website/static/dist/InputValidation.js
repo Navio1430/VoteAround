@@ -12,19 +12,23 @@ const signupInputValidate = () => {
     usernameInput.addEventListener("keyup", validate);
     function validate() {
         removeAlert();
+        let enabled = true;
         if (usernameInput.value.length < usernameMinLength) {
             showAlert("Nazwa użytkownika musi mieć minimum 4 znaki!");
-            disableButton();
-            return;
+            enabled = false;
         }
+        if (passwordInput.value.length == 0)
+            enabled = false;
         if (passwordInput.value.length < passwordMinLength &&
             passwordInput.value.length != 0) {
             showAlert("Hasło musi mieć minimum 8 znaków!");
-            disableButton();
-            return;
+            enabled = false;
         }
         if (passwordInput.value != retypePasswordInput.value) {
             showAlert("Hasła nie są identyczne!");
+            enabled = false;
+        }
+        if (!enabled) {
             disableButton();
             return;
         }
