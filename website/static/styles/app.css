@@ -116,8 +116,8 @@
   -ms-grid-column: 2;
   -ms-grid-column-span: 9;
   grid-column: 2/11;
-  -ms-grid-columns: 2.5fr 3.5fr 2.5fr 2.5fr 2fr;
-      grid-template-columns: 2.5fr 3.5fr 2.5fr 2.5fr 2fr;
+  -ms-grid-columns: 2.5fr 7fr 2.5fr 2.5fr 1.5fr 2fr;
+      grid-template-columns: 2.5fr 7fr 2.5fr 2.5fr 1.5fr 2fr;
   background: #ffffff;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -161,8 +161,15 @@
       -ms-flex-align: center;
           align-items: center;
   padding: 0.5625rem 1.5625rem;
-  background: linear-gradient(98.41deg, #00ccaa 0%, #30c5c5 100%);
   border-radius: 1.5625rem;
+}
+
+.table__row-btn--positive {
+  background: linear-gradient(98.41deg, #00ccaa 0%, #30c5c5 100%);
+}
+
+.table__row-btn--negative {
+  background: linear-gradient(98.41deg, #ff3864 0%, #fa4f75 0.01%, #c9222c 100%);
 }
 
 .table__row--main {
@@ -287,16 +294,16 @@
 
 .create__name {
   color: #131b23;
-  font-size: 22px;
+  font-size: 1.375rem;
   font-weight: 600;
   font-family: "Inter", sans-serif;
   margin-bottom: 1.4rem;
 }
 
 .create__title {
-  width: 289px;
-  height: 35px;
-  border-radius: 5px;
+  width: 23rem;
+  height: 2.1875rem;
+  border-radius: 0.3125rem;
   outline: none;
   padding: 0 0.5rem;
 }
@@ -312,13 +319,13 @@
 }
 
 .create__range {
-  width: 289px;
+  width: 18.0625rem;
 }
 
 .create__budget {
-  width: 289px;
-  height: 35px;
-  border-radius: 5px;
+  width: 18.0625rem;
+  height: 2.1875rem;
+  border-radius: 0.3125rem;
   outline: none;
   padding: 0 0.5rem;
 }
@@ -355,8 +362,7 @@
   color: #ffffff;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 17px;
-  line-height: 20px;
+  font-size: 1.0625rem;
   text-align: center;
   -ms-flex-item-align: end;
       align-self: flex-end;

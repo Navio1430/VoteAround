@@ -10,7 +10,7 @@
     &__row {
         display: grid;
         grid-column: 2/11;
-        grid-template-columns: 2.5fr 3.5fr 2.5fr 2.5fr 2fr;
+        grid-template-columns: 2.5fr 7fr 2.5fr 2.5fr 1.5fr 2fr;
         background: $white;
 
         align-items: center;
@@ -46,8 +46,20 @@
             align-items: center;
             padding: 0.5625rem 1.5625rem;
 
-            background: linear-gradient(98.41deg, #00ccaa 0%, #30c5c5 100%);
             border-radius: 1.5625rem;
+
+            &--positive {
+                background: linear-gradient(98.41deg, #00ccaa 0%, #30c5c5 100%);
+            }
+
+            &--negative {
+                background: linear-gradient(
+                    98.41deg,
+                    #ff3864 0%,
+                    #fa4f75 0.01%,
+                    #c9222c 100%
+                );
+            }
         }
 
         &--main {
