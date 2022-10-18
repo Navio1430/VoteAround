@@ -1,10 +1,10 @@
 from flask import Flask, render_template
-from models import db
+from models import db, User
 import blueprints.projects
 import blueprints.events
 import blueprints.signup
 import blueprints.login
-
+from utils.auth import check_login
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.sqlite3"
@@ -20,6 +20,11 @@ app.register_blueprint(blueprints.login.login, url_prefix="/login")
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html")
+
+
+@app.context_processor
+def login_status():
+    return {"loggedIn": check_login(User)}
 
 
 with app.app_context():
