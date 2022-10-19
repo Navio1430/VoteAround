@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request
 from utils.auth import login_required
 from models import User, Project, db
 from utils.uuid import bytes_to_uuid_hex, hex_to_uuid_bytes
-# from geopy.distance import geodesic
+from geopy.distance import geodesic
 import json
 
 api = Blueprint("api", __name__)
