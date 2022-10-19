@@ -13,4 +13,4 @@ if (document.getElementById('password-login') !== null) {
     loginInputValidate();
 }
 
-// deleteAccount();
+deleteAccount();
