@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from utils.crypto import generate_salt, hash_password
-from utils.uuid import generate_uuid, deserialize_uuids
+from utils.uuid import UUID_LENGTH, generate_uuid, deserialize_uuids
 from utils.auth import deserialize_tokens
 from utils.time import get_utc_time
 
@@ -72,13 +72,13 @@ class Project(db.Model):
         if self.positive_votes == None:
             return 0
 
-        return len(self.positive_votes) / 16
+        return len(self.positive_votes) // UUID_LENGTH
 
     def negative_votes_count(self):
         if self.negative_votes == None:
             return 0
 
-        return len(self.negative_votes) / 16
+        return len(self.negative_votes) // UUID_LENGTH
 
     def user_vote_status(self, uuid: bytes):
         if (self.positive_votes is not None) and (
