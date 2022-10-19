@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from utils.crypto import generate_salt, hash_password
-from utils.uuid import generate_uuid
+from utils.uuid import generate_uuid, deserialize_uuids
 from utils.auth import deserialize_tokens
 from utils.time import get_utc_time
 
@@ -32,8 +32,8 @@ class User(db.Model):
         self.latitude = 0
         # self.longitude = longitude
         self.longitude = 0
-        self.positive_votes = b""
-        self.negative_votes = b""
+        self.positive_votes = None
+        self.negative_votes = None
 
     def check_password(self, password: str) -> bool:
         return hash_password(password, self.salt) == self.hash
@@ -65,5 +65,30 @@ class Project(db.Model):
         self.longitude = longitude
         self.radius = radius
         self.end_time = end_time
-        self.positive_votes = b""
-        self.negative_votes = b""
+        self.positive_votes = None
+        self.negative_votes = None
+
+    def positive_votes_count(self):
+        if self.positive_votes == None:
+            return 0
+
+        return len(self.positive_votes) / 16
+
+    def negative_votes_count(self):
+        if self.negative_votes == None:
+            return 0
+
+        return len(self.negative_votes) / 16
+
+    def user_vote_status(self, uuid: bytes):
+        if (self.positive_votes is not None) and (
+            uuid in deserialize_uuids(self.positive_votes)
+        ):
+            return 1
+
+        if (self.negative_votes is not None) and (
+            uuid in deserialize_uuids(self.negative_votes)
+        ):
+            return -1
+
+        return 0

@@ -12,6 +12,10 @@ def bytes_to_uuid_hex(b: bytes):
     return UUID(bytes=b).hex
 
 
+def hex_to_uuid_bytes(hex: str):
+    return UUID(hex).bytes
+
+
 def serialize_uuids(uuids: set) -> bytes:
     result = b""
     for uuid in uuids:
