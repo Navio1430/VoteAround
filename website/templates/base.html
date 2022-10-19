@@ -37,6 +37,14 @@
                     </ul>
                 </div>
 
+                {% if loggedIn %}
+
+                <p class="navbar__links-item">
+                    <a href="{{ url_for('user.index') }}">Witaj, User</a>
+                </p>
+
+                {% else %}
+
                 <div class="navbar__sign">
                     <button
                         id="sign-up-btn"
@@ -54,6 +62,8 @@
                         <a href="{{ url_for('login.index') }}"> Logowanie </a>
                     </button>
                 </div>
+
+                {% endif %}
             </div>
         </nav>
 
