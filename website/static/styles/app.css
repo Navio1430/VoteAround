@@ -657,6 +657,104 @@
   margin-bottom: 0.6rem;
 }
 
+.user__delete-alert {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 430px;
+  height: 264px;
+  background: #ffffff;
+  -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  margin: auto;
+}
+
+.user__delete-title {
+  color: #223242;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.user__delete-password {
+  color: #223242;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  outline: none;
+  width: 70%;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 2.5rem 0 2rem 5%;
+  border-bottom: 1px solid #131b23;
+}
+
+.user__delete-password::-webkit-input-placeholder {
+  color: #223242;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.user__delete-password:-ms-input-placeholder {
+  color: #223242;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.user__delete-password::-ms-input-placeholder {
+  color: #223242;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.user__delete-password::placeholder {
+  color: #223242;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+
+.user__delete-checkbox {
+  margin-right: 0.4rem;
+}
+
+.user__delete-checkbox-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.user__delete-btn {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin: 2.5rem 5% 0 0;
+}
+
 * {
   font-size: 100%;
   text-decoration: none;

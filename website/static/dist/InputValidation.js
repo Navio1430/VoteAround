@@ -1,31 +1,31 @@
 const signupInputValidate = () => {
     const passwordMinLength = 8;
     const usernameMinLength = 4;
-    const passwordInput = document.getElementById("password-input");
-    const retypePasswordInput = document.getElementById("retype-password-input");
-    const signupAlertContainer = document.getElementById("signup__alert-container");
-    const submitButton = document.getElementById("submit-btn");
-    const usernameInput = document.getElementById("username-input");
+    const passwordInput = document.getElementById('password-input');
+    const retypePasswordInput = document.getElementById('retype-password-input');
+    const signupAlertContainer = document.getElementById('signup__alert-container');
+    const submitButton = document.getElementById('submit-btn');
+    const usernameInput = document.getElementById('username-input');
     disableButton();
-    retypePasswordInput.addEventListener("keyup", validate);
-    passwordInput.addEventListener("keyup", validate);
-    usernameInput.addEventListener("keyup", validate);
+    retypePasswordInput.addEventListener('keyup', validate);
+    passwordInput.addEventListener('keyup', validate);
+    usernameInput.addEventListener('keyup', validate);
     function validate() {
         removeAlert();
         let enabled = true;
         if (usernameInput.value.length < usernameMinLength) {
-            showAlert("Nazwa użytkownika musi mieć minimum 4 znaki!");
+            showAlert('Nazwa użytkownika musi mieć minimum 4 znaki!');
             enabled = false;
         }
         if (passwordInput.value.length == 0)
             enabled = false;
         if (passwordInput.value.length < passwordMinLength &&
             passwordInput.value.length != 0) {
-            showAlert("Hasło musi mieć minimum 8 znaków!");
+            showAlert('Hasło musi mieć minimum 8 znaków!');
             enabled = false;
         }
         if (passwordInput.value != retypePasswordInput.value) {
-            showAlert("Hasła nie są identyczne!");
+            showAlert('Hasła nie są identyczne!');
             enabled = false;
         }
         if (!enabled) {
@@ -36,16 +36,16 @@ const signupInputValidate = () => {
     }
     function disableButton() {
         submitButton.disabled = true;
-        submitButton.style.opacity = "0.5";
+        submitButton.style.opacity = '0.5';
     }
     function enableButton() {
-        submitButton.removeAttribute("disabled");
-        submitButton.style.opacity = "1";
+        submitButton.removeAttribute('disabled');
+        submitButton.style.opacity = '1';
     }
     function showAlert(message) {
         if (signupAlertContainer.children.length === 0) {
-            let alert = document.createElement("p");
-            alert.classList.add("signup__alert");
+            let alert = document.createElement('p');
+            alert.classList.add('signup__alert');
             alert.innerHTML = message;
             signupAlertContainer.appendChild(alert);
         }
@@ -56,14 +56,14 @@ const signupInputValidate = () => {
     }
 };
 const loginInputValidate = () => {
-    const usernameInput = document.getElementById("username-input");
-    const submitButton = document.getElementById("submit-btn");
-    const passwordInput = document.getElementById("password-login");
+    const usernameInput = document.getElementById('username-input');
+    const submitButton = document.getElementById('submit-btn');
+    const passwordInput = document.getElementById('password-login');
     const usernameMinLength = 4;
     const passwordMinLength = 8;
     disableButton();
-    usernameInput.addEventListener("keyup", validate);
-    passwordInput.addEventListener("keyup", validate);
+    usernameInput.addEventListener('keyup', validate);
+    passwordInput.addEventListener('keyup', validate);
     function validate() {
         if (usernameInput.value.length < usernameMinLength) {
             disableButton();
@@ -77,11 +77,11 @@ const loginInputValidate = () => {
     }
     function disableButton() {
         submitButton.disabled = true;
-        submitButton.style.opacity = "0.5";
+        submitButton.style.opacity = '0.5';
     }
     function enableButton() {
-        submitButton.removeAttribute("disabled");
-        submitButton.style.opacity = "1";
+        submitButton.removeAttribute('disabled');
+        submitButton.style.opacity = '1';
     }
 };
 export { signupInputValidate, loginInputValidate };

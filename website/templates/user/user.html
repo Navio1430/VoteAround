@@ -15,4 +15,26 @@
     </div>
 </section>
 
+<div class="user__delete-alert">
+    <p class="user__delete-title">Usuwanie konta</p>
+
+    <input
+        type="password"
+        name="password"
+        class="user__delete-password"
+        placeholder="Podaj hasło"
+    />
+
+    <div class="user__delete-checkbox-container">
+        <input class="user__delete-checkbox" type="checkbox" name="" id="" />
+        <p>Jestem pewien, że chcę bezpowrotnie usunąć konto</p>
+    </div>
+
+    <button
+        type="submit"
+        class="table__row-btn table__row-btn--negative user__delete-btn"
+    >
+        <a href="#">Usuń</a>
+    </button>
+</div>
 {% endblock %}

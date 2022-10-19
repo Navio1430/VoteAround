@@ -38,4 +38,70 @@
 
         margin-bottom: 0.6rem;
     }
+
+    &__delete {
+        &-alert {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            width: 430px;
+            height: 264px;
+
+            background: $white;
+            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+            margin: auto;
+        }
+
+        &-title {
+            color: $blue;
+            font-family: $inter;
+            font-size: 20px;
+            font-weight: 600;
+
+            text-align: center;
+            padding-top: 1rem;
+        }
+
+        &-password {
+            color: $blue;
+            font-family: $lato;
+            font-weight: 400;
+            font-size: 18px;
+            outline: none;
+            width: 70%;
+            align-self: flex-start;
+
+            margin: 2.5rem 0 2rem 5%;
+
+            border-bottom: 1px solid #131b23;
+
+            &::placeholder {
+                color: $blue;
+                font-family: $lato;
+                font-weight: 400;
+                font-size: 18px;
+                text-transform: capitalize;
+            }
+        }
+
+        &-checkbox {
+            margin-right: 0.4rem;
+
+            &-container {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+
+        &-btn {
+            align-self: flex-end;
+            margin: 2.5rem 5% 0 0;
+        }
+    }
 }
