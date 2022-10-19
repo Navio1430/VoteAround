@@ -5,6 +5,7 @@ import blueprints.events
 import blueprints.user
 import blueprints.signup
 import blueprints.login
+import blueprints.api
 from utils.auth import check_login
 
 app = Flask(__name__)
@@ -17,6 +18,7 @@ app.register_blueprint(blueprints.events.events, url_prefix="/events")
 app.register_blueprint(blueprints.user.user, url_prefix="/user")
 app.register_blueprint(blueprints.signup.signup, url_prefix="/signup")
 app.register_blueprint(blueprints.login.login, url_prefix="/login")
+app.register_blueprint(blueprints.api.api, url_prefix="/api")
 
 
 @app.route("/", methods=["GET"])

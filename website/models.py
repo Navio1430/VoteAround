@@ -50,9 +50,9 @@ class Project(db.Model):
     uuid = db.Column("uuid", db.LargeBinary, primary_key=True)
     label = db.Column("label", db.Text)
     description = db.Column("description", db.Text)
-    latitude = db.Column("latitude", db.Float)
-    longitude = db.Column("longitude", db.Float)
-    radius = db.Column("radius", db.Float)
+    latitude = db.Column("latitude", db.Float, nullable=False)
+    longitude = db.Column("longitude", db.Float, nullable=False)
+    radius = db.Column("radius", db.Float, nullable=False)
     positive_votes = db.Column("positive_votes", db.LargeBinary)  # uuid[]
     negative_votes = db.Column("negative_votes", db.LargeBinary)  # uuid[]
     end_time = db.Column("end_time", db.BigInteger)
