@@ -1,11 +1,15 @@
 from uuid import uuid4
-
+from uuid import UUID
 
 UUID_LENGTH = len(uuid4().bytes)
 
 
 def generate_uuid() -> bytes:
     return uuid4().bytes
+
+
+def bytes_to_uuid_hex(b: bytes):
+    return UUID(bytes=b).hex
 
 
 def serialize_uuids(uuids: set) -> bytes:
