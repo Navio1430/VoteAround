@@ -27,7 +27,7 @@ def index():
 
 
 @app.context_processor
-def login_status():
+def render_context():
     return {"loggedIn": check_login(User)}
 
 
