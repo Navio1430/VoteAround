@@ -23,7 +23,7 @@ api = Blueprint("api", __name__)
 #        user_vote (int, -1 -> negative, 0 -> nothing, 1 -> positive)
 #
 #           /projects/project?id=(uuid)
-@api.route("/projects/project", methods=["GET", "POST"])
+@api.route("/projects/project", methods=["GET"])
 @login_required(User)
 def projects_project(user):
     uuid = request.args.get("id")
@@ -59,12 +59,16 @@ def projects_project(user):
 #    {
 #         uuid: {
 #             label
+#             description
+#             positive_votes (int, positive votes count)
+#             negative_votes (int, negative votes count)
+#             user_vote (int, -1 -> negative, 0 -> nothing, 1 -> positive)
 #         }
 #         ...
 #    }
 #
-#           /projects/newest?index=(int)&limit=(int)
-@api.route("/projects/closest", methods=["GET", "POST"])
+#           /projects/closest?index=(int)&limit=(int)
+@api.route("/projects/closest", methods=["GET"])
 @login_required(User)
 def projects_closest(user):
 
@@ -81,15 +85,19 @@ def projects_closest(user):
 
     while True:
         result = (
-            db.session.query(Project.uuid, Project.label, Project.latitude, Project.longitude, Project.radius)
+            db.session.query(Project)
             .limit(25)
             .offset(index)
         )
 
-        for row in result:
-            if geodesic((latitude, longitude), (row.latitude, row.longitude)).m <= row.radius:
-                data[bytes_to_uuid_hex(row.uuid)] = {
-                    "label": row.label
+        for project in result:
+            if geodesic((latitude, longitude), (project.latitude, project.longitude)).m <= project.radius:
+                data[bytes_to_uuid_hex(project.uuid)] = {
+                    "label": project.label,
+                    "description": project.description,
+                    "positive_votes": project.positive_votes_count(),
+                    "negative_votes": project.negative_votes_count(),
+                    "user_vote": project.user_vote_status(user.uuid)
                 }
             
             if len(data) >= limit:
