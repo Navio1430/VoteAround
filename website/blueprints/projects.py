@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, redirect, url_for, request
 from models import db, Project, User
 from datetime import timedelta
 from utils.time import get_utc_time
@@ -18,7 +18,8 @@ def index(user):
 
 
 @projects.route("/create", methods=["GET", "POST"])
-def create():
+@login_required(User)
+def create(user):
     if request.method == "POST":
         try:
             label = request.form.get("label")
@@ -28,6 +29,9 @@ def create():
             radius = float(request.form.get("radius"))
         except ValueError:
             return "<h2>Invalid inputs</h2>"
+
+        if len(label) < 5:
+            return "<h2>Label must contain at least 5 characters</h2>"
 
         if len(label) > MAX_LABEL_LENGTH:
             return "<h2>Label is too long (max 32 characters)</h2>"
@@ -50,8 +54,6 @@ def create():
         )
         db.session.commit()
 
-        return "<h2>Successfully created project</h2>"
-
-        # return redirect("#")
+        return redirect(url_for("projects.index"))
     else:
         return render_template("projects/create.html")

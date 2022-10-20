@@ -11,9 +11,6 @@ if (document.getElementById('password-input') !== null) {
 if (document.getElementById('password-login') !== null) {
     loginInputValidate();
 }
-if (document.getElementById('password-login') !== null) {
-    loginInputValidate();
-}
 if (document.getElementById('user-container') !== null) {
     logout();
     deleteAccount();
