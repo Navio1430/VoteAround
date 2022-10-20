@@ -1,6 +1,6 @@
 const deleteAccount = () => {
-    const userDeleteAccount = document.getElementById('user-delete-account');
     const userContainer = document.getElementById('user-container');
+    const userDeleteAccount = document.getElementById('user-delete-account');
 
     userDeleteAccount.addEventListener('click', () => {
         let alert = document.createElement('div');
