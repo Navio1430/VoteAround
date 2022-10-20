@@ -40,7 +40,9 @@
                 {% if loggedIn %}
 
                 <p class="navbar__links-item">
-                    <a href="{{ url_for('user.index') }}">Witaj, User</a>
+                    <a href="{{ url_for('user.index') }}"
+                        >Witaj, {{loggedIn.username}}</a
+                    >
                 </p>
 
                 {% else %}
