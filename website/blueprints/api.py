@@ -8,6 +8,20 @@ import json
 api = Blueprint("api", __name__)
 
 
+@api.route("user/delete", methods=["POST"])
+@login_required(User)
+def user_delete_account(user):
+    data = request.get_json()
+
+    if not user.check_password(data["password"]):
+        return {"success": False}
+
+    db.session.query(User).filter(User.uuid == user.uuid).delete()
+    db.session.commit()
+
+    return {"success": True}
+
+
 #
 #    Request project info by uuid
 #
@@ -17,7 +31,7 @@ api = Blueprint("api", __name__)
 #        description
 #        latitude
 #        longitude
-#        radius        
+#        radius
 #        positive_votes (int, positive votes count)
 #        negative_votes (int, negative votes count)
 #        user_vote (int, -1 -> negative, 0 -> nothing, 1 -> positive)
@@ -32,14 +46,14 @@ def projects_project(user):
         b_uuid = hex_to_uuid_bytes(uuid)
     except ValueError:
         return "{}"
-    
+
     project = db.session.query(Project).filter(Project.uuid == b_uuid).first()
-    
+
     if not project:
         return "{}"
 
-    data = { 
-        "uuid": uuid, 
+    data = {
+        "uuid": uuid,
         "label": project.label,
         "description": project.description,
         "latitude": project.latitude,
@@ -47,10 +61,11 @@ def projects_project(user):
         "radius": project.radius,
         "positive_votes": int(project.positive_votes_count()),
         "negative_votes": int(project.negative_votes_count()),
-        "user_vote": project.user_vote_status(user.uuid)
+        "user_vote": project.user_vote_status(user.uuid),
     }
 
     return json.dumps(data)
+
 
 #
 #    Request closest projects
@@ -84,22 +99,21 @@ def projects_closest(user):
     data = {}
 
     while True:
-        result = (
-            db.session.query(Project)
-            .limit(25)
-            .offset(index)
-        )
+        result = db.session.query(Project).limit(25).offset(index)
 
         for project in result:
-            if geodesic((latitude, longitude), (project.latitude, project.longitude)).m <= project.radius:
+            if (
+                geodesic((latitude, longitude), (project.latitude, project.longitude)).m
+                <= project.radius
+            ):
                 data[bytes_to_uuid_hex(project.uuid)] = {
                     "label": project.label,
                     "description": project.description,
                     "positive_votes": project.positive_votes_count(),
                     "negative_votes": project.negative_votes_count(),
-                    "user_vote": project.user_vote_status(user.uuid)
+                    "user_vote": project.user_vote_status(user.uuid),
                 }
-            
+
             if len(data) >= limit:
                 break
 
@@ -109,4 +123,3 @@ def projects_closest(user):
         index += 25
 
     return json.dumps(data)
-
