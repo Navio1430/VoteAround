@@ -845,6 +845,41 @@
   background: #223242;
 }
 
+.bug__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  row-gap: 1.5rem;
+  margin: 30vh 0;
+}
+
+.bug__title {
+  color: #223242;
+  font-size: 42px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.bug__btn {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+  text-align: center;
+  background: #223242;
+  border-radius: 10px;
+  padding: 20px 22px;
+}
+
 * {
   font-size: 100%;
   text-decoration: none;

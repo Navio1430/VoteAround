@@ -18,7 +18,7 @@ def index():
         user = User.query.filter_by(username=username).first()
 
         if not user:
-            return "<h1>Username not found</h1>"
+            return render_template("bug/bug.html")
 
         if user.check_password(password):
             token = generate_token()    # serialized data, with expiration time
@@ -29,7 +29,7 @@ def index():
             resp.set_cookie("token", b64encode(token[:TOKEN_SIZE]).decode(), expires=get_utc_time(TOKEN_EXPIRATION_TIME))
             return resp
         else:
-            return "<h1>Failed</h1>"
+            return render_template("bug/bug.html")
 
     else:
         user = check_login(User)

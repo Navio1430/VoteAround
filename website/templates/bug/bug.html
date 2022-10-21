@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+
+<section class="bug__container">
+    <p class="bug__title">Coś poszło nie tak</p>
+    <button class="bug__btn">
+        <a href="{{ url_for('index') }}">Strona Główna</a>
+    </button>
+</section>
+
+{% endblock %}

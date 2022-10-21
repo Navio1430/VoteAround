@@ -13,18 +13,18 @@ def index():
 
         user = User.query.filter_by(username=username).first()
         if user:
-            return "<h1>An user with this username already exists</h1>"
+            return render_template("bug/bug.html")
 
         if len(username) < 4:
-            return "<h1>Username must contain at least 4 characters</h1>"
+            return render_template("bug/bug.html")
 
         if len(password) < 8:
-            return "<h1>Password must contain at least 8 characters</h1>"
+            return render_template("bug/bug.html")
 
         db.session.add(User(username, password))
         db.session.commit()
 
-        return "<h1>Success</h1>"
+        return render_template("projects/projects.html")
 
     else:
         return render_template("signup/signup.html")
