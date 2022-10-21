@@ -3,8 +3,7 @@
         display: grid;
         grid-template-columns: repeat(11, 1fr);
         row-gap: 0.8rem;
-        margin-top: 20vh;
-        margin-bottom: 12%;
+        margin: 20vh 0;
     }
 
     &__row {
@@ -18,7 +17,16 @@
 
         height: 4rem;
         border-radius: 0.625rem;
+
         padding-left: 3rem;
+        margin-bottom: 1rem;
+
+        &-container {
+            grid-column: 2/11;
+            height: 70vh;
+
+            overflow-y: scroll;
+        }
 
         &-item {
             color: $darkBlue;

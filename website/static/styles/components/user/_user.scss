@@ -12,6 +12,48 @@
         margin: 8% 0;
     }
 
+    &-data {
+        grid-column: 3/8;
+        width: 80%;
+        margin: 2.5rem auto;
+
+        &__username {
+            &-container {
+                display: flex;
+            }
+
+            &-text {
+                color: $blue;
+                font-family: $lato;
+                font-weight: 700;
+                font-size: 1rem;
+
+                margin-right: 2.5rem;
+            }
+        }
+
+        &__btns {
+            &-container {
+                display: flex;
+                margin-top: 2rem;
+            }
+
+            &-item {
+                color: $white;
+                font-size: 14px;
+                font-weight: 700;
+                font-family: $lato;
+                cursor: pointer;
+
+                background: $blue;
+                border-radius: 4px;
+
+                padding: 10px 14px;
+                margin-right: 2.5rem;
+            }
+        }
+    }
+
     &__left-bar {
         display: flex;
         flex-direction: column;
@@ -37,6 +79,44 @@
         cursor: pointer;
 
         margin-bottom: 0.6rem;
+    }
+
+    &__password {
+        &-alert {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            width: 430px;
+            height: 274px;
+
+            background: $white;
+            box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+            margin: auto;
+        }
+
+        &-input {
+            color: $blue;
+            font-family: $lato;
+            font-weight: 400;
+            font-size: 1rem;
+            outline: none;
+            width: 70%;
+            align-self: flex-start;
+
+            margin: 1.5rem 0 0 5%;
+
+            border-bottom: 1px solid #131b23;
+
+            &--last {
+                margin: 1.5rem 0 2rem 5%;
+            }
+        }
     }
 
     &__delete {
@@ -85,8 +165,7 @@
                 color: $blue;
                 font-family: $lato;
                 font-weight: 400;
-                font-size: 18px;
-                text-transform: capitalize;
+                font-size: 1rem;
             }
         }
 
@@ -102,6 +181,10 @@
         &-btn {
             align-self: flex-end;
             margin: 2.5rem 5% 0 0;
+
+            &--blue {
+                background: $blue;
+            }
         }
     }
 }

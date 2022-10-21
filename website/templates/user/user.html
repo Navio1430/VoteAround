@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 
 <section id="user-container" class="user__container">
-    <form class="user">
+    <div class="user">
         <ul class="user__left-bar">
             <div class="user__row">
                 <li id="user-data-account" class="user__item">Twoje dane</li>
@@ -12,7 +12,26 @@
                 <p id="user-delete-account" class="user__item">Usuń konto</p>
             </div>
         </ul>
-    </form>
+
+        <div class="user-data">
+            <div class="user-data__username-container">
+                <p class="user-data__username-text">Nazwa użytkownika:</p>
+                <p class="user-data__username-text">{{loggedIn.username}}</p>
+            </div>
+
+            <div class="user-data__btns-container">
+                <button id="username-btn-user" class="user-data__btns-item">
+                    <p>Zmień Nazwę Użytkownika</p>
+                </button>
+
+                <button id="username-btn-password" class="user-data__btns-item">
+                    <p>Zmień Hasło</p>
+                </button>
+            </div>
+        </div>
+
+        <dib method="post" class="user__form"> </dib>
+    </div>
 </section>
 
 {% endblock %}
