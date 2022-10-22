@@ -25,10 +25,7 @@ class User(db.Model):
         self.uuid = generate_uuid()
         self.username = username
         self.tokens = b""
-        salt = generate_salt()
-        hashed = hash_password(password, salt)
-        self.hash = hashed
-        self.salt = salt
+        self.set_password(password)
         self.latitude = latitude
         self.longitude = longitude
         self.positive_votes = b""
@@ -37,6 +34,12 @@ class User(db.Model):
     @property
     def pos(self):
         return (self.latitude, self.longitude)
+
+    def set_password(self, password:str):
+        salt = generate_salt()
+        hashed = hash_password(password, salt)
+        self.hash = hashed
+        self.salt = salt
 
     def check_password(self, password: str) -> bool:
         return hash_password(password, self.salt) == self.hash

@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, request
 from utils.auth import login_required
 from models import User, Project, db
 from utils.uuid import bytes_to_uuid_hex, hex_to_uuid_bytes
-from geopy.distance import geodesic
 
 api = Blueprint("api", __name__)
 
@@ -16,29 +15,44 @@ def user_delete_account(user):
     password = data.get("password", "")
 
     if not user.check_password(password):
-        return {"success": False}
+        return jsonify({"success": False})
 
     db.session.query(User).filter(User.uuid == user.uuid).delete()
     db.session.commit()
 
-    return {"success": True}
+    return jsonify({"success": True})
 
 
-#
-#    Request project info by uuid
-#
-#    response:
-#        uuid (str)
-#        label
-#        description
-#        latitude
-#        longitude
-#        radius
-#        positive_votes (int, positive votes count)
-#        negative_votes (int, negative votes count)
-#        user_vote (int, -1 -> negative, 0 -> nothing, 1 -> positive)
-#
-#           /projects/project?id=(uuid)
+@api.route("/user/edit")
+@login_required(User)
+def user_edit_account(user):
+    data = request.get_json()
+    password = data.get("password", "")
+
+    if not user.check_password(password):
+        return jsonify({"success": False})
+
+    new_password = data.get("new_password")
+    if new_password:
+        user.set_password(new_password)
+
+    new_username = data.get("new_username")
+    if new_username:
+        user.username = new_username
+
+    new_latitude = data.get("new_latitude")
+    if new_latitude:
+        user.latitude = new_latitude
+
+    new_longitude = data.get("new_longitude")
+    if new_longitude:
+        user.longitude = new_longitude
+
+    db.session.commit()
+
+    return jsonify({"success": True})
+
+
 @api.route("/projects/project", methods=["GET"])
 @login_required(User)
 def projects_project(user):
