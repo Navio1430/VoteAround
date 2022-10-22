@@ -3,6 +3,7 @@ from models import db, Project, User
 from datetime import timedelta
 from utils.time import get_utc_time
 from utils.auth import login_required
+from utils.uuid import hex_to_uuid_bytes
 
 projects = Blueprint("projects", __name__)
 
@@ -15,6 +16,22 @@ MAX_LABEL_LENGTH = 32
 @login_required(User)
 def index(user):
     return render_template("projects/projects.html")
+
+
+@projects.route("/<project_id>", methods=["GET"])
+@login_required(User)
+def project(user, project_id):
+    try:
+        uuid = hex_to_uuid_bytes(project_id)
+    except ValueError:
+        return "<h2>Invalid inputs</h2>"
+    
+    project_entry = Project.query.filter_by(uuid=uuid).first()
+
+    if not project_entry:
+        return "<h2>Project not found</h2>"
+    
+    return render_template("projects/project.html", project=project_entry)
 
 
 @projects.route("/create", methods=["GET", "POST"])
