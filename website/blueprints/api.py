@@ -104,13 +104,9 @@ def projects_popular(user):
     return jsonify(data)
 
 
-@api.route("/projects/closest", methods=["GET"])
+@api.route("/projects/newest", methods=["GET"])
 @login_required(User)
-def projects_closest(user):
-
-    latitude = user.latitude
-    longitude = user.longitude
-
+def projects_newest(user):
     index = request.args.get("index", default=0, type=int)
     limit = request.args.get("limit", default=10, type=int)
 
@@ -122,12 +118,10 @@ def projects_closest(user):
         lambda project: project.is_in_range((user.latitude, user.longitude)),
         projects,
     )
-    filtered = sorted(
-        in_range,
-        key=lambda project: geodesic(
-            (latitude, longitude), (project.latitude, project.longitude).m
-        ),
-    )[index : index + limit]
+
+    filtered = sorted(in_range, key=lambda project: project.start_time, reverse=True)[
+        index : index + limit
+    ]
 
     data = [
         {
