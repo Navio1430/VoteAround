@@ -38,10 +38,10 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-grid-column: 2;
-      grid-column-start: 2;
-  grid-column-end: 9;
-  width: 90%;
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  grid-column-end: 8;
+  width: 85%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -73,6 +73,10 @@
   font-family: "Inter", sans-serif;
   text-align: center;
   margin: 0 1.5625rem;
+}
+
+.navbar__links-item--last {
+  margin-right: 3rem;
 }
 
 .navbar__sign {

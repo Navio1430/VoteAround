@@ -5,9 +5,9 @@
 
     &-container {
         display: flex;
-        grid-column-start: 2;
-        grid-column-end: 9;
-        width: 90%;
+        grid-column-start: 3;
+        grid-column-end: 8;
+        width: 85%;
 
         align-items: center;
         justify-content: center;
@@ -32,6 +32,10 @@
             text-align: center;
 
             margin: 0 1.5625rem;
+
+            &--last {
+                margin-right: 3rem;
+            }
         }
     }
 
