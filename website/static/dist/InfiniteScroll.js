@@ -24,7 +24,8 @@ const infiniteScroll = () => {
             pItems[0].classList.add('table__row-item');
             let labelA = document.createElement('a');
             labelA.innerHTML = project.label;
-            labelA.href = pItems[0].appendChild(labelA);
+            labelA.href = `${project.uuid}`;
+            pItems[0].appendChild(labelA);
             pItems[1].innerHTML = project.description;
             pItems[2].innerHTML = project.positive_votes.toString();
             pItems[3].innerHTML = project.negative_votes.toString();
@@ -54,6 +55,5 @@ const infiniteScroll = () => {
         });
     }
     createTableItem();
-    //Todo: clear fetchedProjects when all projects for limit are display
 };
 export { infiniteScroll };

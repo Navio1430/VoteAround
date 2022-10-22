@@ -5,7 +5,7 @@ const infiniteScroll = () => {
 
     async function fetchData(index: number, limit: number) {
         const response = await fetch(
-            `/api/projects/popular?index=${index}}&limit=${limit}`
+            `/api/projects/popular?index=${index}&limit=${limit}`
         );
 
         const data = response.json();
@@ -36,7 +36,7 @@ const infiniteScroll = () => {
 
             let labelA = document.createElement('a');
             labelA.innerHTML = project.label;
-
+            labelA.href = `${project.uuid}`;
             pItems[0].appendChild(labelA);
 
             pItems[1].innerHTML = project.description;
