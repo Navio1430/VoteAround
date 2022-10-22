@@ -80,41 +80,25 @@ def projects_popular(user):
 
     projects = db.session.query(Project).all()
 
-    filtered = sorted(projects, key=lambda project: project.positive_votes_count())[
-        index : index + limit
-    ]
+    filtered = sorted(
+        projects, key=lambda project: project.positive_votes_count(), reverse=True
+    )[index : index + limit]
 
-    for project in filtered:
-        data.append(
-            {
-                "uuid": bytes_to_uuid_hex(project.uuid),
-                "label": project.label,
-                "description": project.description,
-                "positive_votes": project.positive_votes_count(),
-                "negative_votes": project.negative_votes_count(),
-                "user_vote": project.user_vote_status(user.uuid),
-            }
-        )
+    data = [
+        {
+            "uuid": bytes_to_uuid_hex(project.uuid),
+            "label": project.label,
+            "description": project.description,
+            "positive_votes": project.positive_votes_count(),
+            "negative_votes": project.negative_votes_count(),
+            "user_vote": project.user_vote_status(user.uuid),
+        }
+        for project in filtered
+    ]
 
     return jsonify(data)
 
 
-#
-#    Request closest projects
-#
-#    response:
-#    {
-#         uuid: {
-#             label
-#             description
-#             positive_votes (int, positive votes count)
-#             negative_votes (int, negative votes count)
-#             user_vote (int, -1 -> negative, 0 -> nothing, 1 -> positive)
-#         }
-#         ...
-#    }
-#
-#           /projects/closest?index=(int)&limit=(int)
 @api.route("/projects/closest", methods=["GET"])
 @login_required(User)
 def projects_closest(user):
@@ -127,34 +111,32 @@ def projects_closest(user):
 
     limit = min(limit, MAX_LIMIT)
 
-    data = []
+    projects = db.session.query(Project).all()
 
-    while True:
-        result = db.session.query(Project).limit(25).offset(index)
+    in_range = filter(
+        lambda project: geodesic(
+            (latitude, longitude), (project.latitude, project.longitude)
+        ).m
+        <= project.radius,
+        projects,
+    )
+    filtered = sorted(
+        in_range,
+        key=lambda project: geodesic(
+            (latitude, longitude), (project.latitude, project.longitude).m
+        ),
+    )[index : index + limit]
 
-        for project in result:
-            if (
-                geodesic((latitude, longitude), (project.latitude, project.longitude)).m
-                <= project.radius
-            ):
-                
-                data.append(
-                    {
-                        "uuid": bytes_to_uuid_hex(project.uuid),
-                        "label": project.label,
-                        "description": project.description,
-                        "positive_votes": project.positive_votes_count(),
-                        "negative_votes": project.negative_votes_count(),
-                        "user_vote": project.user_vote_status(user.uuid),
-                    }
-                )
-
-            if len(data) >= limit:
-                break
-
-        if result.count() < 25:
-            break
-
-        index += 25
+    data = [
+        {
+            "uuid": bytes_to_uuid_hex(project.uuid),
+            "label": project.label,
+            "description": project.description,
+            "positive_votes": project.positive_votes_count(),
+            "negative_votes": project.negative_votes_count(),
+            "user_vote": project.user_vote_status(user.uuid),
+        }
+        for project in filtered
+    ]
 
     return jsonify(data)
