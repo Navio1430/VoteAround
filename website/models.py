@@ -21,7 +21,7 @@ class User(db.Model):
     positive_votes = db.Column("positive_votes", db.LargeBinary)  # uuid[]
     negative_votes = db.Column("negative_votes", db.LargeBinary)  # uuid[]
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, latitude, longitude):
         self.uuid = generate_uuid()
         self.username = username
         self.tokens = b""
@@ -29,10 +29,8 @@ class User(db.Model):
         hashed = hash_password(password, salt)
         self.hash = hashed
         self.salt = salt
-        # self.latitude = latitude
-        self.latitude = 0
-        # self.longitude = longitude
-        self.longitude = 0
+        self.latitude = latitude
+        self.longitude = longitude
         self.positive_votes = b""
         self.negative_votes = b""
 

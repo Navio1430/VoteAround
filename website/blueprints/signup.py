@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, redirect, url_for, request
 from models import db, User
 
 
@@ -10,6 +10,8 @@ def index():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
+        latitude = request.form.get("latitude", -200, float)
+        longitude = request.form.get("longitude", -200, float)
 
         user = User.query.filter_by(username=username).first()
         if user:
@@ -21,10 +23,16 @@ def index():
         if len(password) < 8:
             return render_template("bug/bug.html")
 
-        db.session.add(User(username, password))
+        if -90 > latitude or latitude > 90:
+            return "<h2>Latitude is invalid</h2>"
+
+        if -180 > longitude or longitude > 180:
+            return "<h2>Longitude is invalid</h2>"
+
+        db.session.add(User(username, password, latitude, longitude))
         db.session.commit()
 
-        return render_template("projects/projects.html")
+        return redirect(url_for("projects.index"))
 
     else:
         return render_template("signup/signup.html")

@@ -34,5 +34,5 @@ def index():
     else:
         user = check_login(User)
         if user:
-            return redirect(url_for("index"))
+            return redirect(url_for("projects.index"))
         return render_template("login/login.html")
