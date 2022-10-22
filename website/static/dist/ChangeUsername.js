@@ -2,18 +2,12 @@ const userContainer = document.getElementById('user-container');
 const usernameChangeBtn = document.getElementById('username-btn-user');
 const usernameMinLength = 4;
 const passwordMinLength = 8;
-let isAlertVisible = false;
 let submitBtn;
 let usernameInput;
 let passwordInput;
 let checkboxInput;
 usernameChangeBtn.addEventListener('click', () => {
-    if (isAlertVisible) {
-        hideAlert();
-        isAlertVisible = false;
-        return;
-    }
-    showAlert();
+    userContainer.children.length == 1 ? showAlert() : hideAlert();
 });
 function showAlert() {
     let alert = document.createElement('form');
@@ -30,12 +24,13 @@ function showAlert() {
     checkboxInput = document.createElement('input');
     checkboxInput.classList.add('user__delete-checkbox');
     checkboxInput.type = 'checkbox';
-    let checkboxP = document.createElement('p');
-    checkboxP.innerHTML = 'Jestem pewien, że chcę zmienić nazwę użytkownika';
+    let checkboxInner = document.createElement('p');
+    checkboxInner.innerHTML =
+        'Jestem pewien, że chcę zmienić nazwę użytkownika';
     let checkboxContainer = document.createElement('div');
     checkboxContainer.classList.add('user__delete-checkbox-container');
     checkboxContainer.appendChild(checkboxInput);
-    checkboxContainer.appendChild(checkboxP);
+    checkboxContainer.appendChild(checkboxInner);
     let buttonInner = document.createElement('p');
     buttonInner.innerHTML = 'Zmień';
     submitBtn = document.createElement('button');
@@ -82,21 +77,14 @@ function showAlert() {
         });
     });
     disableButton();
-    isAlertVisible = true;
 }
 function hideAlert() {
     userContainer.removeChild(userContainer.lastChild);
 }
 function validate() {
-    if (usernameInput.value.length < usernameMinLength) {
-        disableButton();
-        return;
-    }
-    if (passwordInput.value.length < passwordMinLength) {
-        disableButton();
-        return;
-    }
-    if (checkboxInput.checked === false) {
+    if (usernameInput.value.length < usernameMinLength ||
+        passwordInput.value.length < passwordMinLength ||
+        checkboxInput.checked === false) {
         disableButton();
         return;
     }
@@ -110,3 +98,4 @@ function enableButton() {
     submitBtn.removeAttribute('disabled');
     submitBtn.style.opacity = '1';
 }
+export {};
