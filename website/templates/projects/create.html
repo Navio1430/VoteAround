@@ -8,28 +8,6 @@
 
         <form action="#" method="post" class="create__form">
             <div class="create__row">
-                <div class="create__range-container">
-                    <p class="create__range create__name">Zakres projektu</p>
-
-                    <div class="create__checkbox">
-                        <input
-                            type="checkbox"
-                            name="create__estate"
-                            id="create-estate"
-                        />
-                        <p class="create__checkbox-text">Osiedle</p>
-                    </div>
-
-                    <div class="create__checkbox">
-                        <input
-                            type="checkbox"
-                            name="create__city"
-                            id="create-ecity"
-                        />
-                        <p class="create__checkbox-text">Miasto</p>
-                    </div>
-                </div>
-
                 <div class="create__area-container">
                     <label for="map-radius" class="create__name"
                         >Obszar projektu
@@ -91,15 +69,15 @@
 <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
 
 <script>
-    const labelInput = document.getElementById("project-name");
-    const latitudeInput = document.getElementById("map-lat");
-    const longitudeInput = document.getElementById("map-long");
-    const submitButton = document.getElementById("submit-btn");
-    labelInput.addEventListener("keyup", validate);
-    latitudeInput.addEventListener("change", validate);
-    latitudeInput.addEventListener("oninput", validate);
-    longitudeInput.addEventListener("change", validate);
-    longitudeInput.addEventListener("oninput", validate);
+    const labelInput = document.getElementById('project-name');
+    const latitudeInput = document.getElementById('map-lat');
+    const longitudeInput = document.getElementById('map-long');
+    const submitButton = document.getElementById('submit-btn');
+    labelInput.addEventListener('keyup', validate);
+    latitudeInput.addEventListener('change', validate);
+    latitudeInput.addEventListener('oninput', validate);
+    longitudeInput.addEventListener('change', validate);
+    longitudeInput.addEventListener('oninput', validate);
     disableButton();
     function validate() {
         if (labelInput.value.length < 5) {
@@ -118,11 +96,11 @@
     }
     function disableButton() {
         submitButton.disabled = true;
-        submitButton.style.opacity = "0.5";
+        submitButton.style.opacity = '0.5';
     }
     function enableButton() {
-        submitButton.removeAttribute("disabled");
-        submitButton.style.opacity = "1";
+        submitButton.removeAttribute('disabled');
+        submitButton.style.opacity = '1';
     }
 </script>
 <script>
@@ -135,7 +113,7 @@
     });
 
     let map = new ol.Map({
-        target: "map",
+        target: 'map',
         controls: [],
         layers: [
             new ol.layer.Tile({
@@ -154,19 +132,19 @@
         }),
         style: new ol.style.Style({
             fill: new ol.style.Fill({
-                color: "rgba(20, 100, 240, 0.3)",
+                color: 'rgba(20, 100, 240, 0.3)',
             }),
             stroke: new ol.style.Stroke({
                 width: 3,
-                color: "rgba(0, 100, 240, 0.8)",
+                color: 'rgba(0, 100, 240, 0.8)',
             }),
             image: new ol.style.Circle({
                 fill: new ol.style.Fill({
-                    color: "rgba(55, 200, 150, 0.5)",
+                    color: 'rgba(55, 200, 150, 0.5)',
                 }),
                 stroke: new ol.style.Stroke({
                     width: 10,
-                    color: "rgba(55, 200, 150, 0.8)",
+                    color: 'rgba(55, 200, 150, 0.8)',
                 }),
                 radius: 7,
             }),
@@ -181,21 +159,21 @@
     let geometry = circleFeature.getGeometry();
 
     const radiusChanged = () => {
-        radius = document.getElementById("map-radius").value;
+        radius = document.getElementById('map-radius').value;
 
         geometry.setCenter(ol.proj.fromLonLat(center));
         geometry.setRadius(parseInt(radius));
     };
 
-    map.addEventListener("click", function (evt) {
-        radius = document.getElementById("map-radius").value;
-        center = ol.proj.transform(evt.coordinate, "EPSG:3857", "EPSG:4326");
+    map.addEventListener('click', function (evt) {
+        radius = document.getElementById('map-radius').value;
+        center = ol.proj.transform(evt.coordinate, 'EPSG:3857', 'EPSG:4326');
 
         geometry.setCenter(ol.proj.fromLonLat(center));
         geometry.setRadius(parseInt(radius));
 
-        document.getElementById("map-long").value = center[0];
-        document.getElementById("map-lat").value = center[1];
+        document.getElementById('map-long').value = center[0];
+        document.getElementById('map-lat').value = center[1];
 
         validate();
     });

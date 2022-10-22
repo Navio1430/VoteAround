@@ -8,6 +8,13 @@
         grid-column: 2/11;
 
         margin-bottom: 10%;
+
+        @include breakpointMax(md) {
+            justify-content: center;
+            align-items: center;
+
+            margin-bottom: 20%;
+        }
     }
 
     &__title {
@@ -15,5 +22,10 @@
         font-size: 1.8125rem;
         font-weight: 700;
         text-align: left;
+
+        @include breakpointMax(md) {
+            font-size: 1.3rem;
+            text-align: center;
+        }
     }
 }
