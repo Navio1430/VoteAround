@@ -18,8 +18,11 @@ const infiniteScroll = () => {
     }
 
     let indexNum = 0;
+    let fetchedCount = 0;
+    let fetchedCountPrev = -1;
 
     async function createTableItem() {
+        fetchedProjects = [];
         await fetchData(indexNum, 4);
         indexNum += fetchedProjects.length;
 
@@ -84,11 +87,10 @@ const infiniteScroll = () => {
             //* Adding item to table row
             tableRowContainer.appendChild(projectHtmlElement);
         });
-
-        fetchedProjects = [];
     }
 
     createTableItem();
+    fetchedCount = fetchedProjects.length;
 
     tableRowContainer.addEventListener('scroll', () => {
         let scrollTop = tableRowContainer.scrollTop;
@@ -98,8 +100,12 @@ const infiniteScroll = () => {
 
         let progress = scrollTop / scrollHeight;
 
-        if (progress >= 0.9) {
-            createTableItem();
+        if (progress >= 0.9 && fetchedCount !== fetchedCountPrev) {
+            fetchedCountPrev = fetchedCount;
+
+            createTableItem().then(() => {
+                fetchedCount += fetchedProjects.length;
+            });
         }
     });
 };
