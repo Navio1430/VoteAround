@@ -80,8 +80,13 @@ def projects_popular(user):
 
     projects = db.session.query(Project).all()
 
+    in_range = filter(
+        lambda project: project.is_in_range((user.latitude, user.longitude)),
+        projects,
+    )
+
     filtered = sorted(
-        projects, key=lambda project: project.positive_votes_count, reverse=True
+        in_range, key=lambda project: project.positive_votes_count, reverse=True
     )[index : index + limit]
 
     data = [
@@ -114,10 +119,7 @@ def projects_closest(user):
     projects = db.session.query(Project).all()
 
     in_range = filter(
-        lambda project: geodesic(
-            (latitude, longitude), (project.latitude, project.longitude)
-        ).m
-        <= project.radius,
+        lambda project: project.is_in_range((user.latitude, user.longitude)),
         projects,
     )
     filtered = sorted(

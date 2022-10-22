@@ -3,6 +3,7 @@ from utils.crypto import generate_salt, hash_password
 from utils.uuid import UUID_LENGTH, generate_uuid, deserialize_uuids
 from utils.auth import deserialize_tokens
 from utils.time import get_utc_time
+from geopy.distance import geodesic
 
 
 db = SQLAlchemy()
@@ -86,3 +87,6 @@ class Project(db.Model):
             return -1
 
         return 0
+
+    def is_in_range(self, pos):
+        return geodesic(pos, (self.latitude, self.longitude)).m <= self.radius
