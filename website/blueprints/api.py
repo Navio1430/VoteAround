@@ -13,8 +13,9 @@ MAX_LIMIT = 50
 @login_required(User)
 def user_delete_account(user):
     data = request.get_json()
+    password = data.get("password", "")
 
-    if not user.check_password(data["password"]):
+    if not user.check_password(password):
         return {"success": False}
 
     db.session.query(User).filter(User.uuid == user.uuid).delete()
