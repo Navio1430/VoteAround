@@ -28,6 +28,9 @@ def project(user, project_id):
     
     project_entry = Project.query.filter_by(uuid=uuid).first()
 
+    if not project_entry.is_in_range(user.pos):
+        return redirect(url_for("projects.index"))
+
     if not project_entry:
         return "<h2>Project not found</h2>"
     
