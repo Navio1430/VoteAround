@@ -81,7 +81,7 @@ def projects_popular(user):
     projects = db.session.query(Project).all()
 
     in_range = filter(
-        lambda project: project.is_in_range((user.latitude, user.longitude)),
+        lambda project: project.is_in_range(user.pos),
         projects,
     )
 

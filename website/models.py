@@ -34,6 +34,10 @@ class User(db.Model):
         self.positive_votes = b""
         self.negative_votes = b""
 
+    @property
+    def pos(self):
+        return (self.latitude, self.longitude)
+
     def check_password(self, password: str) -> bool:
         return hash_password(password, self.salt) == self.hash
 
@@ -70,6 +74,10 @@ class Project(db.Model):
         self.negative_votes = b""
 
     @property
+    def pos(self):
+        return (self.latitude, self.longitude)
+
+    @property
     def positive_votes_count(self):
         return len(self.positive_votes) // UUID_LENGTH
 
@@ -87,4 +95,4 @@ class Project(db.Model):
         return 0
 
     def is_in_range(self, pos):
-        return geodesic(pos, (self.latitude, self.longitude)).m <= self.radius
+        return geodesic(pos, self.pos).m <= self.radius
