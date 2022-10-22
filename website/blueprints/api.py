@@ -1,11 +1,12 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, jsonify, request
 from utils.auth import login_required
 from models import User, Project, db
 from utils.uuid import bytes_to_uuid_hex, hex_to_uuid_bytes
 from geopy.distance import geodesic
-import json
 
 api = Blueprint("api", __name__)
+
+MAX_LIMIT = 50
 
 
 @api.route("user/delete", methods=["POST"])
@@ -64,8 +65,33 @@ def projects_project(user):
         "user_vote": project.user_vote_status(user.uuid),
     }
 
-    return json.dumps(data)
+    return jsonify(data)
 
+
+@api.route("/projects/popular", methods=["GET"])
+@login_required(User)
+def projects_popular(user):
+    index = request.args.get("index", default=0, type=int)
+    limit = request.args.get("limit", default=10, type=int)
+
+    limit = min(limit, MAX_LIMIT)
+
+    data = {}
+
+    projects = db.session.query(Project).all()
+
+    filtered = sorted(projects, key=lambda project: project.positive_votes_count())[index:index+limit]
+
+    for project in filtered:
+        data[bytes_to_uuid_hex(project.uuid)] = {
+            "label": project.label,
+            "description": project.description,
+            "positive_votes": project.positive_votes_count(),
+            "negative_votes": project.negative_votes_count(),
+            "user_vote": project.user_vote_status(user.uuid),
+        }
+
+    return jsonify(data)
 
 #
 #    Request closest projects
@@ -93,8 +119,7 @@ def projects_closest(user):
     index = request.args.get("index", default=0, type=int)
     limit = request.args.get("limit", default=10, type=int)
 
-    if limit > 50:
-        limit = 50
+    limit = min(limit, MAX_LIMIT)
 
     data = {}
 
@@ -122,4 +147,4 @@ def projects_closest(user):
 
         index += 25
 
-    return json.dumps(data)
+    return jsonify(data)
