@@ -76,22 +76,28 @@ def projects_popular(user):
 
     limit = min(limit, MAX_LIMIT)
 
-    data = {}
+    data = []
 
     projects = db.session.query(Project).all()
 
-    filtered = sorted(projects, key=lambda project: project.positive_votes_count())[index:index+limit]
+    filtered = sorted(projects, key=lambda project: project.positive_votes_count())[
+        index : index + limit
+    ]
 
     for project in filtered:
-        data[bytes_to_uuid_hex(project.uuid)] = {
-            "label": project.label,
-            "description": project.description,
-            "positive_votes": project.positive_votes_count(),
-            "negative_votes": project.negative_votes_count(),
-            "user_vote": project.user_vote_status(user.uuid),
-        }
+        data.append(
+            {
+                "uuid": bytes_to_uuid_hex(project.uuid),
+                "label": project.label,
+                "description": project.description,
+                "positive_votes": project.positive_votes_count(),
+                "negative_votes": project.negative_votes_count(),
+                "user_vote": project.user_vote_status(user.uuid),
+            }
+        )
 
     return jsonify(data)
+
 
 #
 #    Request closest projects
@@ -121,7 +127,7 @@ def projects_closest(user):
 
     limit = min(limit, MAX_LIMIT)
 
-    data = {}
+    data = []
 
     while True:
         result = db.session.query(Project).limit(25).offset(index)
@@ -131,13 +137,17 @@ def projects_closest(user):
                 geodesic((latitude, longitude), (project.latitude, project.longitude)).m
                 <= project.radius
             ):
-                data[bytes_to_uuid_hex(project.uuid)] = {
-                    "label": project.label,
-                    "description": project.description,
-                    "positive_votes": project.positive_votes_count(),
-                    "negative_votes": project.negative_votes_count(),
-                    "user_vote": project.user_vote_status(user.uuid),
-                }
+                
+                data.append(
+                    {
+                        "uuid": bytes_to_uuid_hex(project.uuid),
+                        "label": project.label,
+                        "description": project.description,
+                        "positive_votes": project.positive_votes_count(),
+                        "negative_votes": project.negative_votes_count(),
+                        "user_vote": project.user_vote_status(user.uuid),
+                    }
+                )
 
             if len(data) >= limit:
                 break
