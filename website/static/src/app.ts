@@ -1,15 +1,11 @@
-import { signupInputValidate, loginInputValidate } from './InputValidation.js';
-import { deleteAccount } from './DeleteAccount.js';
-import { logout } from './Logout.js';
-import { infiniteScroll } from './InfiniteScroll.js';
-import { changeUserame } from './ChangeUsername.js';
-import { changePassword } from './ChangePassword.js';
+import { loginInputValidate } from "./InputValidation.js";
+import { deleteAccount } from "./DeleteAccount.js";
+import { logout } from "./Logout.js";
+import { infiniteScroll } from "./InfiniteScroll.js";
+import { changeUserame } from "./ChangeUsername.js";
+import { changePassword } from "./ChangePassword.js";
 
-if (document.getElementById('password-input') !== null) {
-    signupInputValidate();
-}
-
-if (document.getElementById('password-login') !== null) {
+if (document.getElementById("password-login") !== null) {
     loginInputValidate();
 }
 
@@ -17,7 +13,7 @@ if (document.getElementById('password-login') !== null) {
 
 // changePassword();
 
-if (document.getElementById('user-container') !== null) {
+if (document.getElementById("user-container") !== null) {
     logout();
     deleteAccount();
 }
