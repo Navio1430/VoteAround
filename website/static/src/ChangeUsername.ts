@@ -1,67 +1,94 @@
-const changeUserame = () => {
-    const userContainer = document.getElementById('user-container');
-    const usernameBtnUser = document.getElementById('username-btn-user');
+const userContainer = document.getElementById('user-container');
+const usernameChangeBtn = document.getElementById('username-btn-user');
 
-    usernameBtnUser.addEventListener('click', () => {
-        let alert = document.createElement('form');
-        alert.classList.add('user__delete-alert');
+const usernameMinLength = 4;
+const passwordMinLength = 8;
 
-        let title = document.createElement('p');
-        title.classList.add('user__delete-title');
-        title.innerHTML = 'Zmiana nazwy użytkownika';
+let isAlertVisible = false;
 
-        let username = document.createElement('input');
-        username.classList.add('user__delete-password');
-        username.placeholder = 'Podaj nową nazwę użytkownika';
+let submitBtn: HTMLButtonElement;
+let usernameInput: HTMLInputElement;
+let passwordInput: HTMLInputElement;
+let checkboxInput: HTMLInputElement;
 
-        let password = document.createElement('input');
-        password.classList.add('user__password-input');
-        password.placeholder = 'Podaj hasło';
+usernameChangeBtn.addEventListener('click', () => {
+    if (isAlertVisible) {
+        hideAlert();
+        isAlertVisible = false;
+        return;
+    }
 
-        let checkbox = document.createElement('input');
-        checkbox.classList.add('user__delete-checkbox');
-        checkbox.type = 'checkbox';
+    showAlert();
+});
 
-        let checkboxP = document.createElement('p');
-        checkboxP.innerHTML =
-            'Jestem pewien, że chcę zmienić nazwę użytkownika';
+function showAlert() {
+    let alert = document.createElement('form');
+    alert.classList.add('user__delete-alert');
 
-        let checkboxContainer = document.createElement('div');
-        checkboxContainer.classList.add('user__delete-checkbox-container');
+    let title = document.createElement('p');
+    title.classList.add('user__delete-title');
+    title.innerHTML = 'Zmiana nazwy użytkownika';
 
-        checkboxContainer.appendChild(checkbox);
-        checkboxContainer.appendChild(checkboxP);
+    usernameInput = document.createElement('input');
+    usernameInput.classList.add('user__delete-password');
+    usernameInput.placeholder = 'Podaj nową nazwę użytkownika';
 
-        let btnP = document.createElement('p');
-        btnP.innerHTML = 'Zmień';
+    passwordInput = document.createElement('input');
+    passwordInput.classList.add('user__password-input');
+    passwordInput.placeholder = 'Podaj hasło';
 
-        let btn = document.createElement('button');
-        btn.classList.add(
-            'table__row-btn',
-            'user__delete-btn',
-            'user__delete-btn--blue'
-        );
-        btn.type = 'submit';
+    checkboxInput = document.createElement('input');
+    checkboxInput.classList.add('user__delete-checkbox');
+    checkboxInput.type = 'checkbox';
 
-        btn.appendChild(btnP);
+    let checkboxP = document.createElement('p');
+    checkboxP.innerHTML = 'Jestem pewien, że chcę zmienić nazwę użytkownika';
 
-        let alertItems = [title, username, password, checkboxContainer, btn];
-        alertItems.forEach((element) => {
-            alert.appendChild(element);
-        });
+    let checkboxContainer = document.createElement('div');
+    checkboxContainer.classList.add('user__delete-checkbox-container');
 
-        userContainer.children.length === 1
-            ? userContainer.appendChild(alert)
-            : userContainer.removeChild(userContainer.lastChild);
+    checkboxContainer.appendChild(checkboxInput);
+    checkboxContainer.appendChild(checkboxP);
 
+    let buttonInner = document.createElement('p');
+    buttonInner.innerHTML = 'Zmień';
+
+    submitBtn = document.createElement('button');
+    submitBtn.classList.add(
+        'table__row-btn',
+        'user__delete-btn',
+        'user__delete-btn--blue'
+    );
+    submitBtn.type = 'submit';
+
+    submitBtn.appendChild(buttonInner);
+
+    let alertItems = [
+        title,
+        usernameInput,
+        passwordInput,
+        checkboxContainer,
+        submitBtn,
+    ];
+    alertItems.forEach((element) => {
+        alert.appendChild(element);
+    });
+
+    userContainer.appendChild(alert);
+
+    usernameInput.addEventListener('keyup', validate);
+    passwordInput.addEventListener('keyup', validate);
+    checkboxInput.addEventListener('click', validate);
+
+    submitBtn.addEventListener('click', () => {
         fetch('/api/user/edit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                new_username: username.value,
-                password: password.value,
+                new_username: usernameInput.value,
+                password: passwordInput.value,
             }),
         })
             .then((response) => response.json())
@@ -77,6 +104,41 @@ const changeUserame = () => {
                 }
             });
     });
-};
 
-export { changeUserame };
+    disableButton();
+
+    isAlertVisible = true;
+}
+
+function hideAlert() {
+    userContainer.removeChild(userContainer.lastChild);
+}
+
+function validate() {
+    if (usernameInput.value.length < usernameMinLength) {
+        disableButton();
+        return;
+    }
+
+    if (passwordInput.value.length < passwordMinLength) {
+        disableButton();
+        return;
+    }
+
+    if (checkboxInput.checked === false) {
+        disableButton();
+        return;
+    }
+
+    enableButton();
+}
+
+function disableButton() {
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.5';
+}
+
+function enableButton() {
+    submitBtn.removeAttribute('disabled');
+    submitBtn.style.opacity = '1';
+}
