@@ -32,8 +32,8 @@ class User(db.Model):
         self.latitude = 0
         # self.longitude = longitude
         self.longitude = 0
-        self.positive_votes = None
-        self.negative_votes = None
+        self.positive_votes = b""
+        self.negative_votes = b""
 
     def check_password(self, password: str) -> bool:
         return hash_password(password, self.salt) == self.hash
@@ -65,30 +65,20 @@ class Project(db.Model):
         self.longitude = longitude
         self.radius = radius
         self.end_time = end_time
-        self.positive_votes = None
-        self.negative_votes = None
+        self.positive_votes = b""
+        self.negative_votes = b""
 
     def positive_votes_count(self):
-        if self.positive_votes == None:
-            return 0
-
         return len(self.positive_votes) // UUID_LENGTH
 
     def negative_votes_count(self):
-        if self.negative_votes == None:
-            return 0
-
         return len(self.negative_votes) // UUID_LENGTH
 
     def user_vote_status(self, uuid: bytes):
-        if (self.positive_votes is not None) and (
-            uuid in deserialize_uuids(self.positive_votes)
-        ):
+        if uuid in deserialize_uuids(self.positive_votes):
             return 1
 
-        if (self.negative_votes is not None) and (
-            uuid in deserialize_uuids(self.negative_votes)
-        ):
+        if uuid in deserialize_uuids(self.negative_votes):
             return -1
 
         return 0
