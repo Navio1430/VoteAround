@@ -23,7 +23,7 @@ def user_delete_account(user):
     return jsonify({"success": True})
 
 
-@api.route("/user/edit")
+@api.route("/user/edit", methods=["POST"])
 @login_required(User)
 def user_edit_account(user):
     data = request.get_json()
