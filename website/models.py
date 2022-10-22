@@ -68,9 +68,11 @@ class Project(db.Model):
         self.positive_votes = b""
         self.negative_votes = b""
 
+    @property
     def positive_votes_count(self):
         return len(self.positive_votes) // UUID_LENGTH
 
+    @property
     def negative_votes_count(self):
         return len(self.negative_votes) // UUID_LENGTH
 

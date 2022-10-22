@@ -60,8 +60,8 @@ def projects_project(user):
         "latitude": project.latitude,
         "longitude": project.longitude,
         "radius": project.radius,
-        "positive_votes": int(project.positive_votes_count()),
-        "negative_votes": int(project.negative_votes_count()),
+        "positive_votes": int(project.positive_votes_count),
+        "negative_votes": int(project.negative_votes_count),
         "user_vote": project.user_vote_status(user.uuid),
     }
 
@@ -81,7 +81,7 @@ def projects_popular(user):
     projects = db.session.query(Project).all()
 
     filtered = sorted(
-        projects, key=lambda project: project.positive_votes_count(), reverse=True
+        projects, key=lambda project: project.positive_votes_count, reverse=True
     )[index : index + limit]
 
     data = [
@@ -89,8 +89,8 @@ def projects_popular(user):
             "uuid": bytes_to_uuid_hex(project.uuid),
             "label": project.label,
             "description": project.description,
-            "positive_votes": project.positive_votes_count(),
-            "negative_votes": project.negative_votes_count(),
+            "positive_votes": project.positive_votes_count,
+            "negative_votes": project.negative_votes_count,
             "user_vote": project.user_vote_status(user.uuid),
         }
         for project in filtered
@@ -132,8 +132,8 @@ def projects_closest(user):
             "uuid": bytes_to_uuid_hex(project.uuid),
             "label": project.label,
             "description": project.description,
-            "positive_votes": project.positive_votes_count(),
-            "negative_votes": project.negative_votes_count(),
+            "positive_votes": project.positive_votes_count,
+            "negative_votes": project.negative_votes_count,
             "user_vote": project.user_vote_status(user.uuid),
         }
         for project in filtered
