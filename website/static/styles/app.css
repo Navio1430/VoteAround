@@ -110,7 +110,7 @@
   -ms-grid-columns: (1fr)[11];
       grid-template-columns: repeat(11, 1fr);
   row-gap: 0.8rem;
-  margin: 20vh 0;
+  margin: 15vh 0;
 }
 
 .table__row {
@@ -136,7 +136,7 @@
   -ms-grid-column: 2;
   -ms-grid-column-span: 9;
   grid-column: 2/11;
-  height: 70vh;
+  height: 17rem;
   overflow-y: scroll;
 }
 

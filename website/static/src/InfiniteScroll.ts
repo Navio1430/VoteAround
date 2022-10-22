@@ -17,8 +17,11 @@ const infiniteScroll = () => {
         });
     }
 
+    let indexNum = 0;
+
     async function createTableItem() {
-        await fetchData(0, 20);
+        await fetchData(indexNum, 4);
+        indexNum += fetchedProjects.length;
 
         fetchedProjects.forEach((project) => {
             let projectHtmlElement = document.createElement('div');
@@ -81,9 +84,24 @@ const infiniteScroll = () => {
             //* Adding item to table row
             tableRowContainer.appendChild(projectHtmlElement);
         });
+
+        fetchedProjects = [];
     }
 
     createTableItem();
+
+    tableRowContainer.addEventListener('scroll', () => {
+        let scrollTop = tableRowContainer.scrollTop;
+
+        let scrollHeight =
+            tableRowContainer.scrollHeight - tableRowContainer.clientHeight;
+
+        let progress = scrollTop / scrollHeight;
+
+        if (progress >= 0.9) {
+            createTableItem();
+        }
+    });
 };
 
 export { infiniteScroll };

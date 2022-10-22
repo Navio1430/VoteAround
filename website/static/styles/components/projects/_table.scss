@@ -3,7 +3,7 @@
         display: grid;
         grid-template-columns: repeat(11, 1fr);
         row-gap: 0.8rem;
-        margin: 20vh 0;
+        margin: 15vh 0;
     }
 
     &__row {
@@ -23,7 +23,7 @@
 
         &-container {
             grid-column: 2/11;
-            height: 70vh;
+            height: 17rem;
 
             overflow-y: scroll;
         }

@@ -1,14 +1,16 @@
-import { loginInputValidate } from "./InputValidation.js";
-import { deleteAccount } from "./DeleteAccount.js";
-import { logout } from "./Logout.js";
-import { infiniteScroll } from "./InfiniteScroll.js";
-if (document.getElementById("password-login") !== null) {
+import { loginInputValidate } from './InputValidation.js';
+import { deleteAccount } from './DeleteAccount.js';
+import { logout } from './Logout.js';
+import { infiniteScroll } from './InfiniteScroll.js';
+if (document.getElementById('password-login') !== null) {
     loginInputValidate();
 }
 // changeUserame();
 // changePassword();
-if (document.getElementById("user-container") !== null) {
+if (document.getElementById('user-container') !== null) {
     logout();
     deleteAccount();
 }
-infiniteScroll();
+if (document.getElementById('table-row-container') !== null) {
+    infiniteScroll();
+}
