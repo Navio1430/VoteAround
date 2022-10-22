@@ -9,7 +9,7 @@ api = Blueprint("api", __name__)
 MAX_LIMIT = 50
 
 
-@api.route("user/delete", methods=["POST"])
+@api.route("/user/delete", methods=["POST"])
 @login_required(User)
 def user_delete_account(user):
     data = request.get_json()

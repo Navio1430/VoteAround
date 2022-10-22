@@ -55,15 +55,17 @@ class Project(db.Model):
     radius = db.Column("radius", db.Float, nullable=False)
     positive_votes = db.Column("positive_votes", db.LargeBinary)  # uuid[]
     negative_votes = db.Column("negative_votes", db.LargeBinary)  # uuid[]
+    start_time = db.Column("start_time", db.BigInteger)
     end_time = db.Column("end_time", db.BigInteger)
 
-    def __init__(self, label, description, latitude, longitude, radius, end_time):
+    def __init__(self, label, description, latitude, longitude, radius, start_time, end_time):
         self.uuid = generate_uuid()
         self.label = label
         self.description = description
         self.latitude = latitude
         self.longitude = longitude
         self.radius = radius
+        self.start_time = start_time
         self.end_time = end_time
         self.positive_votes = b""
         self.negative_votes = b""

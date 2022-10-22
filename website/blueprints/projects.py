@@ -47,10 +47,11 @@ def create(user):
 
         radius = MAX_RADIUS_LENGTH if radius > MAX_RADIUS_LENGTH else radius
 
-        end_time = get_utc_time(PROJECT_EXPIRATION_TIME)
+        start_time = get_utc_time()
+        end_time = start_time + PROJECT_EXPIRATION_TIME
 
         db.session.add(
-            Project(label, description, latitude, longitude, radius, end_time)
+            Project(label, description, latitude, longitude, radius, start_time, end_time)
         )
         db.session.commit()
 
