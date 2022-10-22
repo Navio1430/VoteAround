@@ -1,64 +1,87 @@
-const deleteAccount = () => {
-    const userContainer = document.getElementById('user-container');
-    const userDeleteAccount = document.getElementById('user-delete-account');
-    userDeleteAccount.addEventListener('click', () => {
-        let alert = document.createElement('div');
-        alert.classList.add('user__delete-alert');
-        let title = document.createElement('p');
-        title.classList.add('user__delete-title');
-        title.innerHTML = 'Usuwanie konta';
-        let password = document.createElement('input');
-        password.classList.add('user__delete-password');
-        password.type = 'password';
-        password.placeholder = 'Podaj hasło';
-        let alertContainer = document.createElement('div');
-        let checkbox = document.createElement('input');
-        checkbox.classList.add('user__delete-checkbox');
-        checkbox.type = 'checkbox';
-        let checkboxP = document.createElement('p');
-        checkboxP.innerHTML =
-            'Jestem pewien, że chcę bezpowrotnie usunąć konto';
-        let checkboxContainer = document.createElement('div');
-        checkboxContainer.classList.add('user__delete-checkbox-container');
-        checkboxContainer.appendChild(checkbox);
-        checkboxContainer.appendChild(checkboxP);
-        alertContainer.appendChild(checkboxContainer);
-        let btnP = document.createElement('p');
-        btnP.innerHTML = 'Usuń';
-        let btn = document.createElement('button');
-        btn.classList.add('table__row-btn', 'table__row-btn--negative', 'user__delete-btn');
-        btn.appendChild(btnP);
-        let alertItems = [title, password, alertContainer, btn];
-        alertItems.forEach((element) => {
-            alert.appendChild(element);
-        });
-        userContainer.children.length === 1
-            ? userContainer.appendChild(alert)
-            : userContainer.removeChild(userContainer.lastChild);
-        btn.addEventListener('click', () => {
-            if (checkbox.checked === true) {
-                fetch('/api/user/delete', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ password: password.value }),
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                    if (data.success) {
-                        location.reload();
-                    }
-                    else {
-                        if (alertContainer.children.length <= 1) {
-                            let passwordAlert = document.createElement('p');
-                            passwordAlert.innerHTML = 'Błędne hasło';
-                            alertContainer.appendChild(passwordAlert);
-                        }
-                    }
-                });
+const userContainer = document.getElementById('user-container');
+const userDeleteAccountBtn = document.getElementById('user-delete-account');
+userDeleteAccountBtn.addEventListener('click', () => {
+    userContainer.children.length == 1 ? showAlert() : hideAlert();
+});
+let submitBtn;
+let passwordInput;
+let checkboxInput;
+function showAlert() {
+    let alert = document.createElement('div');
+    alert.classList.add('user__delete-alert');
+    let title = document.createElement('p');
+    title.classList.add('user__delete-title');
+    title.innerHTML = 'Usuwanie konta';
+    passwordInput = document.createElement('input');
+    passwordInput.classList.add('user__delete-password');
+    passwordInput.type = 'password';
+    passwordInput.placeholder = 'Podaj hasło';
+    let alertContainer = document.createElement('div');
+    checkboxInput = document.createElement('input');
+    checkboxInput.classList.add('user__delete-checkbox');
+    checkboxInput.type = 'checkbox';
+    let checkboxInner = document.createElement('p');
+    checkboxInner.innerHTML =
+        'Jestem pewien, że chcę bezpowrotnie usunąć konto';
+    let checkboxContainer = document.createElement('div');
+    checkboxContainer.classList.add('user__delete-checkbox-container');
+    checkboxContainer.appendChild(checkboxInput);
+    checkboxContainer.appendChild(checkboxInner);
+    alertContainer.appendChild(checkboxContainer);
+    let buttonInner = document.createElement('p');
+    buttonInner.innerHTML = 'Usuń';
+    submitBtn = document.createElement('button');
+    submitBtn.classList.add('table__row-btn', 'table__row-btn--negative', 'user__delete-btn');
+    submitBtn.appendChild(buttonInner);
+    let alertItems = [title, passwordInput, alertContainer, submitBtn];
+    alertItems.forEach((element) => {
+        alert.appendChild(element);
+    });
+    userContainer.appendChild(alert);
+    passwordInput.addEventListener('keyup', validate);
+    checkboxInput.addEventListener('click', validate);
+    submitBtn.addEventListener('click', () => {
+        fetch('/api/user/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ password: passwordInput.value }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+            if (data.success) {
+                location.reload();
+            }
+            else {
+                if (alertContainer.children.length <= 1) {
+                    let passwordAlert = document.createElement('p');
+                    passwordAlert.style.color = "red";
+                    passwordAlert.innerHTML = 'Błędne hasło';
+                    alertContainer.appendChild(passwordAlert);
+                }
             }
         });
     });
-};
-export { deleteAccount };
+    disableButton();
+}
+function hideAlert() {
+    userContainer.removeChild(userContainer.lastChild);
+}
+function validate() {
+    if (passwordInput.value.length < 8 ||
+        checkboxInput.checked === false) {
+        disableButton();
+        return;
+    }
+    enableButton();
+}
+function disableButton() {
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.5';
+}
+function enableButton() {
+    submitBtn.removeAttribute('disabled');
+    submitBtn.style.opacity = '1';
+}
+export {};
