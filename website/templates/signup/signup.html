@@ -1,9 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="signup__container">
-    <div id="map" class="map"></div>
+<div class="signup__container signup__container--grid">
+    <div id="map" class="map map--signup"></div>
 
-    <form action="#" method="post" class="signup__form">
+    <form action="#" method="post" class="signup__form signup__form--grid">
         <p class="signup__title">Rejestracja</p>
 
         <div class="signup__names-container">
@@ -48,10 +48,13 @@
         <input type="hidden" id="map-long" name="longitude" value="-200" />
         <input type="hidden" id="map-lat" name="latitude" value="-200" />
     </form>
-
-    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
-    <script src="{{ url_for('static', filename='dist/SignupValidation.js') }}"></script>
-    <script type="module" src="{{ url_for('static', filename='dist/SignupMap.js') }}"></script>
 </div>
+
+<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+<script src="{{ url_for('static', filename='dist/SignupValidation.js') }}"></script>
+<script
+    type="module"
+    src="{{ url_for('static', filename='dist/SignupMap.js') }}"
+></script>
 
 {% endblock %}

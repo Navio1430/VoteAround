@@ -605,6 +605,28 @@
   margin-top: 1rem;
 }
 
+.signup__container--grid {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10rem 0;
+}
+
+.signup__form--grid {
+  -ms-grid-column: 9;
+  -ms-grid-column-span: 1;
+  grid-column: 9/10;
+  margin: 0;
+}
+
+.map--signup {
+  width: 40.625rem;
+  height: 28.125rem;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 6;
+  grid-column: 2/8;
+}
+
 .calendar {
   display: -ms-grid;
   display: grid;

@@ -88,3 +88,25 @@
         margin-top: 1rem;
     }
 }
+
+.signup {
+    &__container {
+        &--grid {
+            align-items: center;
+            margin: 10rem 0;
+        }
+    }
+
+    &__form {
+        &--grid {
+            grid-column: 9/10;
+            margin: 0;
+        }
+    }
+}
+
+.map--signup {
+    width: 40.625rem;
+    height: 28.125rem;
+    grid-column: 2/8;
+}
