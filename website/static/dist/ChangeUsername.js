@@ -20,6 +20,7 @@ function showAlert() {
     usernameInput.placeholder = 'Podaj nową nazwę użytkownika';
     passwordInput = document.createElement('input');
     passwordInput.classList.add('user__password-input');
+    passwordInput.type = "password";
     passwordInput.placeholder = 'Podaj hasło';
     checkboxInput = document.createElement('input');
     checkboxInput.classList.add('user__delete-checkbox');

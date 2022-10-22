@@ -29,6 +29,7 @@ function showAlert() {
 
     passwordInput = document.createElement('input');
     passwordInput.classList.add('user__password-input');
+    passwordInput.type = "password";
     passwordInput.placeholder = 'Podaj hasło';
 
     checkboxInput = document.createElement('input');
