@@ -214,11 +214,30 @@
   margin-bottom: 10%;
 }
 
+@media (max-width: 50rem) {
+  .projects__container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 20%;
+  }
+}
+
 .projects__title {
   color: #131b23;
   font-size: 1.8125rem;
   font-weight: 700;
   text-align: left;
+}
+
+@media (max-width: 50rem) {
+  .projects__title {
+    font-size: 1.3rem;
+    text-align: center;
+  }
 }
 
 .map {
@@ -403,6 +422,13 @@
   cursor: pointer;
 }
 
+@media (max-width: 50rem) {
+  .card {
+    width: 12rem;
+    height: 14rem;
+  }
+}
+
 .card:hover {
   -webkit-transform: scale(1.01);
           transform: scale(1.01);
@@ -418,8 +444,27 @@
   margin-top: 4%;
 }
 
+@media (max-width: 50rem) {
+  .card__container {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
 .card__icon {
   margin-top: 4rem;
+}
+
+@media (max-width: 50rem) {
+  .card__icon {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+    margin-top: 2.5rem;
+  }
 }
 
 .card__title {
