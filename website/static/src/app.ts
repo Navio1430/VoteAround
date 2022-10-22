@@ -9,8 +9,10 @@ if (document.getElementById('password-login') !== null) {
     loginInputValidate();
 }
 
-// changeUserame();
-// changePassword();
+if (document.getElementById('user-container')) {
+    changePassword();
+    changeUserame();
+}
 
 if (document.getElementById('user-container') !== null) {
     logout();

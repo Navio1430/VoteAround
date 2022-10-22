@@ -11,14 +11,18 @@ const changePassword = () => {
         oldPassword.classList.add('user__password-input');
         oldPassword.placeholder = 'Podaj aktualne hasło';
         let newPassword = document.createElement('input');
-        newPassword.classList.add('user__password-input', 'user__password-input--last');
+        newPassword.classList.add('user__password-input');
+        newPassword.type = 'password';
         newPassword.placeholder = 'Podaj nowe hasło';
+        let newPasswordRepeat = document.createElement('input');
+        newPasswordRepeat.classList.add('user__password-input', 'user__password-input--last');
+        newPasswordRepeat.type = 'password';
+        newPasswordRepeat.placeholder = 'Powtórz nowe hasło';
         let checkbox = document.createElement('input');
         checkbox.classList.add('user__delete-checkbox');
         checkbox.type = 'checkbox';
         let checkboxP = document.createElement('p');
-        checkboxP.innerHTML =
-            'Jestem pewien, że chcę zmienić nazwę użytkownika';
+        checkboxP.innerHTML = 'Jestem pewien, że chcę zmienić hasło';
         let checkboxContainer = document.createElement('div');
         checkboxContainer.classList.add('user__delete-checkbox-container');
         checkboxContainer.appendChild(checkbox);
@@ -33,6 +37,7 @@ const changePassword = () => {
             title,
             oldPassword,
             newPassword,
+            newPasswordRepeat,
             checkboxContainer,
             btn,
         ];
@@ -42,6 +47,37 @@ const changePassword = () => {
         userContainer.children.length === 1
             ? userContainer.appendChild(alert)
             : userContainer.removeChild(userContainer.lastChild);
+        const newPasswordValidate = () => {
+            // if (newPassword.value !== newPasswordRepeat.value) {
+            // } else {
+            // }
+            fetch('/api/user/edit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    password: oldPassword.value,
+                    new_password: newPassword.value,
+                }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                if (data.success) {
+                    location.reload();
+                }
+                else {
+                    // if (alertContainer.children.length <= 1) {
+                    //     let passwordAlert = document.createElement('p');
+                    //     passwordAlert.innerHTML = 'Błędne hasło';
+                    //     alertContainer.appendChild(passwordAlert);
+                    // }
+                }
+            });
+        };
+        btn.addEventListener('click', () => {
+            newPasswordValidate();
+        });
     });
 };
 export { changePassword };
