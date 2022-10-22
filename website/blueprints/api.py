@@ -41,20 +41,20 @@ def user_delete_account(user):
 @api.route("/projects/project", methods=["GET"])
 @login_required(User)
 def projects_project(user):
-    uuid = request.args.get("id")
+    uuid_hex = request.args.get("id")
 
     try:
-        b_uuid = hex_to_uuid_bytes(uuid)
+        uuid = hex_to_uuid_bytes(uuid_hex)
     except ValueError:
         return "{}"
 
-    project = db.session.query(Project).filter(Project.uuid == b_uuid).first()
+    project = db.session.query(Project).filter(Project.uuid == uuid).first()
 
     if not project:
         return "{}"
 
     data = {
-        "uuid": uuid,
+        "uuid": uuid_hex,
         "label": project.label,
         "description": project.description,
         "latitude": project.latitude,
