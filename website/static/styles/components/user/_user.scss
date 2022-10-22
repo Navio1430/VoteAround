@@ -3,7 +3,7 @@
     grid-template-columns: repeat(7, 1fr);
     grid-column: 4/9;
     background: $white;
-    height: 550px;
+    height: 34.375rem;
     border-radius: 0.625rem;
 
     &__container {
@@ -40,15 +40,15 @@
 
             &-item {
                 color: $white;
-                font-size: 14px;
+                font-size: 0.875rem;
                 font-weight: 700;
                 font-family: $lato;
                 cursor: pointer;
 
                 background: $blue;
-                border-radius: 4px;
+                border-radius: 0.25rem;
 
-                padding: 10px 14px;
+                padding: 0.625rem 0.875rem;
                 margin-right: 2.5rem;
             }
         }
@@ -60,7 +60,7 @@
         align-items: center;
         justify-content: space-between;
 
-        height: 550px;
+        height: 34.375rem;
         grid-column: 1/3;
         background: $blue;
         border-radius: 0.625rem 0 0 0.625rem;
@@ -74,7 +74,7 @@
         color: $white;
         font-family: $inter;
         font-weight: 600;
-        font-size: 17px;
+        font-size: 1.0625rem;
         text-transform: capitalize;
         cursor: pointer;
 
@@ -92,8 +92,8 @@
             align-items: center;
             flex-direction: column;
 
-            width: 430px;
-            height: 274px;
+            width: 26.875rem;
+            height: 17.125rem;
 
             background: $white;
             box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
@@ -111,7 +111,7 @@
 
             margin: 1.5rem 0 0 5%;
 
-            border-bottom: 1px solid #131b23;
+            border-bottom: 0.0625rem solid $blue;
 
             &--last {
                 margin: 1.5rem 0 2rem 5%;
@@ -130,8 +130,8 @@
             align-items: center;
             flex-direction: column;
 
-            width: 430px;
-            height: 264px;
+            width: 26.875rem;
+            height: 16.5rem;
 
             background: $white;
             box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
@@ -141,7 +141,7 @@
         &-title {
             color: $blue;
             font-family: $inter;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 600;
 
             text-align: center;
@@ -152,14 +152,14 @@
             color: $blue;
             font-family: $lato;
             font-weight: 400;
-            font-size: 18px;
+            font-size: 1.125rem;
             outline: none;
             width: 70%;
             align-self: flex-start;
 
             margin: 2.5rem 0 2rem 5%;
 
-            border-bottom: 1px solid #131b23;
+            border-bottom: 0.0625rem solid $blue;
 
             &::placeholder {
                 color: $blue;

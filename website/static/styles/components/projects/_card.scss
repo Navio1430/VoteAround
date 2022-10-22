@@ -12,6 +12,11 @@
 
     cursor: pointer;
 
+    @include breakpointMax(md) {
+        width: 12rem;
+        height: 14rem;
+    }
+
     &:hover {
         transform: scale(1.01);
     }
@@ -21,10 +26,21 @@
         flex-wrap: wrap;
         gap: 3rem 3rem;
         margin-top: 4%;
+
+        @include breakpointMax(md) {
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__icon {
         margin-top: 4rem;
+
+        @include breakpointMax(md) {
+            transform: scale(0.8);
+
+            margin-top: 2.5rem;
+        }
     }
 
     &__title {

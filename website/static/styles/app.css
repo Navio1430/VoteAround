@@ -666,7 +666,7 @@
   -ms-grid-column-span: 5;
   grid-column: 4/9;
   background: #ffffff;
-  height: 550px;
+  height: 34.375rem;
   border-radius: 0.625rem;
 }
 
@@ -709,13 +709,13 @@
 
 .user-data__btns-item {
   color: #ffffff;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 700;
   font-family: "Lato", sans-serif;
   cursor: pointer;
   background: #223242;
-  border-radius: 4px;
-  padding: 10px 14px;
+  border-radius: 0.25rem;
+  padding: 0.625rem 0.875rem;
   margin-right: 2.5rem;
 }
 
@@ -733,7 +733,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: 550px;
+  height: 34.375rem;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1/3;
@@ -749,7 +749,7 @@
   color: #ffffff;
   font-family: "Inter", sans-serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 1.0625rem;
   text-transform: capitalize;
   cursor: pointer;
   margin-bottom: 0.6rem;
@@ -771,8 +771,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 430px;
-  height: 274px;
+  width: 26.875rem;
+  height: 17.125rem;
   background: #ffffff;
   -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
@@ -789,7 +789,7 @@
   -ms-flex-item-align: start;
       align-self: flex-start;
   margin: 1.5rem 0 0 5%;
-  border-bottom: 1px solid #131b23;
+  border-bottom: 0.0625rem solid #223242;
 }
 
 .user__password-input--last {
@@ -812,8 +812,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 430px;
-  height: 264px;
+  width: 26.875rem;
+  height: 16.5rem;
   background: #ffffff;
   -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
@@ -823,7 +823,7 @@
 .user__delete-title {
   color: #223242;
   font-family: "Inter", sans-serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 600;
   text-align: center;
   padding-top: 1rem;
@@ -833,13 +833,13 @@
   color: #223242;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.125rem;
   outline: none;
   width: 70%;
   -ms-flex-item-align: start;
       align-self: flex-start;
   margin: 2.5rem 0 2rem 5%;
-  border-bottom: 1px solid #131b23;
+  border-bottom: 0.0625rem solid #223242;
 }
 
 .user__delete-password::-webkit-input-placeholder {
@@ -914,19 +914,19 @@
 
 .bug__title {
   color: #223242;
-  font-size: 42px;
+  font-size: 2.625rem;
   font-weight: 700;
   text-transform: capitalize;
 }
 
 .bug__btn {
   color: #ffffff;
-  font-size: 21px;
+  font-size: 1.3125rem;
   font-weight: 700;
   text-align: center;
   background: #223242;
-  border-radius: 10px;
-  padding: 20px 22px;
+  border-radius: 0.625rem;
+  padding: 1.25rem 1.375rem;
 }
 
 * {
