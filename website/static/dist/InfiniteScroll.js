@@ -2,7 +2,7 @@ const infiniteScroll = () => {
     const tableRowContainer = document.getElementById('table-row-container');
     let fetchedProjects = [];
     async function fetchData(index, limit) {
-        const response = await fetch(`/api/projects/popular?index=${index}&limit=${limit}`);
+        const response = await fetch(`/api/projects/newest?index=${index}&limit=${limit}`);
         const data = response.json();
         await data.then((data) => {
             data.forEach((dataProject) => {

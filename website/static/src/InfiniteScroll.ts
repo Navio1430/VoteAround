@@ -5,7 +5,7 @@ const infiniteScroll = () => {
 
     async function fetchData(index: number, limit: number) {
         const response = await fetch(
-            `/api/projects/popular?index=${index}&limit=${limit}`
+            `/api/projects/newest?index=${index}&limit=${limit}`
         );
 
         const data = response.json();
