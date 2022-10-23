@@ -38,6 +38,11 @@
             font-size: 1rem;
             text-align: justify;
         }
+
+        &-container {
+            max-width: 650px;
+            word-wrap: break-word;
+        }
     }
 
     &__votes {

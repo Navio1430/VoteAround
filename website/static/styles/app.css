@@ -637,6 +637,11 @@
   text-align: justify;
 }
 
+.project__description-container {
+  max-width: 650px;
+  word-wrap: break-word;
+}
+
 .project__votes {
   display: -webkit-box;
   display: -ms-flexbox;
