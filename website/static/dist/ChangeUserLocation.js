@@ -19,6 +19,7 @@ function showAlert() {
     passwordInput.classList.add('user__password-input');
     passwordInput.type = 'password';
     passwordInput.placeholder = 'Podaj aktualne hasło';
+    let responseMessageContainer = document.createElement('div');
     checkboxInput = document.createElement('input');
     checkboxInput.classList.add('user__delete-checkbox');
     checkboxInput.type = 'checkbox';
@@ -28,12 +29,21 @@ function showAlert() {
     checkboxContainer.classList.add('user__delete-checkbox-container');
     checkboxContainer.appendChild(checkboxInput);
     checkboxContainer.appendChild(checkboxInner);
+    responseMessageContainer.appendChild(checkboxContainer);
+    let messageBackContainer = document.createElement('p');
+    messageBackContainer.innerHTML = '';
+    messageBackContainer.style.color = 'red';
     let buttonInner = document.createElement('p');
     buttonInner.innerHTML = 'Zmień';
     submitBtn = document.createElement('button');
     submitBtn.classList.add('table__row-btn', 'user__delete-btn', 'user__delete-btn--blue');
     submitBtn.appendChild(buttonInner);
-    let alertItems = [title, passwordInput, checkboxContainer, submitBtn];
+    let alertItems = [
+        title,
+        passwordInput,
+        responseMessageContainer,
+        submitBtn,
+    ];
     alertItems.forEach((element) => {
         alert.appendChild(element);
     });
@@ -50,11 +60,20 @@ function showAlert() {
                 new_longitude: longitudeInput.value,
             }),
         })
-            .then((response) => {
-            response.json();
-        })
+            .then((response) => response.json())
             .then((data) => {
-            setTimeout(window.location.reload.bind(window.location), 1000);
+            if (data.success) {
+                responseMessageContainer.removeChild(responseMessageContainer.lastChild);
+                setTimeout(window.location.reload.bind(window.location), 1000);
+            }
+            else {
+                if (responseMessageContainer.children.length <= 1) {
+                    let message = document.createElement('p');
+                    message.style.color = "red";
+                    message.innerHTML = 'Błędne hasło';
+                    responseMessageContainer.appendChild(message);
+                }
+            }
         });
     });
     passwordInput.addEventListener('keyup', validate);
