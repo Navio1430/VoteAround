@@ -71,7 +71,7 @@ def create(user):
         end_time = start_time + PROJECT_EXPIRATION_TIME.total_seconds()
 
         db.session.add(
-            Project(label, description, latitude, longitude, radius, start_time, end_time)
+            Project(label, user, description, latitude, longitude, radius, start_time, end_time)
         )
         db.session.commit()
 

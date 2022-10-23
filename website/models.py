@@ -54,6 +54,7 @@ class User(db.Model):
 class Project(db.Model):
     __tablename__ = "projects"
     uuid = db.Column("uuid", db.LargeBinary, primary_key=True)
+    author = db.Column("author", db.LargeBinary)
     label = db.Column("label", db.Text)
     description = db.Column("description", db.Text)
     latitude = db.Column("latitude", db.Float, nullable=False)
@@ -64,8 +65,9 @@ class Project(db.Model):
     start_time = db.Column("start_time", db.BigInteger)
     end_time = db.Column("end_time", db.BigInteger)
 
-    def __init__(self, label, description, latitude, longitude, radius, start_time, end_time):
+    def __init__(self, label, author, description, latitude, longitude, radius, start_time, end_time):
         self.uuid = generate_uuid()
+        self.author = author.uuid
         self.label = label
         self.description = description
         self.latitude = latitude
