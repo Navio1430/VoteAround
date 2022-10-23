@@ -70,7 +70,7 @@ def user_edit_account(user):
 @api.route("/projects/project", methods=["GET"])
 @login_required(User)
 def projects_project(user):
-    uuid_hex = request.args.get("id")
+    uuid_hex = request.args.get("uuid")
 
     try:
         uuid = hex_to_uuid_bytes(uuid_hex)
@@ -91,7 +91,7 @@ def projects_project(user):
         "radius": project.radius,
         "positive_votes": int(project.positive_votes_count),
         "negative_votes": int(project.negative_votes_count),
-        "user_vote": project.user_vote_status(user.uuid),
+        "user_vote": user.get_vote_status(project),
     }
 
     return jsonify(data)
@@ -125,7 +125,7 @@ def projects_popular(user):
             "description": project.description,
             "positive_votes": project.positive_votes_count,
             "negative_votes": project.negative_votes_count,
-            "user_vote": project.user_vote_status(user.uuid),
+            "user_vote": user.get_vote_status(project),
         }
         for project in filtered
     ]
@@ -159,7 +159,7 @@ def projects_newest(user):
             "description": project.description,
             "positive_votes": project.positive_votes_count,
             "negative_votes": project.negative_votes_count,
-            "user_vote": project.user_vote_status(user.uuid),
+            "user_vote": user.get_vote_status(project),
         }
         for project in filtered
     ]

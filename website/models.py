@@ -33,6 +33,14 @@ class User(db.Model):
     def pos(self):
         return (self.latitude, self.longitude)
 
+    def get_vote_status(self, project):
+        if self.uuid in deserialize_uuids(project.positive_votes):
+            return 1
+        elif self.uuid in deserialize_uuids(project.negative_votes):
+            return -1
+        else:
+            return 0
+
     def set_password(self, password:str):
         salt = generate_salt()
         hashed = hash_password(password, salt)
@@ -87,15 +95,6 @@ class Project(db.Model):
     @property
     def negative_votes_count(self):
         return len(self.negative_votes) // UUID_LENGTH
-
-    def user_vote_status(self, uuid: bytes):
-        if uuid in deserialize_uuids(self.positive_votes):
-            return 1
-
-        if uuid in deserialize_uuids(self.negative_votes):
-            return -1
-
-        return 0
 
     def is_in_range(self, pos):
         return geodesic(pos, self.pos).m <= self.radius
