@@ -73,13 +73,12 @@ def user_edit_account(user):
     return jsonify({"success": success})
 
 
-@api.route("/project/vote", methods=["POST", "GET"])
+@api.route("/project/vote", methods=["POST"])
 @login_required(User)
 def project_vote(user):
-    # data = request.get_json()
-    data = request.args
+    data = request.get_json()
     uuid_hex = data.get("uuid", "")
-    vote_value = data.get("vote_value", 0, type=int)
+    vote_value = data.get("vote_value")
 
     try:
         uuid = hex_to_uuid_bytes(uuid_hex)
