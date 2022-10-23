@@ -275,6 +275,36 @@
   text-align: center;
 }
 
+.table__loader {
+  border: 6px solid #b4b4b4;
+  border-radius: 50%;
+  border-top: 6px solid #363636;
+  width: 45px;
+  height: 45px;
+  -webkit-animation: spin 1.2s infinite;
+  animation: spin 1.2s ease-in-out infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 .projects {
   display: -ms-grid;
   display: grid;
