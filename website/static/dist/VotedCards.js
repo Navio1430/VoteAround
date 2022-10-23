@@ -33,11 +33,11 @@ const createCard = (label, uuid) => {
     a.appendChild(card);
     projectsContainerVoted.appendChild(a);
 };
-async function loadPopular() {
+async function loadVoted() {
     let projects = await getNext(index, limit);
     projects.forEach((element) => {
         createCard(element.label, element.uuid);
     });
 }
-loadPopular();
+loadVoted();
 export {};

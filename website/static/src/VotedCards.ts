@@ -51,7 +51,7 @@ const createCard = (label: string, uuid) => {
     projectsContainerVoted.appendChild(a);
 };
 
-async function loadPopular() {
+async function loadVoted() {
     let projects = await getNext(index, limit);
 
     projects.forEach((element) => {
@@ -59,4 +59,4 @@ async function loadPopular() {
     });
 }
 
-loadPopular();
+loadVoted();
