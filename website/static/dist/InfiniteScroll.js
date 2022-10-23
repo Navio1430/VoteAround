@@ -1,6 +1,7 @@
 const rowsContainer = document.getElementById('table-row-container');
-const limit = 5;
+const limit = 10;
 let index = 0;
+let isLoading = false;
 loadNext();
 async function getNext(index, limit) {
     let response = await fetch(`/api/projects/newest?index=${index}&limit=${limit}`);
@@ -9,13 +10,31 @@ async function getNext(index, limit) {
     });
 }
 async function loadNext() {
+    if (isLoading)
+        return;
+    showLoader();
+    isLoading = true;
     let projects = await getNext(index, limit);
-    projects.forEach(element => {
+    projects.forEach((element) => {
         createRow(element.uuid, element.label, element.description, element.positive_votes, element.negative_votes);
     });
-    if (projects.length === 0)
+    if (projects.length === 0) {
+        hideLoader();
         return;
+    }
+    hideLoader();
+    isLoading = false;
     index += limit;
+}
+function showLoader() {
+    let row = document.createElement('div');
+    row.classList.add('table__loader');
+    row.id = 'loader';
+    rowsContainer.appendChild(row);
+    rowsContainer.scrollTop = rowsContainer.scrollHeight;
+}
+function hideLoader() {
+    document.getElementById('loader').remove();
 }
 function createRow(uuid, label, description, positive_votes, negative_votes) {
     let row = document.createElement('div');
