@@ -10,8 +10,13 @@ usernameChangeBtn.addEventListener('click', () => {
     userContainer.children.length == 1 ? showAlert() : hideAlert();
 });
 function showAlert() {
+<<<<<<< Updated upstream
     let alert = document.createElement('div');
     alert.classList.add('user__delete-alert');
+=======
+    let alert = document.createElement('form');
+    alert.classList.add('user__delete-alert', 'user__delete-alert--change-name');
+>>>>>>> Stashed changes
     let title = document.createElement('p');
     title.classList.add('user__delete-title');
     title.innerHTML = 'Zmiana nazwy użytkownika';
@@ -19,7 +24,11 @@ function showAlert() {
     usernameInput.classList.add('user__delete-password');
     usernameInput.placeholder = 'Podaj nową nazwę użytkownika';
     passwordInput = document.createElement('input');
+<<<<<<< Updated upstream
     passwordInput.classList.add('user__password-input');
+=======
+    passwordInput.classList.add('user__password-input', 'user__password-input--second');
+>>>>>>> Stashed changes
     passwordInput.type = 'password';
     passwordInput.placeholder = 'Podaj hasło';
     checkboxInput = document.createElement('input');
