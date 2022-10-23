@@ -25,7 +25,7 @@ def project(user, project_id):
         uuid = hex_to_uuid_bytes(project_id)
     except ValueError:
         return "<h2>Invalid inputs</h2>"
-    
+
     project_entry = Project.query.filter_by(uuid=uuid).first()
 
     if not project_entry.is_in_range(user.pos):
@@ -33,7 +33,7 @@ def project(user, project_id):
 
     if not project_entry:
         return "<h2>Project not found</h2>"
-    
+
     return render_template("projects/project.html", project=project_entry)
 
 
@@ -70,9 +70,11 @@ def create(user):
         start_time = get_utc_time()
         end_time = start_time + PROJECT_EXPIRATION_TIME.total_seconds()
 
-        db.session.add(
-            Project(label, user, description, latitude, longitude, radius, start_time, end_time)
+        project = Project(
+            label, user, description, latitude, longitude, radius, start_time, end_time
         )
+        db.session.add(project)
+        user.authored += project.uuid
         db.session.commit()
 
         return redirect(url_for("projects.index"))

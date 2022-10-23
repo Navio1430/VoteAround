@@ -12,6 +12,7 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = "users"
     uuid = db.Column("uuid", db.LargeBinary, primary_key=True)
+    authored = db.Column("authored", db.LargeBinary)  # uuid[]
     username = db.Column("username", db.Text)
     tokens = db.Column("tokens", db.LargeBinary)
     hash = db.Column("hash", db.LargeBinary)
@@ -22,6 +23,7 @@ class User(db.Model):
 
     def __init__(self, username, password, latitude, longitude):
         self.uuid = generate_uuid()
+        self.authored = b""
         self.username = username
         self.tokens = b""
         self.set_password(password)
