@@ -27,14 +27,46 @@
                 <button id="username-btn-password" class="user-data__btns-item">
                     <p>Zmień Hasło</p>
                 </button>
+
+                <button id="username-btn-map" class="user-data__btns-item">
+                    <p>Zmień Lokalizacje Zamieszkania</p>
+                </button>
+            </div>
+
+
+            <div id="map" style="width: 200px; height: 200px">
+                <input hidden="true" id="map-lat" value="{{ loggedIn.latitude }}">
+                <input hidden="true" id="map-long" value="{{ loggedIn.longitude }}">
             </div>
         </div>
 
-        <div method="post" class="user__form"> </div>
-        <script type="module" src="{{ url_for('static', filename='dist/ChangeUsername.js') }}"></script>
-        <script type="module" src="{{ url_for('static', filename='dist/ChangePassword.js') }}"></script>
-        <script type="module" src="{{ url_for('static', filename='dist/DeleteAccount.js') }}"></script>
-        <script type="module" src="{{ url_for('static', filename='dist/Logout.js') }}"></script>
+        <div method="post" class="user__form"></div>
+
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+        <script
+            type="module"
+            src="{{ url_for('static', filename='dist/ChangeUsername.js') }}"
+        ></script>
+        <script
+            type="module"
+            src="{{ url_for('static', filename='dist/ChangePassword.js') }}"
+        ></script>
+        <script
+            type="module"
+            src="{{ url_for('static', filename='dist/DeleteAccount.js') }}"
+        ></script>
+        <script
+            type="module"
+            src="{{ url_for('static', filename='dist/Logout.js') }}"
+        ></script>
+        <script
+            type="module"
+            src="{{ url_for('static', filename='dist/ChangeUserLocation.js') }}"
+        ></script>
+        <script
+            type="module"    
+            src="{{ url_for('static', filename='dist/ChangeUserLocationMap.js') }}"
+        ></script>
     </div>
 </section>
 
