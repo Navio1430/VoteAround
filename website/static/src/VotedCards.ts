@@ -30,7 +30,20 @@ const createCard = (label: string, uuid) => {
 
     let cardTitle = document.createElement('p');
     cardTitle.classList.add('card__title');
-    cardTitle.innerHTML = label;
+
+    if (label.split('').length > 11) {
+        let shortTitle = [];
+
+        for (let i = 0; i < 11; i++) {
+            shortTitle.push(label[i]);
+        }
+
+        shortTitle.push('...');
+
+        cardTitle.innerHTML = shortTitle.join().replace(/\,/g, '');
+    } else {
+        cardTitle.innerHTML = label;
+    }
 
     card.appendChild(img);
     card.appendChild(cardTitle);
