@@ -48,19 +48,25 @@ def user_edit_account(user):
         else:
             user.username = new_username
 
-    new_latitude = data.get("new_latitude")
-    if new_latitude:
-        if -90 > new_latitude or new_latitude > 90:
-            success = False
-        else:
-            user.latitude = new_latitude
+    try:
+        new_latitude = float(data.get("new_latitude", -200))
+        if new_latitude:
+            if -90 > new_latitude or new_latitude > 90:
+                success = False
+            else:
+                print(new_latitude)
+                user.latitude = new_latitude
 
-    new_longitude = data.get("new_longitude")
-    if new_longitude:
-        if -180 > new_longitude or new_longitude > 180:
-            success = False
-        else:
-            user.longitude = new_longitude
+        new_longitude = float(data.get("new_longitude", -200))
+        if new_longitude:
+            if -180 > new_longitude or new_longitude > 180:
+                success = False
+            else:
+                print(new_longitude)
+                print(type(new_longitude))
+                user.longitude = new_longitude
+    except ValueError:
+        success = False
 
     db.session.commit()
 
