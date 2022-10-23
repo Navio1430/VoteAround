@@ -31,7 +31,8 @@ async function loadNext() {
             element.label,
             element.description,
             element.positive_votes,
-            element.negative_votes
+            element.negative_votes,
+            element.user_vote
         );
     });
 
@@ -60,7 +61,14 @@ function hideLoader() {
     document.getElementById('loader').remove();
 }
 
-function createRow(uuid, label, description, positive_votes, negative_votes) {
+function createRow(
+    uuid,
+    label,
+    description,
+    positive_votes,
+    negative_votes,
+    user_vote
+) {
     let row = document.createElement('div');
     row.classList.add('table__row');
 
@@ -137,6 +145,94 @@ function createRow(uuid, label, description, positive_votes, negative_votes) {
     rowItems.forEach((item) => {
         row.appendChild(item);
     });
+
+    switch (user_vote) {
+        case 1:
+            positive_votes -= 1;
+            resetHighlight(btnNegative);
+            highlightButton(btnPositive);
+            break;
+        case -1:
+            negative_votes -= 1;
+            resetHighlight(btnPositive);
+            highlightButton(btnNegative);
+            break;
+    }
+
+    function showVotesCount() {
+        row.children[2].innerHTML =
+            user_vote === 1
+                ? (positive_votes + 1).toString()
+                : positive_votes.toString();
+
+        row.children[3].innerHTML =
+            user_vote === -1
+                ? (negative_votes + 1).toString()
+                : negative_votes.toString();
+    }
+
+    showVotesCount();
+
+    function highlightButton(button: HTMLButtonElement) {
+        button.style.opacity = '1';
+    }
+
+    function resetHighlight(button: HTMLButtonElement) {
+        button.style.opacity = '0.3';
+    }
+
+    btnPositive.addEventListener('click', () => {
+        switch (user_vote) {
+            case 1:
+                user_vote = 0;
+                break;
+            case 0:
+            case -1:
+                user_vote = 1;
+                break;
+        }
+
+        resetHighlight(btnPositive);
+        resetHighlight(btnNegative);
+
+        if (user_vote === 1) highlightButton(btnPositive);
+
+        showVotesCount();
+        sendVote();
+    });
+
+    btnNegative.addEventListener('click', () => {
+        switch (user_vote) {
+            case -1:
+                user_vote = 0;
+                break;
+            case 0:
+            case 1:
+                user_vote = -1;
+                break;
+        }
+
+        resetHighlight(btnPositive);
+        resetHighlight(btnNegative);
+
+        if (user_vote === -1) highlightButton(btnNegative);
+
+        showVotesCount();
+        sendVote();
+    });
+
+    function sendVote() {
+        fetch('/api/project/vote', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                uuid: uuid,
+                vote_value: user_vote,
+            }),
+        });
+    }
 
     rowsContainer.appendChild(row);
 }
