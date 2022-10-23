@@ -11,7 +11,7 @@ usernameChangeBtn.addEventListener('click', () => {
 });
 function showAlert() {
     let alert = document.createElement('div');
-    alert.classList.add('user__delete-alert');
+    alert.classList.add('user__delete-alert', 'user__delete-alert--change-name');
     let title = document.createElement('p');
     title.classList.add('user__delete-title');
     title.innerHTML = 'Zmiana nazwy użytkownika';
@@ -19,7 +19,7 @@ function showAlert() {
     usernameInput.classList.add('user__delete-password');
     usernameInput.placeholder = 'Podaj nową nazwę użytkownika';
     passwordInput = document.createElement('input');
-    passwordInput.classList.add('user__password-input');
+    passwordInput.classList.add('user__password-input', 'user__password-input--second');
     passwordInput.type = 'password';
     passwordInput.placeholder = 'Podaj hasło';
     checkboxInput = document.createElement('input');

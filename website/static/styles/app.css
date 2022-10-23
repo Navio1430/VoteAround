@@ -1057,6 +1057,10 @@
   margin: 1.5rem 0 2rem 5%;
 }
 
+.user__password-input--second {
+  margin: 0 0 2rem 5%;
+}
+
 .user__delete-alert {
   position: absolute;
   top: 65%;
@@ -1079,6 +1083,10 @@
   -webkit-box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
           box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
   margin: auto;
+}
+
+.user__delete-alert--change-name {
+  height: 20.5rem;
 }
 
 .user__delete-title {
@@ -1143,6 +1151,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-left: 1rem;
 }
 
 .user__delete-btn {
