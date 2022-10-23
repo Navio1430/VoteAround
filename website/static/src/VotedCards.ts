@@ -1,7 +1,7 @@
 export {};
 
 const projectsContainerVoted = document.getElementById(
-    'projects-container-voted'
+    'card__container'
 );
 
 const index = 0;

@@ -1,4 +1,4 @@
-const projectsContainerVoted = document.getElementById('projects-container-voted');
+const projectsContainerVoted = document.getElementById('card__container');
 const index = 0;
 const limit = 4;
 async function getNext(index, limit) {
