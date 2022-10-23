@@ -2,7 +2,7 @@ const projectsContainerAuthored = document.getElementById('projects-container-au
 const index = 0;
 const limit = 4;
 async function getNext(index, limit) {
-    let response = await fetch(`/api/projects/voted?index=${index}&limit=${limit}`);
+    let response = await fetch(`/api/projects/authored?index=${index}&limit=${limit}`);
     return await response.json().then((data) => {
         return data;
     });
@@ -23,11 +23,11 @@ const createCard = (label, uuid) => {
     a.appendChild(card);
     projectsContainerAuthored.appendChild(a);
 };
-async function loadPopular() {
+async function loadAuthored() {
     let projects = await getNext(index, limit);
     projects.forEach((element) => {
         createCard(element.label, element.uuid);
     });
 }
-loadPopular();
+loadAuthored();
 export {};

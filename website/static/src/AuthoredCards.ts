@@ -9,7 +9,7 @@ const limit = 4;
 
 async function getNext(index: number, limit: number) {
     let response = await fetch(
-        `/api/projects/voted?index=${index}&limit=${limit}`
+        `/api/projects/authored?index=${index}&limit=${limit}`
     );
 
     return await response.json().then((data) => {
@@ -38,7 +38,7 @@ const createCard = (label: string, uuid) => {
     projectsContainerAuthored.appendChild(a);
 };
 
-async function loadPopular() {
+async function loadAuthored() {
     let projects = await getNext(index, limit);
 
     projects.forEach((element) => {
@@ -46,4 +46,4 @@ async function loadPopular() {
     });
 }
 
-loadPopular();
+loadAuthored();

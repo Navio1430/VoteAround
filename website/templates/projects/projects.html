@@ -15,11 +15,12 @@
         src="{{ url_for('static', filename='dist/InfiniteScroll.js') }}"
     ></script>
 
-    <!-- <script
+    <script
         type="module"
         src="{{ url_for('static', filename='dist/AuthoredCards.js') }}"
     ></script>
 
+    <!-- 
     <script
         type="module"
         src="{{ url_for('static', filename='dist/VotedCards.js') }}"
@@ -35,7 +36,7 @@
     <div class="projects__container">
         <p class="projects__title">Twoje projekty</p>
 
-        <div class="card__container">
+        <div id="projects-container-authored" class="card__container">
             <a href="{{ url_for('projects.create') }}">
                 <div class="card">
                     <img
@@ -44,17 +45,6 @@
                         class="card__icon"
                     />
                     <p class="card__title">Utwórz Projekt</p>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="card">
-                    <img
-                        src="{{ url_for('static', filename='assets/city.svg') }}"
-                        alt=""
-                        class="card__icon"
-                    />
-                    <p class="card__title">Renowacja ulicy</p>
                 </div>
             </a>
         </div>
