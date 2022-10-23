@@ -10,7 +10,7 @@ usernameChangeBtn.addEventListener('click', () => {
     userContainer.children.length == 1 ? showAlert() : hideAlert();
 });
 function showAlert() {
-    let alert = document.createElement('form');
+    let alert = document.createElement('div');
     alert.classList.add('user__delete-alert');
     let title = document.createElement('p');
     title.classList.add('user__delete-title');
@@ -20,11 +20,12 @@ function showAlert() {
     usernameInput.placeholder = 'Podaj nową nazwę użytkownika';
     passwordInput = document.createElement('input');
     passwordInput.classList.add('user__password-input');
-    passwordInput.type = "password";
+    passwordInput.type = 'password';
     passwordInput.placeholder = 'Podaj hasło';
     checkboxInput = document.createElement('input');
     checkboxInput.classList.add('user__delete-checkbox');
     checkboxInput.type = 'checkbox';
+    let responseMessageContainer = document.createElement('div');
     let checkboxInner = document.createElement('p');
     checkboxInner.innerHTML =
         'Jestem pewien, że chcę zmienić nazwę użytkownika';
@@ -32,17 +33,17 @@ function showAlert() {
     checkboxContainer.classList.add('user__delete-checkbox-container');
     checkboxContainer.appendChild(checkboxInput);
     checkboxContainer.appendChild(checkboxInner);
+    responseMessageContainer.appendChild(checkboxContainer);
     let buttonInner = document.createElement('p');
     buttonInner.innerHTML = 'Zmień';
     submitBtn = document.createElement('button');
     submitBtn.classList.add('table__row-btn', 'user__delete-btn', 'user__delete-btn--blue');
-    submitBtn.type = 'submit';
     submitBtn.appendChild(buttonInner);
     let alertItems = [
         title,
         usernameInput,
         passwordInput,
-        checkboxContainer,
+        responseMessageContainer,
         submitBtn,
     ];
     alertItems.forEach((element) => {
@@ -66,14 +67,15 @@ function showAlert() {
             .then((response) => response.json())
             .then((data) => {
             if (data.success) {
-                location.reload();
+                window.location.reload();
             }
             else {
-                // if (alertContainer.children.length <= 1) {
-                //     let passwordAlert = document.createElement('p');
-                //     passwordAlert.innerHTML = 'Błędne hasło';
-                //     alertContainer.appendChild(passwordAlert);
-                // }
+                if (responseMessageContainer.children.length <= 1) {
+                    let message = document.createElement('p');
+                    message.style.color = 'red';
+                    message.innerHTML = 'Błędne hasło';
+                    responseMessageContainer.appendChild(message);
+                }
             }
         });
     });
