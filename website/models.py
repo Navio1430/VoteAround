@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from utils.crypto import generate_salt, hash_password
-from utils.uuid import UUID_LENGTH, generate_uuid, deserialize_uuids
+from utils.uuid import UUID_LENGTH, generate_uuid, serialize_uuids, deserialize_uuids
 from utils.auth import deserialize_tokens
 from utils.time import get_utc_time
 from geopy.distance import geodesic
@@ -32,6 +32,22 @@ class User(db.Model):
     @property
     def pos(self):
         return (self.latitude, self.longitude)
+    
+    def vote_project(self, project, vote_value):
+        neg_votes = set(deserialize_uuids(project.negative_votes))
+        pos_votes = set(deserialize_uuids(project.positive_votes))
+        neg_votes.discard(self.uuid)
+        pos_votes.discard(self.uuid)
+
+        if vote_value == -1:
+            neg_votes.add(self.uuid)
+        elif vote_value == 1:
+            pos_votes.add(self.uuid)
+        
+        project.negative_votes = serialize_uuids(neg_votes)
+        project.positive_votes = serialize_uuids(pos_votes)
+        db.session.commit()
+        
 
     def get_vote_status(self, project):
         if self.uuid in deserialize_uuids(project.positive_votes):

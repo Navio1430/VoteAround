@@ -67,6 +67,32 @@ def user_edit_account(user):
     return jsonify({"success": success})
 
 
+@api.route("/project/vote", methods=["POST", "GET"])
+@login_required(User)
+def project_vote(user):
+    # data = request.get_json()
+    data = request.args
+    uuid_hex = data.get("uuid", "")
+    vote_value = data.get("vote_value", 0, type=int)
+
+    try:
+        uuid = hex_to_uuid_bytes(uuid_hex)
+    except ValueError:
+        return jsonify({"success": False})
+
+    project = db.session.query(Project).filter(Project.uuid == uuid).first()
+
+    if not project:
+        return jsonify({"success": False})
+
+    if vote_value not in (-1, 0, 1):
+        return jsonify({"success": False})
+
+    user.vote_project(project, vote_value)
+
+    return jsonify({"success": True})
+
+
 @api.route("/projects/project", methods=["GET"])
 @login_required(User)
 def projects_project(user):
