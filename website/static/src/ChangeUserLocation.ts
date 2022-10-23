@@ -19,7 +19,10 @@ locationChangeBtn.addEventListener('click', () => {
 
 function showAlert() {
     let alert = document.createElement('div');
-    alert.classList.add('user__password-alert');
+    alert.classList.add(
+        'user__password-alert',
+        'user__password-alert--location'
+    );
 
     let title = document.createElement('p');
     title.classList.add('user__delete-title');
@@ -40,7 +43,10 @@ function showAlert() {
     checkboxInner.innerHTML = 'Jestem pewien, że chcę zmienić lokalizacje';
 
     let checkboxContainer = document.createElement('div');
-    checkboxContainer.classList.add('user__delete-checkbox-container');
+    checkboxContainer.classList.add(
+        'user__delete-checkbox-container',
+        'user__delete-checkbox-container--location'
+    );
 
     checkboxContainer.appendChild(checkboxInput);
     checkboxContainer.appendChild(checkboxInner);

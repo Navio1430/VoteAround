@@ -88,7 +88,6 @@
             transform: translate(-50%, -50%);
 
             display: flex;
-            align-items: center;
             flex-direction: column;
 
             width: 26.875rem;
@@ -97,6 +96,10 @@
             background: $white;
             box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.15);
             margin: auto;
+
+            &--location {
+                height: 15rem;
+            }
         }
 
         &-input {
@@ -184,6 +187,14 @@
                 flex-direction: row;
                 align-self: flex-start;
                 margin-left: 1rem;
+
+                &--location {
+                    margin-top: 1.5rem;
+                    margin-left: 1.5rem;
+                    align-self: flex-start;
+
+                    margin: 1.5rem 0 0 1.5rem;
+                }
             }
         }
 
@@ -195,5 +206,12 @@
                 background: $blue;
             }
         }
+    }
+
+    &__map {
+        width: 100%;
+        height: 200px;
+
+        margin: 2rem auto;
     }
 }

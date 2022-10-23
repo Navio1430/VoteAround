@@ -27,17 +27,24 @@
                 <button id="username-btn-password" class="user-data__btns-item">
                     <p>Zmień Hasło</p>
                 </button>
-
-                <button id="username-btn-map" class="user-data__btns-item">
-                    <p>Zmień Lokalizacje Zamieszkania</p>
-                </button>
             </div>
 
-
-            <div id="map" style="width: 200px; height: 200px">
-                <input hidden="true" id="map-lat" value="{{ loggedIn.latitude }}">
-                <input hidden="true" id="map-long" value="{{ loggedIn.longitude }}">
+            <div id="map" class="user__map">
+                <input
+                    hidden="true"
+                    id="map-lat"
+                    value="{{ loggedIn.latitude }}"
+                />
+                <input
+                    hidden="true"
+                    id="map-long"
+                    value="{{ loggedIn.longitude }}"
+                />
             </div>
+
+            <button id="username-btn-map" class="user-data__btns-item">
+                <p>Zmień Lokalizacje Zamieszkania</p>
+            </button>
         </div>
 
         <div method="post" class="user__form"></div>
@@ -64,7 +71,7 @@
             src="{{ url_for('static', filename='dist/ChangeUserLocation.js') }}"
         ></script>
         <script
-            type="module"    
+            type="module"
             src="{{ url_for('static', filename='dist/ChangeUserLocationMap.js') }}"
         ></script>
     </div>
