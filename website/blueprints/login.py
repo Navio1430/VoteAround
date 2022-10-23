@@ -18,7 +18,7 @@ def index():
         user = User.query.filter_by(username=username).first()
 
         if not user:
-            return render_template("bug/bug.html")
+            return render_template("bug/bug.html", error_message="Użytkownik o podanej nazwie nie istnieje")
 
         if user.check_password(password):
             token = generate_token()    # serialized data, with expiration time
@@ -29,7 +29,7 @@ def index():
             resp.set_cookie("token", b64encode(token[:TOKEN_SIZE]).decode(), expires=get_utc_time(TOKEN_EXPIRATION_TIME))
             return resp
         else:
-            return render_template("bug/bug.html")
+            return render_template("bug/bug.html", error_message="Podane hasło jest niepoprawne")
 
     else:
         user = check_login(User)

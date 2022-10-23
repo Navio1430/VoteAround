@@ -9,7 +9,6 @@ projects = Blueprint("projects", __name__)
 
 PROJECT_EXPIRATION_TIME = timedelta(days=30)
 MAX_RADIUS_LENGTH = 5000  # Meters
-MAX_LABEL_LENGTH = 32
 
 
 @projects.route("/", methods=["GET"])
@@ -24,7 +23,7 @@ def project(user, project_id):
     try:
         uuid = hex_to_uuid_bytes(project_id)
     except ValueError:
-        return "<h2>Invalid inputs</h2>"
+        return render_template("bug/bug.html", error_message="Podane ID ma niepoprawny format")
 
     project_entry = Project.query.filter_by(uuid=uuid).first()
 
@@ -32,7 +31,7 @@ def project(user, project_id):
         return redirect(url_for("projects.index"))
 
     if not project_entry:
-        return "<h2>Project not found</h2>"
+        return render_template("bug/bug.html", error_message="Nie znaleziono projektu o podanym ID")
 
     return render_template("projects/project.html", project=project_entry)
 
@@ -48,22 +47,22 @@ def create(user):
             latitude = float(request.form.get("latitude"))
             radius = float(request.form.get("radius"))
         except ValueError:
-            return "<h2>Invalid inputs</h2>"
+            render_template("bug/bug.html", error_message="Podane wartości mają niepoprawny format")
 
         if len(label) < 5:
-            return "<h2>Label must contain at least 5 characters</h2>"
+            return render_template("bug/bug.html", error_message="Nazwa musi zawierać przynajmniej 5 znaków")
 
-        if len(label) > MAX_LABEL_LENGTH:
-            return "<h2>Label is too long (max 32 characters)</h2>"
+        if len(label) > 32:
+            return render_template("bug/bug.html", error_message="Nazwa może zawierać maksymalnie 32 znaki")
 
         if radius <= 0:
-            return "<h2>Radius must be larger than 0</h2>"
+            return render_template("bug/bug.html", error_message="Zasięg projektu musi być większy od zera")
 
         if -90 > latitude or latitude > 90:
-            return "<h2>Latitude is invalid</h2>"
+            return render_template("bug/bug.html", error_message="Szerokość geograficzna ma niepoprawną wartość")
 
         if -180 > longitude or longitude > 180:
-            return "<h2>Longitude is invalid</h2>"
+            return render_template("bug/bug.html", error_message="Długość geograficzna ma niepoprawną wartość")
 
         radius = MAX_RADIUS_LENGTH if radius > MAX_RADIUS_LENGTH else radius
 

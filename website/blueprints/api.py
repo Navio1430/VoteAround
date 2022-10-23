@@ -113,12 +113,12 @@ def projects_project(user):
     try:
         uuid = hex_to_uuid_bytes(uuid_hex)
     except ValueError:
-        return "{}"
+        return jsonify({})
 
     project = db.session.query(Project).filter(Project.uuid == uuid).first()
 
     if not project:
-        return "{}"
+        return jsonify({})
 
     data = {
         "uuid": uuid_hex,
