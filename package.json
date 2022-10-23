@@ -1,5 +1,5 @@
 {
-  "name": "hackheroeszsme",
+  "name": "votearound",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Navio1430/HackHeroesZSME.git"
+    "url": "git+https://github.com/Navio1430/VoteAround.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Navio1430/HackHeroesZSME/issues"
+    "url": "https://github.com/Navio1430/VoteAround/issues"
   },
-  "homepage": "https://github.com/Navio1430/HackHeroesZSME#readme"
+  "homepage": "https://github.com/Navio1430/VoteAround#readme"
 }
