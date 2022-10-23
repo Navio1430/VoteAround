@@ -17,7 +17,12 @@ def user_delete_account(user):
     if not user.check_password(password):
         return jsonify({"success": False})
 
-    db.session.query(User).filter(User.uuid == user.uuid).delete()
+    authored_ids = deserialize_uuids(user.authored)
+
+    for project_uuid in authored_ids:
+        Project.query.filter_by(uuid=project_uuid).delete()
+
+    db.session.delete(user)
     db.session.commit()
 
     return jsonify({"success": True})
