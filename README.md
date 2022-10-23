@@ -1,4 +1,4 @@
-# Name
+# VoteAround
 
 Celem naszej apliakcji jest umożliwienie obywatelom na terenie całego kraju, tworzenia projektów które wpłyną na jakość życia lokalnego społeczeństwa.
 
@@ -13,49 +13,61 @@ Podczas tworzenia projektu użytkownik podaje podstawowe dane na jego temat:
 
 Dane pozyskane dzięki naszej aplikajci pozwalają między innymi na oszacowanie poparcia danego projektu, co znacznie usprawni proces wdrożenia go w życie.
 
-Projekt wykonany przeznaczony na konkurs hackheroes 2022, wykonany pomiędzy 8 a 23 października.
+Projekt wykonany przeznaczony na konkurs HackHeroes edycja 2022, wykonany pomiędzy 8 a 23 października.
 
-## Jak uruchomić projekt lokalnie
+</br>
 
-**Uwaga aby poprawnie uruchmoić projekt, należy zainstalować [python](https://www.python.org/downloads/)**
+## Jak uruchomić projekt
 
-Skopiowanie projektu
+**Uwaga! Aby poprawnie uruchmoić projekt, należy zainstalować [python](https://www.python.org/downloads/)**
 
-```bash
-  git clone https://github.com/Navio1430/HackHeroesZSME.git
+Pobranie projektu
+
+```cmd
+  git clone https://github.com/Navio1430/VoteAround.git
 ```
 
-Otwarcie folderu projektu
+</br>
 
-Otwarcie terminala
+### A. Uruchamianie automatyczne
 
-Instalacja zależności
+- Uruchom skrypt `run.bat` w folderze aplikacji
 
-```bash
-  pip install -r requirements
-```
+</br>
 
-Przejście do ścieżki
+### B. Uruchamianie manualne
 
-```bash
-  cd /website
-```
+- Otwórz terminal w folderze projektu
 
-Uruchomienie projektu lokalnie
+- Zainstaluj zależności
 
-```bash
-  python app.py
-```
+  ```cmd
+    pip install -r requirements.txt
+  ```
 
-Otwarcie local host w przeglądarce, port 5000
+- Przejdź do ścieżki aplikacji
 
-```bash
-  127.0.0.1:5000
-```
+  ```cmd
+    cd website
+  ```
+
+- Uruchom projekt przy użyciu języka python
+
+  ```cmd
+    python app.py
+  ```
+
+- Otwórz stronę w przeglądarce, port 5000
+
+  ```
+    127.0.0.1:5000
+  ```
+
+</br>
 
 ## Jak testować naszą aplikację?
 
-a) Rejestracja i logowanie
+### a) Rejestracja i logowanie
 
 1. Zarejestruj konto
 
@@ -63,37 +75,37 @@ a) Rejestracja i logowanie
 
 2. Zaloguj się
 
-b) Tworzenie projektów
+### b) Tworzenie projektów
 
 1. Przejdź do zakładki 'Projekty'
 2. Utwórz projekt w w lokalizacji, takiej abyś był w jego zakresie
 3. Utworzony projekt wyświetla się w zakładce 'Projekty'
 
-c) Wylogowanie
+### c) Wylogowanie
 
 1. Przejdź do zakładki 'Twoje Dane'
 2. Kliknij 'Wyloguj się'
 
-d) Usunięcie konta
+### d) Usunięcie konta
 
 1. Przejdź do zakładki 'Twoje Dane'
 2. Kliknij 'Usuń konto'
 3. Podaj swoje hasło
 4. Wciśnij przycisk 'Usuń'
 
-e) Zmiana nazwy użytkownika
+### e) Zmiana nazwy użytkownika
 
 1. Przejdź do zakładki 'Twoje Dane'
-2. Kliknij 'Zmień Nazwę Użytkownika'
+2. Kliknij 'Zmień nazwę użytkownika'
 3. Podaj nową nazwę użytkownika
 4. Podaj swoje hasło
 5. Zaznacz checkbox 'Jestem pewien, że chcę zmienić nazwę użytkownika'
 6. Wciśnij przycisk 'Zmień'
 
-f) Zmiana hasła
+### f) Zmiana hasła
 
 1. Przejdź do zakładki 'Twoje Dane'
-2. Kliknij 'Zmień Hasło'
+2. Kliknij 'Zmień hasło'
 3. Podaj aktualne hasło
 4. Podaj nowe hasło
 5. Powtórz nowe hasło
@@ -103,5 +115,5 @@ f) Zmiana hasła
 ## Twórcy
 
 -   [@Navio1430](https://github.com/Navio1430)
--   [@simon-dutka](https://github.com/simon-dutka)
 -   [@KotreQ](https://github.com/KotreQ)
+-   [@simon-dutka](https://github.com/simon-dutka)
