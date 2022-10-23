@@ -16,7 +16,6 @@
   font-weight: 500;
   font-size: 1.5rem;
   letter-spacing: 0.1rem;
-  text-transform: capitalize;
   z-index: 1;
   margin-top: 8%;
 }
@@ -102,6 +101,86 @@
   border-radius: 0.25rem;
   background: #ffffff;
   margin-left: 1.5625rem;
+}
+
+.main-title {
+  color: #223242;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.main-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  margin: 10rem auto 20rem auto;
+}
+
+.main-text {
+  color: #223242;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+}
+
+.main-text--left {
+  text-align: left;
+}
+
+.main-text--center {
+  text-align: center;
+}
+
+.main-text--right {
+  text-align: right;
+}
+
+.main__contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto 10rem auto;
+}
+
+.main__contact-text {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: center;
+  color: #131b23;
+}
+
+.main__contact-btn {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+  width: 153px;
+  border-radius: 25px;
+  background: #223242;
+  padding: 16px 26px;
+  margin-top: 2.5rem;
 }
 
 .table__container {
@@ -194,7 +273,6 @@
   font-weight: 500;
   letter-spacing: 0.03rem;
   text-align: center;
-  text-transform: capitalize;
 }
 
 .projects {
@@ -517,7 +595,6 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 24px;
-  text-transform: capitalize;
   margin-bottom: 1.5625rem;
 }
 
@@ -552,7 +629,6 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 18px;
-  text-transform: capitalize;
   margin-right: 25px;
 }
 
@@ -585,7 +661,6 @@
   font-size: 15px;
   line-height: 18px;
   text-align: center;
-  text-transform: capitalize;
   padding: 9px 25px;
   margin-top: 1rem;
 }
@@ -901,7 +976,6 @@
   font-family: "Inter", sans-serif;
   font-weight: 600;
   font-size: 1.0625rem;
-  text-transform: capitalize;
   cursor: pointer;
   margin-bottom: 0.6rem;
 }
@@ -1067,7 +1141,6 @@
   color: #223242;
   font-size: 2.625rem;
   font-weight: 700;
-  text-transform: capitalize;
 }
 
 .bug__btn {
@@ -1113,7 +1186,6 @@ h1 {
   font-size: 2.25rem;
   font-weight: 700;
   font-family: "Roboto", sans-serif;
-  text-transform: capitalize;
   text-align: center;
   margin: 8rem auto 4rem auto;
 }

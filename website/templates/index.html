@@ -1,1 +1,38 @@
-{% extends 'base.html' %} {% block content %} {% endblock %}
+{% extends 'base.html' %} {% block content %}
+
+<div class="main-container">
+    <p class="main-title">Największa sieć sąsiedzka</p>
+    <div class="main-row">
+        <img src="{{ url_for('static', filename='assets/main/create.svg') }}" />
+
+        <p class="main-text main-text--right">
+            Twórz i głosuj <br />
+            na projekty
+        </p>
+    </div>
+
+    <div class="main-row">
+        <p class="main-text main-text--left">
+            Lokalne projekty <br />
+            w twoim mieście
+        </p>
+
+        <img
+            src="
+        {{ url_for('static', filename='assets/main/map.svg') }}"
+        />
+    </div>
+
+    <div class="main__contact">
+        <p class="main-text main-text--center">
+            Dołącz do naszej społeczności <br />
+            po sąsiedzku!
+        </p>
+
+        <button class="main__contact-btn">
+            <a href="{{ url_for('signup.index') }}">Rejestracja</a>
+        </button>
+    </div>
+</div>
+
+{% endblock %}
