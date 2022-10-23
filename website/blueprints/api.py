@@ -29,36 +29,42 @@ def user_edit_account(user):
     data = request.get_json()
     password = data.get("password", "")
 
+    success = True
+
     if not user.check_password(password):
         return jsonify({"success": False})
 
     new_password = data.get("new_password")
     if new_password:
         if len(new_password) < 8:
-            return jsonify({"success": False})
-        user.set_password(new_password)
+            success = False
+        else:
+            user.set_password(new_password)
 
     new_username = data.get("new_username")
     if new_username:
         if len(new_username) < 4:
-            return jsonify({"success": False})
-        user.username = new_username
+            success = False
+        else:
+            user.username = new_username
 
     new_latitude = data.get("new_latitude")
     if new_latitude:
         if -90 > new_latitude or new_latitude > 90:
-            return jsonify({"success": False})
-        user.latitude = new_latitude
+            success = False
+        else:
+            user.latitude = new_latitude
 
     new_longitude = data.get("new_longitude")
     if new_longitude:
         if -180 > new_longitude or new_longitude > 180:
-            return jsonify({"success": False})
-        user.longitude = new_longitude
+            success = False
+        else:
+            user.longitude = new_longitude
 
     db.session.commit()
 
-    return jsonify({"success": True})
+    return jsonify({"success": success})
 
 
 @api.route("/projects/project", methods=["GET"])
