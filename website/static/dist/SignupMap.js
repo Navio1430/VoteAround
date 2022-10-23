@@ -45,8 +45,8 @@ map.on("click", function (evt) {
         .getGeometry()
         .setCoordinates(ol.proj.fromLonLat([coords[0], coords[1]]));
 
-    document.getElementById("map-long").value = coords[0];
     document.getElementById("map-lat").value = coords[1];
+    document.getElementById("map-long").value = coords[0];
 
     validate();
 });
