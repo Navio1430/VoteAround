@@ -6,7 +6,7 @@
         font-size: 4rem;
         text-align: center;
 
-        margin-top: 100px;
+        margin-top: 6.25rem;
     }
 
     &-row {
@@ -21,7 +21,7 @@
         color: $blue;
         font-family: $roboto;
         font-weight: 700;
-        font-size: 50px;
+        font-size: 3.125rem;
 
         &--left {
             text-align: left;
@@ -47,8 +47,7 @@
         &-text {
             font-family: $roboto;
             font-weight: 700;
-            font-size: 48px;
-            line-height: 56px;
+            font-size: 3rem;
             text-align: center;
 
             color: #131b23;
@@ -56,15 +55,15 @@
 
         &-btn {
             color: $white;
-            font-size: 20px;
+            font-size: 1.25rem;
             font-weight: 400;
             font-family: $roboto;
 
-            width: 153px;
-            border-radius: 25px;
+            width: 9.5625rem;
+            border-radius: 1.5625rem;
             background: $blue;
 
-            padding: 16px 26px;
+            padding: 1rem 1.625rem;
             margin-top: 2.5rem;
         }
     }
