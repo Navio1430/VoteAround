@@ -79,7 +79,18 @@ function createRow(uuid, label, description, positive_votes, negative_votes) {
     label_item.href = `${uuid}`;
     items[0].appendChild(label_item);
 
-    items[1].innerHTML = description;
+    if (description.split('').length > 120) {
+        let shortDescription = [];
+
+        for (let i = 0; i < 120; i++) {
+            shortDescription.push(description[i]);
+        }
+
+        items[1].innerHTML = shortDescription.join().replace(/\,/g, '');
+    } else {
+        items[1].innerHTML = description;
+    }
+
     items[2].innerHTML = positive_votes.toString();
     items[3].innerHTML = negative_votes.toString();
 
