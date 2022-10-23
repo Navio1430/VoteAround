@@ -69,7 +69,7 @@ function showAlert() {
             else {
                 if (responseMessageContainer.children.length <= 1) {
                     let message = document.createElement('p');
-                    message.style.color = "red";
+                    message.style.color = 'red';
                     message.innerHTML = 'Błędne hasło';
                     responseMessageContainer.appendChild(message);
                 }

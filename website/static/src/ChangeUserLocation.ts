@@ -91,7 +91,9 @@ function showAlert() {
             .then((response) => response.json())
             .then((data) => {
                 if (data.success) {
-                    responseMessageContainer.removeChild(responseMessageContainer.lastChild);
+                    responseMessageContainer.removeChild(
+                        responseMessageContainer.lastChild
+                    );
                     setTimeout(
                         window.location.reload.bind(window.location),
                         1000
@@ -99,7 +101,7 @@ function showAlert() {
                 } else {
                     if (responseMessageContainer.children.length <= 1) {
                         let message = document.createElement('p');
-                        message.style.color = "red";
+                        message.style.color = 'red';
                         message.innerHTML = 'Błędne hasło';
                         responseMessageContainer.appendChild(message);
                     }
