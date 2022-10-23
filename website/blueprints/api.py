@@ -48,25 +48,27 @@ def user_edit_account(user):
         else:
             user.username = new_username
 
-    try:
-        new_latitude = float(data.get("new_latitude", -200))
-        if new_latitude:
+    new_latitude_str = data.get("new_latitude")
+    if new_latitude_str:
+        try:
+            new_latitude = float(new_latitude_str, -200)
             if -90 > new_latitude or new_latitude > 90:
                 success = False
             else:
-                print(new_latitude)
                 user.latitude = new_latitude
+        except ValueError:
+            success = False
 
-        new_longitude = float(data.get("new_longitude", -200))
-        if new_longitude:
+    new_longitude_str = data.get("new_longitude")
+    if new_longitude_str:
+        try:
+            new_longitude = float(new_longitude_str, -200)
             if -180 > new_longitude or new_longitude > 180:
                 success = False
             else:
-                print(new_longitude)
-                print(type(new_longitude))
                 user.longitude = new_longitude
-    except ValueError:
-        success = False
+        except ValueError:
+            success = False
 
     db.session.commit()
 
@@ -245,7 +247,8 @@ def projects_authored(user):
     authored_ids = list(deserialize_uuids(user.authored))[::-1]
 
     projects = [
-        Project.query.filter_by(uuid=project_uuid).first() for project_uuid in authored_ids
+        Project.query.filter_by(uuid=project_uuid).first()
+        for project_uuid in authored_ids
     ]
 
     in_range = filter(
