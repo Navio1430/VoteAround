@@ -77,14 +77,29 @@ function createRow(uuid, label, description, positive_votes, negative_votes) {
     let label_item = document.createElement('a');
     label_item.innerHTML = label;
     label_item.href = `${uuid}`;
+
+    if (label_item.innerHTML.split('').length > 11) {
+        let shortTitle = [];
+
+        for (let i = 0; i < 11; i++) {
+            shortTitle.push(label_item.innerHTML[i]);
+        }
+
+        shortTitle.push('...');
+
+        label_item.innerHTML = shortTitle.join().replace(/\,/g, '');
+    }
+
     items[0].appendChild(label_item);
 
-    if (description.split('').length > 120) {
+    if (description.split('').length > 40) {
         let shortDescription = [];
 
-        for (let i = 0; i < 120; i++) {
+        for (let i = 0; i < 40; i++) {
             shortDescription.push(description[i]);
         }
+
+        shortDescription.push('...');
 
         items[1].innerHTML = shortDescription.join().replace(/\,/g, '');
     } else {
