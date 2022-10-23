@@ -51,7 +51,7 @@ def user_edit_account(user):
     new_latitude_str = data.get("new_latitude")
     if new_latitude_str:
         try:
-            new_latitude = float(new_latitude_str, -200)
+            new_latitude = float(new_latitude_str)
             if -90 > new_latitude or new_latitude > 90:
                 success = False
             else:
@@ -62,7 +62,7 @@ def user_edit_account(user):
     new_longitude_str = data.get("new_longitude")
     if new_longitude_str:
         try:
-            new_longitude = float(new_longitude_str, -200)
+            new_longitude = float(new_longitude_str)
             if -180 > new_longitude or new_longitude > 180:
                 success = False
             else:
