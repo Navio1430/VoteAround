@@ -39,6 +39,9 @@ class User(db.Model):
         neg_votes.discard(self.uuid)
         pos_votes.discard(self.uuid)
 
+        user_votes = set(deserialize_uuids(self.votes))
+        user_votes.discard(project.uuid)
+
         if vote_value == -1:
             neg_votes.add(self.uuid)
         elif vote_value == 1:
@@ -46,6 +49,12 @@ class User(db.Model):
         
         project.negative_votes = serialize_uuids(neg_votes)
         project.positive_votes = serialize_uuids(pos_votes)
+
+        if vote_value != 0:
+            user_votes.add(project.uuid)
+
+        self.votes = serialize_uuids(user_votes)
+
         db.session.commit()
         
 

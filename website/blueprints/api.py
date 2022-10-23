@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from utils.auth import login_required
 from models import User, Project, db
-from utils.uuid import bytes_to_uuid_hex, hex_to_uuid_bytes
+from utils.uuid import bytes_to_uuid_hex, hex_to_uuid_bytes, deserialize_uuids
 
 api = Blueprint("api", __name__)
 
@@ -182,6 +182,42 @@ def projects_newest(user):
     filtered = sorted(in_range, key=lambda project: project.start_time, reverse=True)[
         index : index + limit
     ]
+
+    data = [
+        {
+            "uuid": bytes_to_uuid_hex(project.uuid),
+            "label": project.label,
+            "description": project.description,
+            "positive_votes": project.positive_votes_count,
+            "negative_votes": project.negative_votes_count,
+            "user_vote": user.get_vote_status(project),
+        }
+        for project in filtered
+    ]
+
+    return jsonify(data)
+
+
+@api.route("/projects/voted", methods=["GET"])
+@login_required(User)
+def projects_voted(user):
+    index = request.args.get("index", default=0, type=int)
+    limit = request.args.get("limit", default=10, type=int)
+
+    limit = min(limit, MAX_LIMIT)
+
+    voted_ids = list(deserialize_uuids(user.votes))[::-1]
+
+    projects = [
+        Project.query.filter_by(uuid=project_uuid).first() for project_uuid in voted_ids
+    ]
+
+    in_range = filter(
+        lambda project: project.is_in_range((user.latitude, user.longitude)),
+        projects,
+    )
+
+    filtered = list(in_range)[index : index + limit]
 
     data = [
         {
