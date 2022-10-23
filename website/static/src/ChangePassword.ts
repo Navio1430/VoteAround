@@ -16,7 +16,7 @@ passwordChangeBtn.addEventListener('click', () => {
 });
 
 function showAlert() {
-    let alert = document.createElement('form');
+    let alert = document.createElement('div');
     alert.classList.add('user__password-alert');
 
     let title = document.createElement('p');
@@ -41,6 +41,8 @@ function showAlert() {
     newPasswordRepeatInput.type = 'password';
     newPasswordRepeatInput.placeholder = 'Powtórz nowe hasło';
 
+    let responseMessageContainer = document.createElement('div');
+
     checkboxInput = document.createElement('input');
     checkboxInput.classList.add('user__delete-checkbox');
     checkboxInput.type = 'checkbox';
@@ -54,6 +56,8 @@ function showAlert() {
     checkboxContainer.appendChild(checkboxInput);
     checkboxContainer.appendChild(checkboxInner);
 
+    responseMessageContainer.appendChild(checkboxContainer);
+
     let buttonInner = document.createElement('p');
     buttonInner.innerHTML = 'Zmień';
 
@@ -63,7 +67,6 @@ function showAlert() {
         'user__delete-btn',
         'user__delete-btn--blue'
     );
-    submitBtn.type = 'submit';
 
     submitBtn.appendChild(buttonInner);
 
@@ -72,7 +75,7 @@ function showAlert() {
         passwordInput,
         newPasswordInput,
         newPasswordRepeatInput,
-        checkboxContainer,
+        responseMessageContainer,
         submitBtn,
     ];
 
@@ -96,13 +99,14 @@ function showAlert() {
             .then((response) => response.json())
             .then((data) => {
                 if (data.success) {
-                    location.reload();
+                    window.location.reload();
                 } else {
-                    // if (alertContainer.children.length <= 1) {
-                    //     let passwordAlert = document.createElement('p');
-                    //     passwordAlert.innerHTML = 'Błędne hasło';
-                    //     alertContainer.appendChild(passwordAlert);
-                    // }
+                    if (responseMessageContainer.children.length <= 1) {
+                        let message = document.createElement('p');
+                        message.style.color = 'red';
+                        message.innerHTML = 'Błędne hasło';
+                        responseMessageContainer.appendChild(message);
+                    }
                 }
             });
     });
