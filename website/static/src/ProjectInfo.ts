@@ -1,12 +1,22 @@
-export {}
+export {};
 
-const positiveVoteBtn: HTMLButtonElement = document.getElementById("positive-vote-btn") as HTMLButtonElement;
-const negativeVoteBtn: HTMLButtonElement = document.getElementById("negative-vote-btn") as HTMLButtonElement;
-const positiveVotesLabel: HTMLElement = document.getElementById("positive-votes-label");
-const negativeVotesLabel: HTMLElement = document.getElementById("negative-votes-label");
+const positiveVoteBtn: HTMLButtonElement = document.getElementById(
+    'positive-vote-btn'
+) as HTMLButtonElement;
+const negativeVoteBtn: HTMLButtonElement = document.getElementById(
+    'negative-vote-btn'
+) as HTMLButtonElement;
+const positiveVotesLabel: HTMLElement = document.getElementById(
+    'positive-votes-label'
+);
+const negativeVotesLabel: HTMLElement = document.getElementById(
+    'negative-votes-label'
+);
 
 let userVote = 0;
-let uuid = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+let uuid = window.location.href.substring(
+    window.location.href.lastIndexOf('/') + 1
+);
 
 let positiveVotesCount = 0;
 let negativeVotesCount = 0;
@@ -17,35 +27,33 @@ window.onload = () => {
 
 function init() {
     fetch(`/api/projects/project?uuid=${uuid}`, {
-        method: "GET",
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         },
     })
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data);
-        userVote = data.user_vote;
-        positiveVotesCount = data.positive_votes;
-        negativeVotesCount = data.negative_votes;
+        .then((response) => response.json())
+        .then((data) => {
+            userVote = data.user_vote;
+            positiveVotesCount = data.positive_votes;
+            negativeVotesCount = data.negative_votes;
 
-        switch (userVote) {
-            case 1:
-                positiveVotesCount -= 1;
-                resetHighlight();
-                positiveHighlight();
-                break;
-            case -1:
-                negativeVotesCount -= 1;
-                resetHighlight();
-                negativeHighlight();
-                break;
-        }
+            switch (userVote) {
+                case 1:
+                    positiveVotesCount -= 1;
+                    resetHighlight();
+                    positiveHighlight();
+                    break;
+                case -1:
+                    negativeVotesCount -= 1;
+                    resetHighlight();
+                    negativeHighlight();
+                    break;
+            }
 
-        showVotesCount();
-    });
+            showVotesCount();
+        });
 }
-
 
 positiveVoteBtn.addEventListener('click', () => {
     switch (userVote) {
@@ -86,21 +94,27 @@ negativeVoteBtn.addEventListener('click', () => {
 });
 
 function showVotesCount() {
-    positiveVotesLabel.innerText = userVote === 1 ? (positiveVotesCount + 1).toString() : positiveVotesCount.toString();
-    negativeVotesLabel.innerText = userVote === -1 ? (negativeVotesCount + 1).toString() : negativeVotesCount.toString();
+    positiveVotesLabel.innerText =
+        userVote === 1
+            ? (positiveVotesCount + 1).toString()
+            : positiveVotesCount.toString();
+    negativeVotesLabel.innerText =
+        userVote === -1
+            ? (negativeVotesCount + 1).toString()
+            : negativeVotesCount.toString();
 }
 
 function negativeHighlight() {
-    negativeVoteBtn.style.opacity = "1";
+    negativeVoteBtn.style.opacity = '1';
 }
 
 function positiveHighlight() {
-    positiveVoteBtn.style.opacity = "1";
+    positiveVoteBtn.style.opacity = '1';
 }
 
 function resetHighlight() {
-    positiveVoteBtn.style.opacity = "0.3";
-    negativeVoteBtn.style.opacity = "0.3";
+    positiveVoteBtn.style.opacity = '0.3';
+    negativeVoteBtn.style.opacity = '0.3';
 }
 
 function sendVote() {
@@ -111,7 +125,7 @@ function sendVote() {
         },
         body: JSON.stringify({
             uuid: uuid,
-            vote_value: userVote
-        })
+            vote_value: userVote,
+        }),
     });
-}   
+}
