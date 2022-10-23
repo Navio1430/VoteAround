@@ -14,6 +14,11 @@
         type="module"
         src="{{ url_for('static', filename='dist/InfiniteScroll.js') }}"
     ></script>
+
+    <script
+        type="module"
+        src="{{ url_for('static', filename='dist/PopularCards.js') }}"
+    ></script>
 </section>
 
 <section class="projects">
@@ -68,19 +73,7 @@
 <section class="projects">
     <div class="projects__container">
         <p class="projects__title">Popularne projekty w twojej okolicy</p>
-
-        <div class="card__container">
-            <a href="#">
-                <div class="card">
-                    <img
-                        src="{{ url_for('static', filename='assets/city.svg') }}"
-                        alt=""
-                        class="card__icon"
-                    />
-                    <p class="card__title">Lorem ipsum</p>
-                </div>
-            </a>
-        </div>
+        <div id="projects-container-popular" class="card__container"></div>
     </div>
 </section>
 
