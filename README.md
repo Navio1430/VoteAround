@@ -1,30 +1,28 @@
 # VoteAround
 
-Celem naszej apliakcji jest umożliwienie obywatelom na terenie całego kraju, tworzenia projektów które wpłyną na jakość życia lokalnego społeczeństwa.
+Celem naszej aplikacji jest umożliwienie obywatelom na terenie całego kraju tworzenia projektów, które wpłyną na jakość życia lokalnego społeczeństwa.
 
 Każdy obywatel po zarejestrowaniu ma możliwość głosowania (pozytywnie bądź negatywnie) na powstałe projekty, jak i tworzenia własnych.
 
 Podczas tworzenia projektu użytkownik podaje podstawowe dane na jego temat:
-
 -   **Tytuł projektu**
 -   **Opis projektu**
--   **Obszar którego dotyczy projekt:**
-    -   Jedynie użytkownicy znajdujący się w określonym obszarze mogą oddać głos na projekt
+-   **Obszar, którego dotyczy projekt** (Jedynie użytkownicy znajdujący się w określonym obszarze mogą oddać głos na projekt)
 
-Dane pozyskane dzięki naszej aplikajci pozwalają między innymi na oszacowanie poparcia danego projektu, co znacznie usprawni proces wdrożenia go w życie.
+Dane pozyskane dzięki naszej aplikacji pozwalają między innymi na oszacowanie poparcia danego projektu, co znacznie usprawni proces wdrożenia go w życie.
 
-Projekt wykonany przeznaczony na konkurs HackHeroes edycja 2022, wykonany pomiędzy 8 a 23 października.
+Projekt został wykonany pomiędzy 8 a 23 października (na konkurs HackHeroes edycja 2022).
 
 </br>
 
 ## Jak uruchomić projekt
 
-**Uwaga! Aby poprawnie uruchmoić projekt, należy zainstalować [python](https://www.python.org/downloads/)**
+**Uwaga! Aby poprawnie uruchomić projekt, należy zainstalować [python](https://www.python.org/downloads/)**
 
-Pobranie projektu
+Pobieranie projektu
 
 ```cmd
-  git clone https://github.com/Navio1430/VoteAround.git
+git clone https://github.com/Navio1430/VoteAround.git
 ```
 
 </br>
@@ -42,25 +40,25 @@ Pobranie projektu
 - Zainstaluj zależności
 
   ```cmd
-    pip install -r requirements.txt
+  pip install -r requirements.txt
   ```
 
 - Przejdź do ścieżki aplikacji
 
   ```cmd
-    cd website
+  cd website
   ```
 
 - Uruchom projekt przy użyciu języka python
 
   ```cmd
-    python app.py
+  python app.py
   ```
 
 - Otwórz stronę w przeglądarce, port 5000
 
   ```
-    127.0.0.1:5000
+  127.0.0.1:5000
   ```
 
 </br>
@@ -71,14 +69,14 @@ Pobranie projektu
 
 1. Zarejestruj konto
 
-    - Podczas rejestracji zaznacz swoją lokalizację na mapię
+    - Podczas rejestracji zaznacz swoją lokalizację na mapie
 
 2. Zaloguj się
 
 ### b) Tworzenie projektów
 
 1. Przejdź do zakładki 'Projekty'
-2. Utwórz projekt w w lokalizacji, takiej abyś był w jego zakresie
+2. Utwórz projekt, w którego zakresie jest twoja lokalizacja
 3. Utworzony projekt wyświetla się w zakładce 'Projekty'
 
 ### c) Wylogowanie
@@ -86,7 +84,7 @@ Pobranie projektu
 1. Przejdź do zakładki 'Twoje Dane'
 2. Kliknij 'Wyloguj się'
 
-### d) Usunięcie konta
+### d) Usuwanie konta
 
 1. Przejdź do zakładki 'Twoje Dane'
 2. Kliknij 'Usuń konto'
