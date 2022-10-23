@@ -1,21 +1,18 @@
-const logout = () => {
-    const userLogoutAccount = document.getElementById('user-logout-account');
+export {};
 
-    userLogoutAccount.addEventListener('click', () => {
-        // Names of cookies to delete with logout
-        let cookiesToDelete = ['token', 'uuid'];
+const userLogoutBtn = document.getElementById('user-logout-account');
 
-        cookiesToDelete.forEach((cookie) => {
-            const deleteCookie = (name: string, path: string) => {
-                document.cookie =
-                    name + '=' + ';path=' + path + ';expires=' + new Date(0);
-            };
+userLogoutBtn.addEventListener('click', () => {
+    let cookiesToDelete = ['token', 'uuid'];
 
-            deleteCookie(cookie, '/');
-        });
+    cookiesToDelete.forEach((cookie) => {
+        const deleteCookie = (name: string, path: string) => {
+            document.cookie =
+                name + '=' + ';path=' + path + ';expires=' + new Date(0);
+        };
 
-        location.reload();
+        deleteCookie(cookie, '/');
     });
-};
 
-export { logout };
+    location.reload();
+});
