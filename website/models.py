@@ -18,8 +18,7 @@ class User(db.Model):
     salt = db.Column("salt", db.LargeBinary)
     latitude = db.Column("latitude", db.Float)
     longitude = db.Column("longitude", db.Float)
-    positive_votes = db.Column("positive_votes", db.LargeBinary)  # uuid[]
-    negative_votes = db.Column("negative_votes", db.LargeBinary)  # uuid[]
+    votes = db.Column("votes", db.LargeBinary)  # uuid[] - vote status saved in project
 
     def __init__(self, username, password, latitude, longitude):
         self.uuid = generate_uuid()
@@ -28,8 +27,7 @@ class User(db.Model):
         self.set_password(password)
         self.latitude = latitude
         self.longitude = longitude
-        self.positive_votes = b""
-        self.negative_votes = b""
+        self.votes = b""
 
     @property
     def pos(self):
