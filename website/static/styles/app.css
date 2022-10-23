@@ -197,8 +197,8 @@
   -ms-grid-column: 2;
   -ms-grid-column-span: 9;
   grid-column: 2/11;
-  -ms-grid-columns: 2.5fr 7fr 2.5fr 2.5fr 1.5fr 2fr;
-      grid-template-columns: 2.5fr 7fr 2.5fr 2.5fr 1.5fr 2fr;
+  -ms-grid-columns: 3.5fr 6fr 2.5fr 2.5fr 1.5fr 2fr;
+      grid-template-columns: 3.5fr 6fr 2.5fr 2.5fr 1.5fr 2fr;
   background: #ffffff;
   -webkit-box-align: center;
       -ms-flex-align: center;

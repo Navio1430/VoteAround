@@ -49,18 +49,18 @@ function createRow(uuid, label, description, positive_votes, negative_votes, use
     let label_item = document.createElement('a');
     label_item.innerHTML = label;
     label_item.href = `${uuid}`;
-    if (label_item.innerHTML.split('').length > 11) {
+    if (label_item.innerHTML.split('').length > 20) {
         let shortTitle = [];
-        for (let i = 0; i < 11; i++) {
+        for (let i = 0; i < 25; i++) {
             shortTitle.push(label_item.innerHTML[i]);
         }
         shortTitle.push('...');
         label_item.innerHTML = shortTitle.join().replace(/\,/g, '');
     }
     items[0].appendChild(label_item);
-    if (description.split('').length > 40) {
+    if (description.split('').length > 45) {
         let shortDescription = [];
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 45; i++) {
             shortDescription.push(description[i]);
         }
         shortDescription.push('...');
