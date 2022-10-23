@@ -1,0 +1,116 @@
+.project {
+    grid-column: 4/9;
+
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(11, 1fr);
+        margin: 2rem auto 15% auto;
+    }
+
+    &__title {
+        color: $blue;
+        font-size: 30px;
+        font-weight: 600;
+        font-family: $inter;
+        text-align: center;
+
+        margin-bottom: 5rem;
+    }
+
+    &__description {
+        &-name {
+            color: $blue;
+            font-family: $inter;
+            font-weight: 600;
+            font-size: 24px;
+
+            text-transform: capitalize;
+
+            margin-bottom: 1.5625rem;
+        }
+
+        &-text {
+            color: $blue;
+            font-family: $lato;
+            font-weight: 400;
+            font-size: 1rem;
+            text-align: justify;
+        }
+    }
+
+    &__votes {
+        display: flex;
+        align-items: center;
+
+        &-container {
+            display: flex;
+            column-gap: 5rem;
+            margin-top: 3rem;
+        }
+
+        &-name {
+            color: $blue;
+            font-family: $inter;
+            font-weight: 600;
+            font-size: 18px;
+            text-transform: capitalize;
+            margin-right: 25px;
+        }
+
+        &-count {
+            color: $blue;
+            font-family: $lato;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 19px;
+        }
+    }
+
+    &__vote {
+        display: flex;
+        flex-direction: column;
+
+        &-name {
+            margin-top: 3rem;
+        }
+
+        &-btn {
+            color: $white;
+            font-family: $roboto;
+            font-weight: 600;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            text-transform: capitalize;
+
+            padding: 9px 25px;
+            margin-top: 1rem;
+
+            &-container {
+                display: flex;
+                column-gap: 25px;
+            }
+
+            &--positive {
+                max-width: 4rem;
+                background: linear-gradient(98.41deg, #00ccaa 0%, #30c5c5 100%);
+                border-radius: 25px;
+            }
+
+            &--negative {
+                width: 104px;
+                background: linear-gradient(
+                    98.41deg,
+                    #ff3864 0%,
+                    #fa4f75 0.01%,
+                    #c9222c 100%
+                );
+                border-radius: 25px;
+            }
+        }
+    }
+}

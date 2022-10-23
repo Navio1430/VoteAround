@@ -10,12 +10,15 @@
     </div>
 
     <div id="table-row-container" class="table__row-container"></div>
-    <script type="module" src="{{ url_for('static', filename='dist/InfiniteScroll.js') }}"></script>
+    <script
+        type="module"
+        src="{{ url_for('static', filename='dist/InfiniteScroll.js') }}"
+    ></script>
 </section>
 
 <section class="projects">
     <div class="projects__container">
-        <p class="projects__title">Twoje Projekty</p>
+        <p class="projects__title">Twoje projekty</p>
 
         <div class="card__container">
             <a href="{{ url_for('projects.create') }}">
@@ -45,7 +48,7 @@
 
 <section class="projects">
     <div class="projects__container">
-        <p class="projects__title">Projekty Na Które Oddałeś Głos</p>
+        <p class="projects__title">Projekty na które oddałeś głos</p>
 
         <div class="card__container">
             <a href="#">
@@ -64,7 +67,7 @@
 
 <section class="projects">
     <div class="projects__container">
-        <p class="projects__title">Popularne Projekty w twoim mieście</p>
+        <p class="projects__title">Popularne projekty w twojej okolicy</p>
 
         <div class="card__container">
             <a href="#">

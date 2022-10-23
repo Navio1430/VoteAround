@@ -1,6 +1,46 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>{{ project.label }}</h1>
-<h2>{{ project.description }}</h2>
+<section class="project__container">
+    <div class="project">
+        <p class="project__title">{{ project.label }}</p>
+
+        <div class="project__description-container">
+            <p class="project__description-name">Opis projektu:</p>
+            <p class="project__description-text">{{ project.description }}</p>
+        </div>
+
+        <div class="project__votes-container">
+            <div class="project__votes">
+                <p class="project__votes-name">Głosy za:</p>
+                <p class="project__votes-count">
+                    {{ project.positive_votes_count }}
+                </p>
+            </div>
+
+            <div class="project__votes">
+                <p class="project__votes-name">Głosy przeciw:</p>
+                <p class="project__votes-count">
+                    {{ project.negative_votes_count }}
+                </p>
+            </div>
+        </div>
+
+        <div class="project__vote-container">
+            <p class="project__votes-name project__vote-name">Oddaj głos</p>
+        </div>
+
+        <div class="project__vote-btn-container">
+            <button class="project__vote-btn project__vote-btn--positive">
+                <p>Za</p>
+            </button>
+
+            <button class="project__vote-btn project__vote-btn--negative">
+                <p>Przeciw</p>
+            </button>
+        </div>
+
+        <button type="submit"></button>
+    </div>
+</section>
 
 {% endblock %}

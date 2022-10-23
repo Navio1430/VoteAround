@@ -481,6 +481,135 @@
   margin-bottom: 2.875rem;
 }
 
+.project {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 5;
+  grid-column: 4/9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+}
+
+.project__container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[11];
+      grid-template-columns: repeat(11, 1fr);
+  margin: 2rem auto 15% auto;
+}
+
+.project__title {
+  color: #223242;
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.project__description-name {
+  color: #223242;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  text-transform: capitalize;
+  margin-bottom: 1.5625rem;
+}
+
+.project__description-text {
+  color: #223242;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.project__votes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.project__votes-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 5rem;
+          column-gap: 5rem;
+  margin-top: 3rem;
+}
+
+.project__votes-name {
+  color: #223242;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: capitalize;
+  margin-right: 25px;
+}
+
+.project__votes-count {
+  color: #223242;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 19px;
+}
+
+.project__vote {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.project__vote-name {
+  margin-top: 3rem;
+}
+
+.project__vote-btn {
+  color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  text-transform: capitalize;
+  padding: 9px 25px;
+  margin-top: 1rem;
+}
+
+.project__vote-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 25px;
+          column-gap: 25px;
+}
+
+.project__vote-btn--positive {
+  max-width: 4rem;
+  background: linear-gradient(98.41deg, #00ccaa 0%, #30c5c5 100%);
+  border-radius: 25px;
+}
+
+.project__vote-btn--negative {
+  width: 104px;
+  background: linear-gradient(98.41deg, #ff3864 0%, #fa4f75 0.01%, #c9222c 100%);
+  border-radius: 25px;
+}
+
 .signup__container,
 .login__container {
   display: -ms-grid;
