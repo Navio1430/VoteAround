@@ -22,7 +22,7 @@ Projekt wykonany przeznaczony na konkurs hackheroes 2022, wykonany pomiędzy 8 a
 Skopiowanie projektu
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/Navio1430/HackHeroesZSME.git
 ```
 
 Otwarcie folderu projektu
