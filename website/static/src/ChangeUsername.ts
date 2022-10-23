@@ -16,7 +16,7 @@ usernameChangeBtn.addEventListener('click', () => {
 });
 
 function showAlert() {
-    let alert = document.createElement('form');
+    let alert = document.createElement('div');
     alert.classList.add('user__delete-alert');
 
     let title = document.createElement('p');
